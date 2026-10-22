@@ -168,11 +168,11 @@ section[id]{scroll-margin-top:calc(var(--alto-arriba) + 8px)}
 /* ---------- cabecera ---------- */
 .cab{background:#fff;border-bottom:1px solid var(--lila-borde)}
 .cab-fila{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:66px}
-.logo-txt{display:inline-flex;flex-direction:column;text-decoration:none;color:var(--violeta);line-height:1}
-.logo-txt b{font:800 1.75rem/0.9 var(--f-titulos);text-transform:uppercase;letter-spacing:.01em}
-.logo-txt small{font:800 .6rem/1.3 var(--f-texto);letter-spacing:.17em;text-transform:uppercase;color:var(--tinta-suave);margin-top:.3em}
-.logo-img{height:46px;width:auto}
+/* logo: réplica del cartel del local (img/logo*.svg, ver herramientas/hacer-logo.py) */
+.logo{display:inline-block;line-height:0;border-radius:10px}
+.logo img{height:52px;width:auto}
 .menu{display:none}
+@media (max-width:899px){.cab{display:none}}   /* en el celular el logo grande de la portada ya abre la página y el WhatsApp está en la barra de abajo */
 .cab-wa{min-height:44px;padding:.4em 1em;font-size:.92rem}
 @media (min-width:900px){
   .cab{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--alto-estado,42px));z-index:40}
@@ -185,11 +185,8 @@ section[id]{scroll-margin-top:calc(var(--alto-arriba) + 8px)}
 .portada{position:relative;background:var(--lila);overflow:hidden;padding-block:clamp(34px,6vw,76px) clamp(86px,10vw,124px)}
 .portada-grilla{position:relative;z-index:1;display:grid;gap:30px}
 @media (min-width:900px){.portada-grilla{grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);align-items:center;gap:56px}}
-.portada h1{display:flex;flex-direction:column;align-items:flex-start;gap:.7rem}
-.h1-marca{font-size:clamp(3.4rem,1.9rem + 7.4vw,6.6rem);font-weight:800;text-transform:uppercase;line-height:.86;letter-spacing:-.005em}
-.h1-marca img{height:clamp(110px,22vw,190px);width:auto}
-.h1-bajada{display:inline-flex;align-items:center;gap:.6em;font:800 clamp(.82rem,.74rem + .45vw,1.05rem)/1 var(--f-texto);letter-spacing:.17em;text-transform:uppercase;color:var(--violeta);background:#fff;border-radius:999px;padding:.65em 1.05em}
-.h1-bajada i{width:.45em;height:.45em;border-radius:50%;background:var(--naranja);display:inline-block}
+.portada-logo{line-height:0}
+.portada-logo img{width:100%;max-width:520px;height:auto;filter:drop-shadow(0 16px 24px rgba(67,32,107,.25))}
 .lema{font:700 clamp(1.3rem,1.12rem + .9vw,1.75rem)/1.25 var(--f-titulos);color:var(--tinta);margin-top:1.1rem}
 .portada-donde{color:var(--tinta-suave);margin-top:.35rem;font-size:1.05rem}
 .portada-botones{display:flex;flex-wrap:wrap;gap:12px;margin-top:1.4rem}
@@ -360,8 +357,7 @@ section[id]{scroll-margin-top:calc(var(--alto-arriba) + 8px)}
 .pie a{color:#fff}
 .pie-grilla{display:grid;gap:30px}
 @media (min-width:860px){.pie-grilla{grid-template-columns:1.2fr 1fr 1fr 1fr}}
-.pie .logo-txt{color:#fff}
-.pie .logo-txt small{color:#E3D6F4}
+.logo-pie img{height:96px}
 .pie h3{font:800 .8rem/1 var(--f-texto);letter-spacing:.16em;text-transform:uppercase;color:#E3D6F4;margin-bottom:.8rem}
 .pie ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
 .pie li{display:flex;gap:.55em;align-items:flex-start}
@@ -481,7 +477,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <header class="cab" id="cab">
   <div class="envoltura cab-fila">
-    <a class="logo-txt" href="#inicio" data-logo aria-label="Zoo Center, ir al inicio"><b>Zoo Center</b><small>Petshop &amp; Veterinaria</small></a>
+    <a class="logo" href="#inicio"><img src="img/logo-chico.svg" alt="Zoo Center, ir al inicio" width="763" height="396"></a>
     <nav aria-label="Secciones">
       <ul class="menu">
         <li><a href="#servicios">Servicios</a></li>
@@ -504,12 +500,12 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     <svg class="deco deco-hueso" style="right:4%;bottom:20%;transform:rotate(14deg)" viewBox="0 0 48 24" aria-hidden="true"><use href="#i-hueso"></use></svg>
     <span class="deco deco-punto deco-solo-compu" style="left:58%;top:12%" aria-hidden="true"></span>
     <span class="deco deco-punto deco-solo-compu" style="left:8%;bottom:30%;width:10px;height:10px" aria-hidden="true"></span>
-    <span class="deco deco-punto" style="right:16%;top:44%;width:9px;height:9px" aria-hidden="true"></span>
+    <span class="deco deco-punto deco-solo-compu" style="right:16%;top:44%;width:9px;height:9px" aria-hidden="true"></span>
     <div class="huellas" id="huellas" aria-hidden="true"></div>
 
     <div class="envoltura portada-grilla">
       <div>
-        <h1><span class="h1-marca" data-logo-grande>Zoo Center</span><span class="h1-bajada">Petshop <i aria-hidden="true"></i> Veterinaria</span></h1>
+        <h1 class="portada-logo"><img src="img/logo.svg" alt="" width="810" height="472"><span class="solo-lector">Zoo Center, petshop y veterinaria en Mar del Plata</span></h1>
         <p class="lema">Los mejores productos para tus mascotas 💜</p>
         <p class="portada-donde" id="portada-donde">En Mar del Plata, con dos sucursales: Alberti 1381 y Catamarca 1951.</p>
         <div class="portada-botones">
@@ -636,7 +632,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   <div class="envoltura">
     <div class="pie-grilla">
       <div>
-        <a class="logo-txt" href="#inicio" data-logo aria-label="Zoo Center, volver al inicio"><b>Zoo Center</b><small>Petshop &amp; Veterinaria</small></a>
+        <a class="logo logo-pie" href="#inicio"><img src="img/logo-blanco.svg" alt="Zoo Center, volver al inicio" width="690" height="376"></a>
         <p class="pie-lema">Los mejores productos para tus mascotas 💜</p>
       </div>
       <div>
@@ -895,9 +891,6 @@ const CONTACTO = {
   instagram:"zoocentermdp",
   facebook:"https://www.facebook.com/p/Zoo-Center-Mar-del-Plata-100083610631017/",
 };
-
-// Logo: cuando llegue el archivo vectorial, ponerlo en img/ y escribir acá la ruta ("img/logo.svg").
-const MARCA = { logo:"" };
 
 // true = muestra lo pendiente marcado "A confirmar" (para revisarlo con el dueño). En la web publicada: false.
 // También se activa agregando #borrador al final de la dirección.
@@ -1269,11 +1262,6 @@ function pintarTextos() {
   $("#portada-donde").textContent = `En ${SUCURSALES[0].ciudad}, con ${dirs.length === 2 ? "dos sucursales" : `${dirs.length} sucursales`}: ${unirY(dirs)}.`;
   $$("[data-wa]").forEach((a) => (a.href = wa(a.dataset.wa)));
   $("#ig-link").href = `https://www.instagram.com/${CONTACTO.instagram}/`;
-  if (MARCA.logo) {
-    $$("[data-logo]").forEach((a) => (a.innerHTML = `<img class="logo-img" src="${esc(MARCA.logo)}" alt="Zoo Center, Petshop & Veterinaria">`));
-    const g = $("[data-logo-grande]");
-    g.innerHTML = `<img src="${esc(MARCA.logo)}" alt=""><span class="solo-lector">Zoo Center</span>`;
-  }
 }
 
 /* ---------- pedir turno ---------- */

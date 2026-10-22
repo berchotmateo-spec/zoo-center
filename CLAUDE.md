@@ -33,9 +33,9 @@ Armada por Mateo Berchot en octubre de 2026 (todavía en etapa de demo para el d
 | Medios de pago | ⚠️ A CONFIRMAR | — |
 | Delivery | Sin cargo. ⚠️ Zona, mínimo y días A CONFIRMAR | Mateo, 22/10/2026 |
 | Redes que van | Instagram @zoocentermdp · Facebook "Zoo Center Mar del Plata" (facebook.com/p/Zoo-Center-Mar-del-Plata-100083610631017) | Mateo, 22/10/2026 |
-| Colores de marca | Violeta #5B2D8E, naranja/amarillo #F5A623, lila #EDE4F7, blanco. ⚠️ Aproximados: confirmar con el logo | Mateo, 22/10/2026 |
+| Colores de marca | Violeta #5B2D8E, naranja/amarillo #F5A623, lila #EDE4F7, blanco. ⚠️ Aproximados. En la foto del cartel el naranja del gato y el perro se ve más tostado que #F5A623 (puede ser la luz de la foto): se dejó #F5A623 hasta ver el original | Mateo, 22/10/2026 |
 | Tipografía | Baloo 2 (títulos, 700–800, MAYÚSCULAS) + Nunito (texto). Alternativa gratis a la letra de sus placas | decisión de diseño |
-| Logo | ⚠️ FALTA el archivo vectorial. Mientras tanto el nombre va escrito en Baloo 2 (no se redibujó el logo) | — |
+| Logo | **Réplica vectorial** hecha desde una foto del cartel del frente (Mateo no dijo de qué sucursal), a pedido de Mateo: `img/logo.svg` (el cartel, fondo violeta), `img/logo-chico.svg` (sin "PETSHOP & VETERINARIA", para la cabecera), `img/logo-blanco.svg` (sin fondo, para el pie). Letras: Sniglet ExtraBold ("ZOO", "CENTER") y Montserrat Bold (bajada); gato y perro redibujados sobre la foto. Se rehace con `herramientas/hacer-logo.py`. ⚠️ Pedir igual el original para confirmar | foto del cartel, 22/10/2026 |
 
 ## PENDIENTES PARA EL DUEÑO (no publicar hasta confirmar)
 
@@ -54,7 +54,7 @@ en la web publicada; solo en la vista `#borrador`.
 - [ ] **¿Atienden urgencias?** La web NO dice que sí. Si el dueño lo confirma, recién ahí se agrega.
 - [ ] **Veterinario**: nombre y matrícula, solo si quiere mostrarlos.
 - [ ] **Texto sobre por qué vacunar**: solo si el veterinario lo revisa y aprueba (base: su posteo sobre vacunas) → `SERVICIOS[0].nota`. Nada de información médica sin su aprobación.
-- [ ] **Logo en vector** (SVG o PDF) → `img/logo.svg` y `MARCA.logo = "img/logo.svg"`. Confirmar colores con ese archivo.
+- [ ] **Logo original en vector** (SVG, AI o PDF), para confirmar la réplica y los colores exactos. Si llega, reemplaza `img/logo.svg`, `img/logo-chico.svg` e `img/logo-blanco.svg` (mismos nombres) y `img/og.jpg`.
 - [ ] **Fotos del local** por dentro y por fuera (las dos sucursales) → `SUCURSALES[].foto`.
 - [ ] **Permiso para usar fotos del Instagram**: antes y después de la peluquería (`ASI_QUEDARON`) y mascotas de clientes (`CLIENTES`). Sin fotos, esas galerías no se dibujan.
 - [ ] **Fotos de productos** (reales, del local o del Instagram) → `f:` de cada producto en `CATALOGO`.
@@ -66,8 +66,9 @@ en la web publicada; solo en la vista `#borrador`.
 |---|---|---|
 | Para qué mascota es cada producto (`mascota` en `CATALOGO`) | Deducido del rubro, no confirmado. Indumentaria, pelotas y mordillos → perro; medallas y GeoID → perros y gatos; piedras y sanitarios → gato | 22/10/2026 |
 | Peluches, higiene (shampoo, perfumes, repelente) y salud (pipetas, antiparasitarios, antiestrés) **sin mascota a propósito** | Algunos productos de perro son tóxicos para gatos (p. ej. repelentes y pipetas con permetrina). Que lo defina el dueño o el veterinario; hasta entonces aparecen solo en "Todos" | 22/10/2026 |
-| Colores | Aproximados por Mateo; confirmar con el logo | 22/10/2026 |
-| `img/og.jpg` (imagen al compartir) | Gráfica con el nombre escrito y motivos de sus placas. Reemplazar por una con el logo real o una foto del local | 22/10/2026 |
+| Colores | Aproximados por Mateo; el naranja del cartel se ve más tostado en la foto | 22/10/2026 |
+| Logo (`img/logo*.svg`) | Es una réplica hecha a partir de una foto (no el archivo original): la letra es la misma (Sniglet), pero el gato, el perro y los colores son aproximados | 22/10/2026 |
+| `img/og.jpg` (imagen al compartir) | Gráfica con la réplica del logo y los datos. Mejor con una foto real del local cuando haya | 22/10/2026 |
 
 ## Lo que NO va en la web
 
@@ -97,6 +98,7 @@ producto). La web muestra "Actualizado el dd/mm/aaaa · Precios sujetos a cambio
 - Barra fija arriba "Abierto ahora / Cerrado" calculada con la **hora de Argentina** (no la del visitante), con aviso editable en `DIAS_ESPECIALES`.
 - Barra fija abajo en el celular: "WhatsApp" y "Pedir turno".
 - "Pedir turno" abre un formulario que arma el mensaje y abre WhatsApp. Veterinaria: nombre, mascota, especie, motivo, día. Peluquería: nombre, perro (opcional), raza, tamaño, servicio, día. No deja elegir domingo ni días cerrados.
+- Logo: el cartel completo en la portada; la versión sin bajada en la cabecera (solo en la compu: en el celular esa fila no se muestra, porque el logo grande ya abre la página y el WhatsApp está en la barra de abajo); la versión blanca en el pie. Las imágenes van directo en el HTML (`<img>`), sin JS.
 - Crédito al pie: "Sitio web diseñado por Mateo Berchot".
 
 ## Fotos
@@ -106,10 +108,17 @@ producto). La web muestra "Actualizado el dd/mm/aaaa · Precios sujetos a cambio
 
 ## Estado técnico
 
-- [ ] Dominio (NIC.ar) — cuando exista: poner URL absolutas en `og:image`, `canonical`, `url`/`image` del JSON-LD (con `publicar-cabecera.html`, ver la skill).
+- [ ] Dominio (NIC.ar) — cuando exista: poner URL absolutas en `og:image`, `canonical`, `url`/`image`/`logo` del JSON-LD (con `publicar-cabecera.html`, ver la skill).
 - [ ] GitHub Pages desde `main` / `docs` (`python3 publicar.py <dominio>`).
 - [ ] Search Console y Perfil de Empresa de Google.
 - [ ] QR entregado.
+
+## Logo: cómo se rehace
+
+`python3 herramientas/hacer-logo.py <carpeta-con-fuentes>` (pip install fonttools). Necesita los .ttf de
+Sniglet ExtraBold y Montserrat Bold (Google Fonts). Las medidas, el gato y el perro están en el script,
+medidos sobre la foto del cartel enderezada. La foto del frente que mandó Mateo no se publicó: tiene un círculo rojo
+dibujado encima y no sabemos de qué sucursal es. Sin la marca y sabiendo cuál es, puede ir como foto de esa sucursal.
 
 ## Cómo se trabaja acá
 
@@ -125,4 +134,5 @@ producto). La web muestra "Actualizado el dd/mm/aaaa · Precios sujetos a cambio
 
 Una línea por pedido, la más nueva arriba.
 
+- 22/10/2026 — Mateo mandó una foto del frente del local y pidió replicar el logo del cartel para usarlo en la web (antes la idea era esperar el vector) → réplica en `img/logo.svg`, `logo-chico.svg` y `logo-blanco.svg` (`herramientas/hacer-logo.py`), usada en la portada, la cabecera, el pie y la imagen para compartir. En el celular se ocultó la fila de la cabecera para no repetir el logo.
 - 22/10/2026 — Armado inicial desde cero con los datos que pasó Mateo (sucursales, horario, contacto, servicios, categorías del Instagram, promos que venían usando). Sin fotos ni logo todavía; promos, guardería/acuario y FAQ sin respuesta quedan como pendientes.
