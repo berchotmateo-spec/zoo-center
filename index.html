@@ -373,7 +373,7 @@ section[id]{scroll-margin-top:calc(var(--alto-arriba) + 8px)}
 /* ---------- ventanas (turno y visor de fotos) ---------- */
 dialog{border:0;padding:0;color:var(--tinta);background:#fff;border-radius:26px;width:calc(100% - 24px);max-width:560px;max-height:calc(100dvh - 24px);overflow:auto;box-shadow:0 30px 70px -24px rgba(42,27,61,.6)}
 dialog::backdrop{background:rgba(42,27,61,.55)}
-@media (max-width:599px){#turno,#panel{width:100%;max-width:100%;margin:auto 0 0;border-radius:26px 26px 0 0;max-height:94dvh}}
+@media (max-width:599px){#turno,#panel,#agenda{width:100%;max-width:100%;margin:auto 0 0;border-radius:26px 26px 0 0;max-height:94dvh}}
 .dlg-cab{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:18px 20px 12px;background:#fff}
 .dlg-cab h2{font-size:1.7rem}
 .cerrar{width:44px;height:44px;border-radius:50%;border:0;background:var(--lila);color:var(--violeta);display:grid;place-items:center;cursor:pointer;flex:none}
@@ -392,7 +392,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .campo > label,.campo legend{font-weight:800;font-size:.97rem;padding:0}
 .campo legend{margin-bottom:6px}
 .opc{font-weight:600;color:var(--tinta-suave)}
-.campo input[type=text],.campo input[type=tel],.campo input[type=date],.campo select{-webkit-appearance:none;appearance:none;display:block;width:100%;min-height:50px;border:2px solid var(--lila-borde);border-radius:14px;padding:.5em .85em;font:600 1rem var(--f-texto);color:var(--tinta);background:#fff}
+.campo input[type=text],.campo input[type=tel],.campo input[type=password],.campo input[type=date],.campo select{-webkit-appearance:none;appearance:none;display:block;width:100%;min-height:50px;border:2px solid var(--lila-borde);border-radius:14px;padding:.5em .85em;font:600 1rem var(--f-texto);color:var(--tinta);background:#fff}
 .campo select{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235B2D8E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") right .85em center/16px no-repeat;padding-right:2.4em}
 .campo input[type=date]::-webkit-date-and-time-value{text-align:left}
 .campo input:focus,.campo select:focus{outline:none;border-color:var(--violeta);box-shadow:0 0 0 3px rgba(91,45,142,.16)}
@@ -416,7 +416,23 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .panel-botones{display:grid;gap:10px}
 .panel-otro{display:grid;gap:12px;border-top:1px solid var(--lila-borde);padding-top:16px}
 .panel-otro h3{font-size:1.25rem}
-.btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed}
+.btn[aria-disabled="true"],.btn:disabled{opacity:.45;cursor:not-allowed}
+/* agenda compartida */
+.turno-reservado,.estado-agenda{border-radius:14px;padding:12px 14px;font-weight:700;background:var(--lila-claro)}
+.turno-reservado,.estado-agenda.ok{background:#E7FFDB}
+.estado-agenda.aviso{background:var(--naranja-suave)}
+.fila-clave{display:flex;gap:8px}
+.fila-clave input{flex:1;min-width:0}
+.btn-link{background:none;border:0;padding:0;color:var(--violeta);font:800 .95rem var(--f-texto);text-decoration:underline;text-underline-offset:.18em;cursor:pointer;justify-self:start}
+.agenda-dia{display:grid;gap:8px}
+.agenda-dia h3{font-size:1.15rem}
+.agenda-fila{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 12px;align-items:center;width:100%;padding:12px 14px;border:1px solid var(--lila-borde);border-radius:16px;background:#fff;text-align:left;cursor:pointer}
+.agenda-fila:hover{border-color:var(--violeta-med)}
+.agenda-fila b{font:800 1.15rem/1 var(--f-titulos);color:var(--violeta);font-variant-numeric:tabular-nums}
+.agenda-fila small{display:block;color:var(--tinta-suave);font-size:.88rem}
+.chip-estado{font:800 .7rem/1 var(--f-texto);letter-spacing:.06em;text-transform:uppercase;padding:.5em .65em;border-radius:999px;background:var(--naranja-suave);color:var(--tinta);white-space:nowrap}
+.chip-estado.ok{background:#E7FFDB}
+.chip-estado.vencido{background:#ECE8F1;color:var(--tinta-suave)}
 
 #visor{max-width:min(980px,calc(100% - 24px));background:#17111F;color:#fff}
 #visor .dlg-cab{background:#17111F}
@@ -687,6 +703,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       <button type="button" class="cerrar" data-cerrar aria-label="Cerrar"><svg class="ico" aria-hidden="true"><use href="#i-x"></use></svg></button>
     </div>
     <div class="turno-cuerpo">
+     <fieldset class="campos" id="turno-datos">
       <div class="segm" role="radiogroup" aria-label="¿Para qué es el turno?">
         <label><input type="radio" name="tipo" id="tipo-vet" value="vet" checked><span><svg class="ico" aria-hidden="true"><use href="#i-esteto"></use></svg>Veterinaria</span></label>
         <label><input type="radio" name="tipo" id="tipo-pelu" value="pelu"><span><svg class="ico" aria-hidden="true"><use href="#i-tijera"></use></svg>Peluquería</span></label>
@@ -696,18 +713,18 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       <div class="dos">
         <div class="campo">
           <label for="t-dueno">Tu nombre</label>
-          <input type="text" id="t-dueno" name="dueno" autocomplete="name" required>
+          <input type="text" id="t-dueno" name="dueno" autocomplete="name" maxlength="60" required>
         </div>
         <div class="campo">
           <label for="t-cel">Tu WhatsApp</label>
-          <input type="tel" id="t-cel" name="cel" autocomplete="tel-national" inputmode="tel" placeholder="Ej.: 223 512-3456" required>
+          <input type="tel" id="t-cel" name="cel" autocomplete="tel-national" inputmode="tel" maxlength="30" placeholder="Ej.: 223 512-3456" required>
         </div>
       </div>
 
       <fieldset class="campos" id="campos-vet">
         <div class="campo">
           <label for="t-mascota">Nombre de tu mascota</label>
-          <input type="text" id="t-mascota" name="mascota" required>
+          <input type="text" id="t-mascota" name="mascota" maxlength="40" required>
         </div>
         <fieldset class="campo">
           <legend>Especie</legend>
@@ -727,11 +744,11 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
         <div class="dos">
           <div class="campo">
             <label for="t-perro">Nombre de tu perro <span class="opc">(opcional)</span></label>
-            <input type="text" id="t-perro" name="perro">
+            <input type="text" id="t-perro" name="perro" maxlength="40">
           </div>
           <div class="campo">
             <label for="t-raza">Raza</label>
-            <input type="text" id="t-raza" name="raza" placeholder="Ej.: caniche, mestizo…" required>
+            <input type="text" id="t-raza" name="raza" maxlength="40" placeholder="Ej.: caniche, mestizo…" required>
           </div>
         </div>
         <fieldset class="campo">
@@ -758,7 +775,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
           <select id="t-hora" name="hora" required disabled><option value="">Elegí primero el día</option></select>
         </div>
       </div>
+     </fieldset>
       <p class="turno-error" id="turno-error" role="alert" hidden></p>
+      <button type="button" class="btn btn-pri turno-enviar" id="turno-reservar" hidden><svg class="ico" aria-hidden="true"><use href="#i-cal"></use></svg>Reservar horario</button>
+      <p class="turno-reservado" id="turno-reservado" role="status" hidden></p>
       <a class="btn btn-pri turno-enviar" id="turno-enviar" href="https://wa.me/5492236919808" target="_blank" rel="noopener"><span class="burbuja"><svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg></span>Enviar pedido por WhatsApp</a>
       <p class="turno-listo" id="turno-listo" role="status" hidden>Ahora mandá el mensaje que se abrió en WhatsApp y te confirmamos el turno por ahí 💜 Si no se abrió, escribinos al 223 691-9808.</p>
     </div>
@@ -772,6 +792,15 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     <button type="button" class="cerrar" data-cerrar aria-label="Cerrar"><svg class="ico" aria-hidden="true"><use href="#i-x"></use></svg></button>
   </div>
   <div class="turno-cuerpo" id="panel-cuerpo"></div>
+</dialog>
+
+<!-- Agenda del local (#agenda): turnos de los próximos días y "ocupar un horario". Pide la clave del local. -->
+<dialog id="agenda" aria-labelledby="agenda-tit">
+  <div class="dlg-cab">
+    <h2 id="agenda-tit">Agenda de turnos</h2>
+    <button type="button" class="cerrar" data-cerrar aria-label="Cerrar"><svg class="ico" aria-hidden="true"><use href="#i-x"></use></svg></button>
+  </div>
+  <div class="turno-cuerpo" id="agenda-cuerpo"></div>
 </dialog>
 
 <!-- Visor de fotos (galerías y productos) -->
@@ -856,6 +885,11 @@ const TURNOS = {
   pelu: { intervalo:30, duracion:60 },
   anticipacion:60,   // para hoy: desde dentro de cuántos minutos se puede pedir
 };
+
+// Agenda compartida en Supabase: con esto, dos clientes no pueden pedir el mismo horario (ver supabase/turnos.sql).
+// Vacía = los turnos funcionan igual por WhatsApp, pero sin bloquear horarios.
+// clave: SOLO la publicable (sb_publishable_…). Nunca la secret / service_role.
+const AGENDA = { url:"", clave:"" };
 
 // Catálogo del petshop: para mirar y consultar, no para comprar online.
 //   n nombre · cat categoría · mascota: perro / gato / ambos / peces / otros ("" = sin definir)
@@ -1297,14 +1331,53 @@ function pintarTextos() {
   $("#ig-link").href = `https://www.instagram.com/${CONTACTO.instagram}/`;
 }
 
+/* ---------- agenda compartida (Supabase) ---------- */
+const conAgenda = () => !!(AGENDA.url && AGENDA.clave);
+let ocupados = null;       // horarios tomados [{tipo, fecha, hora:"10:30:00", duracion}]; null = sin agenda
+let agendaCaida = false;   // no se pudo conectar: los turnos siguen andando, sin bloquear horarios
+const CLAVE_LS = "zoocenter-clave-local";
+let claveMem = "";
+function claveLocal() { try { return localStorage.getItem(CLAVE_LS) || claveMem; } catch (e) { return claveMem; } }
+function guardarClave(c) {
+  claveMem = c || "";
+  try { if (c) localStorage.setItem(CLAVE_LS, c); else localStorage.removeItem(CLAVE_LS); } catch (e) { /* sin almacenamiento: queda en memoria */ }
+}
+
+// Llama a una función de supabase/turnos.sql. Los errores de la base llegan en e.codigo ("ocupado", "clave"…).
+async function rpc(fn, args) {
+  const cab = { "Content-Type":"application/json", apikey:AGENDA.clave };
+  if (AGENDA.clave.startsWith("eyJ")) cab.Authorization = `Bearer ${AGENDA.clave}`;   // claves viejas (anon)
+  const corte = new AbortController();
+  const reloj = setTimeout(() => corte.abort(), 12000);
+  try {
+    const r = await fetch(`${AGENDA.url.replace(/\/+$/, "")}/rest/v1/rpc/${fn}`,
+      { method:"POST", headers:cab, body:JSON.stringify(args), signal:corte.signal });
+    const txt = await r.text();
+    let datos = null;
+    try { datos = txt ? JSON.parse(txt) : null; } catch (e) { datos = null; }
+    if (!r.ok) {
+      const e = new Error((datos && datos.message) || `HTTP ${r.status}`);
+      e.codigo = (datos && datos.message) || "red";
+      throw e;
+    }
+    return datos;
+  } catch (e) {
+    if (!e.codigo) e.codigo = "red";
+    throw e;
+  } finally { clearTimeout(reloj); }
+}
+const horaDe = (h) => hhmm(aMin(String(h).slice(0, 5)));   // "10:30:00" → "10:30"
+
 /* ---------- pedir turno ---------- */
 const dlgTurno = $("#turno");
 const formTurno = $("#turno-form");
 let abridor = null;
+let reserva = null;        // el pedido ya reservado en la agenda (con su id)
 const NOMBRE_TURNO = { vet:"veterinaria", pelu:"peluquería canina" };
 const hhmm = (m) => `${Math.floor(m / 60)}:${String(m % 60).padStart(2, "0")}`;
 const diaYHora = (f, h) => `${DIAS[diaDe(f)]} ${fechaCorta(f)} a las ${h}`;
 const waA = (numero, texto) => `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+const duracionDe = (tipo) => (TURNOS[tipo] || {}).duracion || (TURNOS[tipo] || {}).intervalo || 30;
 
 function llenarSelect(sel, items, texto) {
   sel.innerHTML = `<option value="">${texto}</option>` + items.map((i) => `<option>${esc(i)}</option>`).join("");
@@ -1328,9 +1401,10 @@ function normalizarCel(txt) {
   return d.length === 10 ? "549" + d : "";
 }
 
-// Horarios que se ofrecen ese día (en minutos): dentro del horario de la sucursal, cada TURNOS[tipo].intervalo,
-// sin pasarse del cierre y, si es hoy, desde ahora + TURNOS.anticipacion.
-function horariosTurno(tipo, fecha) {
+// Horarios libres ese día (en minutos): dentro del horario de la sucursal, cada TURNOS[tipo].intervalo,
+// sin pasarse del cierre, si es hoy desde ahora + TURNOS.anticipacion, y sin pisar turnos tomados
+// (tomados: lista de la agenda; excluir: el id de un turno que no cuenta, al moverlo).
+function horariosTurno(tipo, fecha, tomados = ocupados, excluir = null) {
   const cfg = TURNOS[tipo] || {};
   let tr = tramos(sucursalTurno(tipo), fecha);
   if (cfg.horarios) {
@@ -1338,11 +1412,18 @@ function horariosTurno(tipo, fecha) {
     const propios = cfg.horarios.filter((h) => (h.dias || []).some((n) => diaIdx(n) === dia)).map((h) => [aMin(h.abre), aMin(h.cierra)]);
     tr = tr.flatMap(([a, c]) => propios.map(([pa, pc]) => [Math.max(a, pa), Math.min(c, pc)])).filter(([a, c]) => c > a);
   }
-  const paso = cfg.intervalo || 30, dura = cfg.duracion || paso;
+  const paso = cfg.intervalo || 30, dura = duracionDe(tipo);
   const t = ahora();
   const desde = fecha === t.fecha ? t.min + (TURNOS.anticipacion || 0) : -1;
+  const pisados = (tomados || [])
+    .filter((o) => o.tipo === tipo && o.fecha === fecha && o.vigente !== false && (!excluir || o.id !== excluir))
+    .map((o) => [aMin(String(o.hora).slice(0, 5)), +o.duracion || paso]);
   const lista = [];
-  tr.forEach(([a, c]) => { for (let m = a; m + dura <= c; m += paso) if (m >= desde) lista.push(m); });
+  tr.forEach(([a, c]) => {
+    for (let m = a; m + dura <= c; m += paso) {
+      if (m >= desde && !pisados.some(([oh, od]) => m < oh + od && oh < m + dura)) lista.push(m);
+    }
+  });
   return lista;
 }
 
@@ -1354,6 +1435,7 @@ const decodificar = (s) => JSON.parse(new TextDecoder().decode(
 const linkPanel = (d) => `${CONTACTO.sitio || location.href.split("#")[0]}#t-${codificar(d)}`;
 
 function datosTurno() {
+  if (reserva) return reserva;
   const v = (n) => (formTurno[n] && formTurno[n].value || "").trim();
   const d = { v:1, t:tipoTurno(), n:v("dueno"), tel:v("cel"), w:normalizarCel(v("cel")), d:v("dia"), h:v("hora") };
   if (d.t === "vet") Object.assign(d, { m:v("mascota"), e:v("especie"), s:v("motivo") });
@@ -1373,7 +1455,7 @@ function mensajeTurno() {
     `• Mi nombre: ${d.n}`, `• Mi WhatsApp: ${d.tel}`];
   if (d.t === "vet") l.push(`• Mascota: ${quien(d)}`, `• Motivo: ${d.s}`);
   else { if (d.m) l.push(`• Mi perro: ${d.m}`); l.push(`• Raza: ${d.r}`, `• Tamaño: ${d.z}`, `• Servicio: ${d.s}`); }
-  if (d.d && d.h) l.push(`• Día y hora: ${diaYHora(d.d, d.h)}`);
+  if (d.d && d.h) l.push(`• Día y hora: ${diaYHora(d.d, d.h)}${d.i ? " (ya lo reservé en la web)" : ""}`);
   if (d.n && d.w && d.d && d.h) l.push("", "👉 Para el local, confirmalo en un toque:", linkPanel(d));
   return l.join("\n");
 }
@@ -1381,18 +1463,18 @@ function mensajeTurno() {
 function llenarHoras() {
   const sel = formTurno.hora, previo = sel.value, f = formTurno.dia.value;
   const hs = f && f >= ahora().fecha ? horariosTurno(tipoTurno(), f).map(hhmm) : [];
-  sel.innerHTML = `<option value="">${!f ? "Elegí primero el día" : hs.length ? "Elegí la hora" : "Sin horarios ese día"}</option>`
+  sel.innerHTML = `<option value="">${!f ? "Elegí primero el día" : hs.length ? "Elegí la hora" : "Sin horarios libres ese día"}</option>`
     + hs.map((h) => `<option${h === previo ? " selected" : ""}>${h}</option>`).join("");
   sel.disabled = !hs.length;
 }
 function revisarDia() {
   const inp = formTurno.dia;
   inp.setCustomValidity("");
-  if (!inp.value) return;
+  if (!inp.value || reserva) return;
   const suc = sucursalTurno(tipoTurno());
   if (inp.value < ahora().fecha) inp.setCustomValidity("Elegí un día de hoy en adelante.");
   else if (!tramos(suc, inp.value).length) inp.setCustomValidity(`Ese día ${suc.direccion} está cerrado. Elegí otro día 🙂`);
-  else if (!horariosTurno(tipoTurno(), inp.value).length) inp.setCustomValidity("Para ese día ya no quedan horarios. Elegí otro día 🙂");
+  else if (!horariosTurno(tipoTurno(), inp.value).length) inp.setCustomValidity("Para ese día ya no quedan horarios libres. Elegí otro día 🙂");
 }
 function revisarCel() {
   const v = formTurno.cel.value.trim();
@@ -1402,6 +1484,14 @@ function actualizarTurno() {
   revisarCel(); revisarDia();
   $("#turno-enviar").href = wa(mensajeTurno());
 }
+// Con agenda: primero "Reservar horario" y recién después "Enviar pedido por WhatsApp".
+function pintarPasos() {
+  const reservar = conAgenda() && !agendaCaida && !reserva;
+  $("#turno-reservar").hidden = !reservar;
+  $("#turno-enviar").hidden = reservar;
+  $("#turno-reservado").hidden = !reserva;
+  if (reserva) $("#turno-reservado").textContent = `✅ ¡Listo! Te reservamos el ${diaYHora(reserva.d, reserva.h)}. Para terminar, mandanos el pedido por WhatsApp y te confirmamos el turno.`;
+}
 function cambiarTipo() {
   const pelu = tipoTurno() === "pelu";
   $("#campos-vet").disabled = pelu; $("#campos-vet").hidden = pelu;
@@ -1410,16 +1500,70 @@ function cambiarTipo() {
   llenarHoras();
   actualizarTurno();
 }
+async function cargarOcupados() {
+  if (!conAgenda()) return;
+  const hoy = ahora().fecha;
+  try {
+    ocupados = await rpc("horarios_ocupados", { p_desde:hoy, p_hasta:sumarDias(hoy, 92) });
+    agendaCaida = false;
+  } catch (e) {
+    ocupados = null; agendaCaida = true;
+  }
+  llenarHoras(); actualizarTurno(); pintarPasos();
+}
+
+function mostrarErrorTurno() {
+  const err = $("#turno-error");
+  const malo = [formTurno.dia, formTurno.cel].find((x) => x.validity.customError);
+  err.textContent = malo ? malo.validationMessage : "Completá los datos que faltan para armar el mensaje.";
+  err.hidden = false;
+  formTurno.reportValidity();
+}
+async function reservar() {
+  actualizarTurno();
+  if (!formTurno.checkValidity()) return mostrarErrorTurno();
+  const d = datosTurno(), btn = $("#turno-reservar"), err = $("#turno-error");
+  err.hidden = true;
+  btn.disabled = true;
+  const texto = btn.innerHTML;
+  btn.textContent = "Reservando…";
+  try {
+    const id = await rpc("reservar_turno", { p_tipo:d.t, p_fecha:d.d, p_hora:d.h, p_duracion:duracionDe(d.t),
+      p_nombre:d.n, p_whatsapp:d.w, p_detalle:JSON.stringify({ m:d.m, e:d.e, r:d.r, z:d.z, s:d.s, tel:d.tel }) });
+    reserva = { ...d, i:id };
+    $("#turno-datos").disabled = true;
+  } catch (e) {
+    if (e.codigo === "ocupado") {
+      err.textContent = "Uy, ese horario se acaba de ocupar 😕 Elegí otro.";
+      formTurno.hora.value = "";
+      await cargarOcupados();
+    } else if (e.codigo === "demasiados") {
+      err.textContent = "Ya tenés varios turnos pedidos. Escribinos por WhatsApp y lo vemos 💜";
+    } else {
+      agendaCaida = true;   // la agenda no responde: se manda el pedido igual, sin reserva
+      err.textContent = "No pudimos reservar el horario en la agenda, pero podés mandarnos el pedido igual por WhatsApp.";
+    }
+    err.hidden = false;
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = texto;
+  }
+  actualizarTurno(); pintarPasos();
+}
 
 function abrirTurno(tipo, desde) {
   if (typeof dlgTurno.showModal !== "function") return false;
   abridor = desde || null;
+  reserva = null;
+  $("#turno-datos").disabled = false;
   if (tipo === "pelu" || tipo === "vet") formTurno.tipo.value = tipo;
   formTurno.dia.min = ahora().fecha;
   $("#turno-listo").hidden = true;
   cambiarTipo();
+  pintarPasos();
   dlgTurno.showModal();
   setTimeout(() => $("#t-dueno").focus(), 30);
+  cargarOcupados();
   return true;
 }
 
@@ -1436,31 +1580,61 @@ function initTurno() {
     if (e.target.name === "tipo") cambiarTipo();
     else { if (e.target.name === "dia") llenarHoras(); actualizarTurno(); }
   });
-  formTurno.addEventListener("submit", (e) => { e.preventDefault(); $("#turno-enviar").click(); });
+  formTurno.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!$("#turno-reservar").hidden) reservar(); else $("#turno-enviar").click();
+  });
+  $("#turno-reservar").addEventListener("click", reservar);
   $("#turno-enviar").addEventListener("click", (e) => {
     actualizarTurno();
     const err = $("#turno-error");
     if (formTurno.checkValidity()) { err.hidden = true; $("#turno-listo").hidden = false; return; }
     e.preventDefault();   // falta algo: no abre WhatsApp todavía
-    const malo = [formTurno.dia, formTurno.cel].find((x) => x.validity.customError);
-    err.textContent = malo ? malo.validationMessage : "Completá los datos que faltan para armar el mensaje.";
-    err.hidden = false;
-    formTurno.reportValidity();
+    mostrarErrorTurno();
   });
+  dlgTurno.addEventListener("close", () => { reserva = null; $("#turno-datos").disabled = false; });
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-turno]");
     if (b && abrirTurno(b.dataset.turno, b)) e.preventDefault();
   });
 }
 
-/* ---------- panel del local: confirmar, proponer otro horario, recordar, agendar ---------- */
+/* ---------- clave del local (una vez por celular) ---------- */
+function formClave(destino, alEntrar, texto) {
+  destino.innerHTML = `<div class="campo">
+      <label for="clave-local">Clave del local</label>
+      <p class="turno-ayuda">${esc(texto)}</p>
+      <div class="fila-clave"><input type="password" id="clave-local" autocomplete="current-password">
+        <button type="button" class="btn btn-pri btn-chico" id="clave-entrar">Entrar</button></div>
+      <p class="turno-error" id="clave-error" role="alert" hidden></p></div>`;
+  const entrar = async () => {
+    const c = $("#clave-local").value.trim(), err = $("#clave-error");
+    if (!c) return $("#clave-local").focus();
+    $("#clave-entrar").disabled = true; err.hidden = true;
+    try {
+      await rpc("agenda", { p_clave:c, p_desde:ahora().fecha, p_hasta:ahora().fecha });
+      guardarClave(c);
+      alEntrar();
+    } catch (e) {
+      err.textContent = e.codigo === "clave" ? "Clave incorrecta." : "No se pudo conectar con la agenda. Probá de nuevo en un rato.";
+      err.hidden = false;
+      $("#clave-entrar").disabled = false;
+    }
+  };
+  $("#clave-entrar").addEventListener("click", entrar);
+  $("#clave-local").addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); entrar(); } });
+}
+
+/* ---------- panel del local: confirmar, proponer otro horario, recordar, agendar, liberar ---------- */
 const panel = $("#panel");
-let pedido = null;
+let pedido = null;         // el turno del link (con la agenda, se actualiza con lo que dice la base)
+let filaPanel = null;      // la fila de la agenda: { estado, vigente, creado… } · null = no está / no cargó
+let estadoPanel = "";      // "", "sin-clave", "cargando", "red", "no-esta", "listo"
 
 function textoConfirmar(d) {
   const suc = sucursalTurno(d.t);
   return [`¡Hola ${d.n}! 💜 Te confirmamos el turno en Zoo Center:`,
-    `🐾 ${quien(d)} · ${d.s}`,
+    `🐾 ${quien(d) || mayus(NOMBRE_TURNO[d.t])} · ${d.s}`,
     `📅 ${mayus(diaYHora(d.d, d.h))}`,
     `📍 ${suc.direccion}, ${suc.ciudad}`,
     "Si no podés venir, avisanos por acá. ¡Te esperamos!"].join("\n");
@@ -1468,17 +1642,65 @@ function textoConfirmar(d) {
 const textoProponer = (d, f, h) =>
   `¡Hola ${d.n}! 💜 Para el ${diaYHora(d.d, d.h)} no tenemos lugar 😕 ¿Te sirve el ${diaYHora(f, h)}? Respondenos por acá y te lo confirmamos.`;
 const textoRecordar = (d) =>
-  `¡Hola ${d.n}! 💜 Te recordamos el turno de ${d.m || "tu perro"} en la ${NOMBRE_TURNO[d.t]}: ${diaYHora(d.d, d.h)}, en ${sucursalTurno(d.t).direccion}. ¡Te esperamos!`;
+  `¡Hola ${d.n}! 💜 Te recordamos el turno de ${d.m || "tu mascota"} en la ${NOMBRE_TURNO[d.t]}: ${diaYHora(d.d, d.h)}, en ${sucursalTurno(d.t).direccion}. ¡Te esperamos!`;
 
 function linkAgenda(d) {
   const [y, mo, da] = d.d.split("-");
-  const ini = aMin(d.h), fin = ini + ((TURNOS[d.t] || {}).duracion || 30);
+  const ini = aMin(d.h), fin = ini + duracionDe(d.t);
   const t = (m) => `${y}${mo}${da}T${String(Math.floor(m / 60)).padStart(2, "0")}${String(m % 60).padStart(2, "0")}00`;
   const suc = sucursalTurno(d.t);
   return "https://calendar.google.com/calendar/render?" + new URLSearchParams({
-    action:"TEMPLATE", text:`${mayus(NOMBRE_TURNO[d.t])}: ${quien(d)} · ${d.s}`, dates:`${t(ini)}/${t(fin)}`, ctz:ZONA,
+    action:"TEMPLATE", text:`${mayus(NOMBRE_TURNO[d.t])}: ${quien(d) || d.n} · ${d.s}`, dates:`${t(ini)}/${t(fin)}`, ctz:ZONA,
     details:`${d.n}${d.tel ? ` · WhatsApp ${d.tel}` : ""}\nPanel del turno: ${linkPanel(d)}`,
     location:`Zoo Center, ${suc.direccion}, ${suc.ciudad}` });
+}
+const conAgendaPanel = () => conAgenda() && !!(pedido && pedido.i);
+
+function pintarFicha() {
+  const d = pedido, suc = sucursalTurno(d.t);
+  $("#panel-ficha").innerHTML = `
+    <dt>Día y hora</dt><dd><b>${esc(mayus(diaYHora(d.d, d.h)))}</b></dd>
+    <dt>Servicio</dt><dd>${esc(mayus(NOMBRE_TURNO[d.t]))} · ${esc(suc.direccion)}</dd>
+    <dt>${d.t === "vet" ? "Mascota" : "Perro"}</dt><dd>${esc(quien(d) || "—")}</dd>
+    <dt>${d.t === "vet" ? "Motivo" : "Pidió"}</dt><dd>${esc(d.s || "—")}</dd>
+    <dt>Cliente</dt><dd>${esc(d.n)}</dd>`;
+  $("#panel-pasado").hidden = !(d.d < ahora().fecha);
+}
+
+function pintarEstadoPanel() {
+  const caja = $("#panel-estado");
+  caja.hidden = !conAgendaPanel();
+  if (caja.hidden) return;
+  caja.className = "estado-agenda";
+  const f = filaPanel;
+  if (estadoPanel === "sin-clave") {
+    caja.className = "";
+    formClave(caja, cargarFilaPanel, "Para confirmar o liberar el turno en la agenda. Se pide una sola vez en este celular.");
+  } else if (estadoPanel === "cargando") caja.textContent = "Buscando el turno en la agenda…";
+  else if (estadoPanel === "red") {
+    caja.className = "estado-agenda aviso";
+    caja.innerHTML = `No se pudo conectar con la agenda. Podés confirmar igual por WhatsApp, pero después marcalo en la agenda: si no, el horario se libera a las 24 horas. <button type="button" class="btn-link" data-accion="reintentar">Probar de nuevo</button>`;
+  } else if (estadoPanel === "no-esta") {
+    caja.className = "estado-agenda aviso";
+    caja.textContent = "Este turno ya no está en la agenda: se liberó.";
+  } else if (f && f.estado === "confirmado") {
+    caja.className = "estado-agenda ok";
+    caja.textContent = "✅ Confirmado en la agenda. Ahora mandale la confirmación al cliente.";
+  } else if (f && f.vigente) {
+    const vence = new Date(new Date(f.creado).getTime() + 24 * 3600 * 1000);
+    const v = new Intl.DateTimeFormat("es-AR", { timeZone:ZONA, day:"2-digit", month:"2-digit", hour:"numeric", minute:"2-digit" }).format(vence);
+    caja.className = "estado-agenda aviso";
+    caja.textContent = `🕒 Reservado desde la web, sin confirmar. Si no lo confirmás, el horario se libera solo (${v}).`;
+  } else if (f) {
+    caja.className = "estado-agenda aviso";
+    caja.textContent = "⌛ Pasaron 24 horas sin confirmarlo y el horario se liberó. Si lo confirmás ahora, se vuelve a reservar (si sigue libre).";
+  }
+  const listo = estadoPanel === "listo" && f;
+  const confirmado = listo && f.estado === "confirmado";
+  $("#panel-confirmar-db").hidden = !(listo && !confirmado);
+  $("#panel-confirmar").hidden = !(confirmado || estadoPanel === "red");
+  $("#panel-liberar").hidden = !listo;
+  $("#panel-mover").hidden = !listo;
 }
 
 // Arma los links de WhatsApp con el número que figura en el panel (el dueño lo puede corregir).
@@ -1490,17 +1712,57 @@ function actualizarPanel() {
     a.href = url || "#";
     a.setAttribute("aria-disabled", String(!url));
   };
+  $("#panel-msj").textContent = textoConfirmar(d);
   poner("#panel-confirmar", w && waA(w, textoConfirmar(d)));
   poner("#panel-recordar", w && waA(w, textoRecordar(d)));
+  $("#panel-agenda").href = linkAgenda(d);
   const f = $("#p-dia").value, h = $("#p-hora").value;
   poner("#panel-proponer", w && f && h && waA(w, textoProponer(d, f, h)));
+  $("#panel-mover").disabled = !(f && h);
   $("#p-cel-error").hidden = !!w;
 }
-function llenarHorasPanel() {
+async function llenarHorasPanel() {
   const f = $("#p-dia").value, sel = $("#p-hora");
-  const hs = f && f >= ahora().fecha ? horariosTurno(pedido.t, f).map(hhmm) : [];
-  sel.innerHTML = `<option value="">${!f ? "Elegí el día" : hs.length ? "Elegí la hora" : "Sin horarios ese día"}</option>` + hs.map((h) => `<option>${h}</option>`).join("");
+  let tomados = ocupados;
+  if (f && conAgendaPanel() && claveLocal()) {
+    try { tomados = await rpc("agenda", { p_clave:claveLocal(), p_desde:f, p_hasta:f }); } catch (e) { tomados = ocupados; }
+  }
+  const hs = f && f >= ahora().fecha ? horariosTurno(pedido.t, f, tomados, pedido.i).map(hhmm) : [];
+  sel.innerHTML = `<option value="">${!f ? "Elegí el día" : hs.length ? "Elegí la hora" : "Sin horarios libres ese día"}</option>` + hs.map((h) => `<option>${h}</option>`).join("");
   sel.disabled = !hs.length;
+  actualizarPanel();
+}
+
+async function cargarFilaPanel() {
+  if (!conAgendaPanel()) return pintarEstadoPanel();
+  if (!claveLocal()) { estadoPanel = "sin-clave"; return pintarEstadoPanel(); }
+  estadoPanel = "cargando"; pintarEstadoPanel();
+  try {
+    const desde = sumarDias(pedido.d < ahora().fecha ? pedido.d : ahora().fecha, -2);   // la base devuelve hasta 92 días
+    const filas = await rpc("agenda", { p_clave:claveLocal(), p_desde:desde, p_hasta:sumarDias(desde, 92) });
+    filaPanel = (filas || []).find((x) => x.id === pedido.i) || null;
+    estadoPanel = filaPanel ? "listo" : "no-esta";
+    if (filaPanel) { pedido.d = filaPanel.fecha; pedido.h = horaDe(filaPanel.hora); pintarFicha(); actualizarPanel(); }
+  } catch (e) {
+    if (e.codigo === "clave") { guardarClave(""); estadoPanel = "sin-clave"; } else estadoPanel = "red";
+  }
+  pintarEstadoPanel();
+}
+
+async function accionPanel(boton, args, okTexto) {
+  const err = $("#panel-error");
+  err.hidden = true;
+  boton.disabled = true;
+  try {
+    await rpc("cambiar_turno", { p_clave:claveLocal(), p_id:pedido.i, ...args });
+    if (okTexto) { $("#panel-ok").textContent = okTexto; $("#panel-ok").hidden = false; }
+    await cargarFilaPanel();
+  } catch (e) {
+    err.textContent = e.codigo === "ocupado" ? "Ese horario ya lo tiene otro turno. Elegí otro y proponéselo al cliente."
+      : e.codigo === "clave" ? "La clave del local cambió: escribila de nuevo." : "No se pudo conectar con la agenda. Probá de nuevo.";
+    err.hidden = false;
+    if (e.codigo === "clave") { guardarClave(""); estadoPanel = "sin-clave"; pintarEstadoPanel(); }
+  } finally { boton.disabled = false; }
 }
 
 function abrirPanel() {
@@ -1509,29 +1771,29 @@ function abrirPanel() {
   let d = null;
   try { d = decodificar(m[1]); } catch (e) { d = null; }
   const ok = d && d.v === 1 && NOMBRE_TURNO[d.t] && d.n && /^\d{4}-\d{2}-\d{2}$/.test(d.d || "") && /^\d{1,2}:\d{2}$/.test(d.h || "");
+  if (ok && d.i && !/^[0-9a-f-]{36}$/i.test(d.i)) delete d.i;
   pedido = ok ? d : null;
-  const suc = ok && sucursalTurno(d.t);
+  filaPanel = null; estadoPanel = "";
   $("#panel-cuerpo").innerHTML = !ok ? `<p>Este link de turno está incompleto o dañado. Pedile los datos al cliente por WhatsApp.</p>` : `
     <p class="turno-ayuda">Pedido hecho desde la web. Cada botón abre WhatsApp con el mensaje listo: revisalo y tocá enviar.</p>
-    ${d.d < ahora().fecha ? `<p class="turno-error">Ojo: la fecha de este turno ya pasó.</p>` : ""}
-    <dl class="ficha">
-      <dt>Día y hora</dt><dd><b>${esc(mayus(diaYHora(d.d, d.h)))}</b></dd>
-      <dt>Servicio</dt><dd>${esc(mayus(NOMBRE_TURNO[d.t]))} · ${esc(suc.direccion)}</dd>
-      <dt>${d.t === "vet" ? "Mascota" : "Perro"}</dt><dd>${esc(quien(d))}</dd>
-      <dt>${d.t === "vet" ? "Motivo" : "Pidió"}</dt><dd>${esc(d.s)}</dd>
-      <dt>Cliente</dt><dd>${esc(d.n)}</dd>
-    </dl>
+    <p class="turno-error" id="panel-pasado" hidden>Ojo: la fecha de este turno ya pasó.</p>
+    <dl class="ficha" id="panel-ficha"></dl>
+    <div id="panel-estado" hidden></div>
     <div class="campo">
       <label for="p-cel">WhatsApp del cliente</label>
       <input type="tel" id="p-cel" inputmode="tel" value="${esc(d.tel || "")}" placeholder="Ej.: 223 512-3456">
       <p class="turno-error" id="p-cel-error" hidden>Escribí el WhatsApp del cliente con la característica (ej.: 223 512-3456).</p>
     </div>
     <p class="turno-ayuda">Este mensaje le va a llegar al cliente:</p>
-    <p class="burbuja-msj">${esc(textoConfirmar(d))}</p>
+    <p class="burbuja-msj" id="panel-msj"></p>
+    <p class="turno-error" id="panel-error" role="alert" hidden></p>
+    <p class="turno-reservado" id="panel-ok" role="status" hidden></p>
     <div class="panel-botones">
+      <button type="button" class="btn btn-pri" id="panel-confirmar-db" hidden>${ico("cal")}Confirmar el turno en la agenda</button>
       <a class="btn btn-pri" id="panel-confirmar" href="#" target="_blank" rel="noopener">${burbuja()}Confirmar el turno por WhatsApp</a>
-      <a class="btn btn-sec" id="panel-agenda" href="${esc(linkAgenda(d))}" target="_blank" rel="noopener">${ico("cal")}Agendar en Google Calendar</a>
+      <a class="btn btn-sec" id="panel-agenda" href="#" target="_blank" rel="noopener">${ico("cal")}Agendar en Google Calendar</a>
       <a class="btn btn-sec" id="panel-recordar" href="#" target="_blank" rel="noopener">${burbuja()}Mandar recordatorio</a>
+      <button type="button" class="btn btn-sec" id="panel-liberar" hidden>Liberar el horario</button>
     </div>
     <div class="panel-otro">
       <h3>¿No hay lugar a esa hora?</h3>
@@ -1540,8 +1802,10 @@ function abrirPanel() {
         <div class="campo"><label for="p-hora">Hora</label><select id="p-hora" disabled><option value="">Elegí el día</option></select></div>
       </div>
       <a class="btn btn-sec" id="panel-proponer" href="#" target="_blank" rel="noopener">${burbuja()}Proponer este horario</a>
-    </div>`;
-  if (ok) actualizarPanel();
+      <button type="button" class="btn btn-sec" id="panel-mover" hidden>Pasar el turno a este horario</button>
+    </div>
+    ${conAgenda() ? `<a class="btn-link" href="#agenda">Ver la agenda de turnos</a>` : ""}`;
+  if (ok) { pintarFicha(); actualizarPanel(); pintarEstadoPanel(); cargarFilaPanel(); }
   if (!panel.open) panel.showModal();
 }
 
@@ -1549,16 +1813,124 @@ function initPanel() {
   const c = $("#panel-cuerpo");
   c.addEventListener("input", (e) => {
     if (!pedido) return;
-    if (e.target.id === "p-dia") llenarHorasPanel();
-    actualizarPanel();
+    if (e.target.id === "p-dia") llenarHorasPanel(); else if (e.target.id === "p-cel") actualizarPanel();
   });
   c.addEventListener("change", (e) => { if (pedido && e.target.id === "p-hora") actualizarPanel(); });
-  c.addEventListener("click", (e) => {   // botón apagado: lleva al dato que falta
+  c.addEventListener("click", (e) => {
     const a = e.target.closest('a[aria-disabled="true"]');
-    if (!a) return;
-    e.preventDefault();
-    (a.id === "panel-proponer" && normalizarCel($("#p-cel").value) ? $("#p-dia") : $("#p-cel")).focus();
+    if (a) {   // botón apagado: lleva al dato que falta
+      e.preventDefault();
+      (a.id === "panel-proponer" && normalizarCel($("#p-cel").value) ? $("#p-dia") : $("#p-cel")).focus();
+      return;
+    }
+    const b = e.target.closest("button");
+    if (!b || !pedido) return;
+    if (b.dataset.accion === "reintentar") cargarFilaPanel();
+    else if (b.id === "panel-confirmar-db") accionPanel(b, { p_estado:"confirmado" }, "Listo, quedó confirmado en la agenda.");
+    else if (b.id === "panel-liberar") {
+      if (b.dataset.seguro !== "1") { b.dataset.seguro = "1"; b.textContent = "¿Seguro? Tocá de nuevo para liberarlo"; return; }
+      accionPanel(b, { p_estado:"liberado" }, "Listo, el horario quedó libre.");
+    } else if (b.id === "panel-mover") {
+      const f = $("#p-dia").value, h = $("#p-hora").value;
+      if (f && h) accionPanel(b, { p_estado:"confirmado", p_fecha:f, p_hora:h }, `Listo, el turno pasó al ${diaYHora(f, h)} y quedó confirmado. Ahora mandale la confirmación.`);
+    }
   });
+}
+
+/* ---------- agenda del local (#agenda) ---------- */
+const dlgAgenda = $("#agenda");
+let filasAgenda = [];
+
+function pedidoDeFila(f) {
+  let x = {};
+  try { x = JSON.parse(f.detalle || "{}") || {}; } catch (e) { x = {}; }
+  return { v:1, t:f.tipo, n:f.nombre || "Sin nombre", tel:x.tel || (f.whatsapp ? f.whatsapp.slice(3) : ""), w:f.whatsapp || "",
+    d:f.fecha, h:horaDe(f.hora), i:f.id, m:x.m || "", e:x.e || "", r:x.r || "", z:x.z || "",
+    s:x.s || (f.origen === "local" ? "Turno dado en el local" : "") };
+}
+const chipEstado = (f) => f.estado === "confirmado" ? `<span class="chip-estado ok">Confirmado</span>`
+  : f.vigente ? `<span class="chip-estado">Sin confirmar</span>` : `<span class="chip-estado vencido">Vencido</span>`;
+
+async function pintarAgenda() {
+  const caja = $("#agenda-cuerpo");
+  if (!conAgenda()) { caja.innerHTML = `<p>La agenda todavía no está conectada (falta configurar Supabase).</p>`; return; }
+  if (!claveLocal()) return formClave(caja, pintarAgenda, "Se pide una sola vez en este celular.");
+  caja.innerHTML = `<p class="turno-ayuda">Cargando la agenda…</p>`;
+  const hoy = ahora().fecha;
+  try {
+    filasAgenda = await rpc("agenda", { p_clave:claveLocal(), p_desde:hoy, p_hasta:sumarDias(hoy, 30) }) || [];
+  } catch (e) {
+    if (e.codigo === "clave") { guardarClave(""); return pintarAgenda(); }
+    caja.innerHTML = `<p class="estado-agenda aviso">No se pudo conectar con la agenda. <button type="button" class="btn-link" data-accion="recargar">Probar de nuevo</button></p>`;
+    return;
+  }
+  const dias = [...new Set(filasAgenda.map((f) => f.fecha))];
+  caja.innerHTML = `
+    <p class="turno-ayuda">Turnos de los próximos 30 días. Tocá uno para confirmarlo, cambiarlo o liberarlo.</p>
+    ${dias.length ? dias.map((dia) => `<section class="agenda-dia"><h3>${esc(mayus(`${DIAS[diaDe(dia)]} ${fechaCorta(dia)}`))}</h3>
+      ${filasAgenda.filter((f) => f.fecha === dia).map((f) => {
+        const d = pedidoDeFila(f);
+        return `<button type="button" class="agenda-fila" data-t="${codificar(d)}"><b>${esc(d.h)}</b>
+          <span>${esc([mayus(NOMBRE_TURNO[d.t]), quien(d), d.s].filter(Boolean).join(" · "))}<small>${esc(d.n)}</small></span>${chipEstado(f)}</button>`;
+      }).join("")}</section>`).join("") : `<p class="estado-agenda">No hay turnos en los próximos 30 días.</p>`}
+    <div class="panel-otro">
+      <h3>Ocupar un horario</h3>
+      <p class="turno-ayuda">Para los turnos que das por teléfono o en el local: así la web no ofrece ese horario.</p>
+      <div class="dos">
+        <div class="campo"><label for="a-tipo">Servicio</label><select id="a-tipo"><option value="vet">Veterinaria</option><option value="pelu">Peluquería canina</option></select></div>
+        <div class="campo"><label for="a-nota">Nota <span class="opc">(opcional)</span></label><input type="text" id="a-nota" maxlength="60" placeholder="Ej.: Carla, por teléfono"></div>
+        <div class="campo"><label for="a-dia">Día</label><input type="date" id="a-dia" min="${hoy}"></div>
+        <div class="campo"><label for="a-hora">Hora</label><select id="a-hora" disabled><option value="">Elegí el día</option></select></div>
+      </div>
+      <p class="turno-error" id="a-error" role="alert" hidden></p>
+      <button type="button" class="btn btn-sec" id="a-ocupar" disabled>Ocupar este horario</button>
+    </div>
+    <button type="button" class="btn-link" data-accion="salir">Salir de la agenda en este celular</button>`;
+}
+async function llenarHorasAgenda() {
+  const f = $("#a-dia").value, tipo = $("#a-tipo").value, sel = $("#a-hora");
+  let tomados = filasAgenda;
+  if (f) { try { tomados = await rpc("agenda", { p_clave:claveLocal(), p_desde:f, p_hasta:f }); } catch (e) { tomados = filasAgenda; } }
+  const hs = f ? horariosTurno(tipo, f, tomados).map(hhmm) : [];
+  sel.innerHTML = `<option value="">${!f ? "Elegí el día" : hs.length ? "Elegí la hora" : "Sin horarios libres ese día"}</option>` + hs.map((h) => `<option>${h}</option>`).join("");
+  sel.disabled = !hs.length;
+  $("#a-ocupar").disabled = true;
+}
+function abrirAgenda() {
+  if (location.hash !== "#agenda" || typeof dlgAgenda.showModal !== "function") return;
+  if (!dlgAgenda.open) dlgAgenda.showModal();
+  pintarAgenda();
+}
+function initAgenda() {
+  const c = $("#agenda-cuerpo");
+  c.addEventListener("click", async (e) => {
+    const fila = e.target.closest("[data-t]");
+    if (fila) { location.hash = `#t-${fila.dataset.t}`; return; }
+    const b = e.target.closest("button");
+    if (!b) return;
+    if (b.dataset.accion === "recargar") pintarAgenda();
+    else if (b.dataset.accion === "salir") { guardarClave(""); dlgAgenda.close(); }
+    else if (b.id === "a-ocupar") {
+      const err = $("#a-error"), tipo = $("#a-tipo").value, f = $("#a-dia").value, h = $("#a-hora").value;
+      b.disabled = true; err.hidden = true;
+      try {
+        await rpc("ocupar_horario", { p_clave:claveLocal(), p_tipo:tipo, p_fecha:f, p_hora:h, p_duracion:duracionDe(tipo), p_nota:$("#a-nota").value.trim() });
+        pintarAgenda();
+      } catch (er) {
+        err.textContent = er.codigo === "ocupado" ? "Ese horario ya está ocupado." : "No se pudo conectar con la agenda. Probá de nuevo.";
+        err.hidden = false; b.disabled = false;
+      }
+    }
+  });
+  c.addEventListener("input", (e) => { if (e.target.id === "a-dia") llenarHorasAgenda(); });
+  c.addEventListener("change", (e) => {
+    if (e.target.id === "a-tipo") llenarHorasAgenda();
+    if (e.target.id === "a-hora") $("#a-ocupar").disabled = !e.target.value;
+  });
+  dlgAgenda.addEventListener("close", () => {
+    if (location.hash === "#agenda") try { history.replaceState(null, "", location.pathname + location.search); } catch (e) { /* sin historial */ }
+  });
+  panel.addEventListener("close", () => { if (dlgAgenda.open) pintarAgenda(); });
 }
 
 /* ---------- visor de fotos ---------- */
@@ -1598,7 +1970,7 @@ function initVisor() {
 
 /* ---------- ventanas: cerrar con la X, con Escape o tocando afuera ---------- */
 function initVentanas() {
-  [dlgTurno, visor, panel].forEach((d) => {
+  [dlgTurno, visor, panel, dlgAgenda].forEach((d) => {
     d.addEventListener("click", (e) => { if (e.target === d || e.target.closest("[data-cerrar]")) d.close(); });
     d.addEventListener("close", () => { if (abridor && document.contains(abridor)) abridor.focus(); abridor = null; });
   });
@@ -1684,8 +2056,10 @@ function arrancar() {
   setInterval(pintarEstado, 60 * 1000);
   requestAnimationFrame(huellitas);
   initPanel();
+  initAgenda();
   abrirPanel();
-  addEventListener("hashchange", abrirPanel);
+  abrirAgenda();
+  addEventListener("hashchange", () => { abrirPanel(); abrirAgenda(); });
 }
 arrancar();
 </script>

@@ -51,6 +51,7 @@ en la web publicada; solo en la vista `#borrador`.
   - BBVA (martes, jueves, viernes y sábados): falta **qué es** la promo (descuento, cuotas, tarjetas) y hasta cuándo.
   - Cuenta DNI (Banco Provincia, con topes por tipo de cliente): la última venció el 30/09/2026; quedó cargada con esa fecha y se oculta sola. Si hay una nueva, cargarla con su `vence`.
   - Bravecto → medallita GeoID con QR, solo en Alberti: falta confirmar si sigue y hasta cuándo.
+- [ ] **Agenda de turnos en Supabase** (para que no se pisen los horarios): la crea Mateo (ver "Agenda de turnos") y el dueño elige la **clave del local**.
 - [ ] **Turnos**: cada cuánto se dan, cuánto dura cada uno (veterinaria y peluquería) y si la veterinaria atiende todo el horario de Alberti → `TURNOS` (tiene `horarios:[...]` para acotarlo). Explicarle cómo confirmar: el link que llega al final de cada pedido → "Confirmar el turno por WhatsApp".
 - [ ] **¿Atienden urgencias?** La web NO dice que sí. Si el dueño lo confirma, recién ahí se agrega.
 - [ ] **Veterinario**: nombre y matrícula, solo si quiere mostrarlos.
@@ -104,7 +105,7 @@ producto). La web muestra "Actualizado el dd/mm/aaaa · Precios sujetos a cambio
   2. Se abre WhatsApp con el pedido para el local y, al final, un **link para el local** (`<sitio>#t-…`, el pedido va codificado en el link; no se guarda en ningún lado).
   3. El dueño toca el link → **panel del turno**: "Confirmar el turno por WhatsApp" (abre el chat del cliente con la confirmación lista: un toque y le llega), "Proponer otro horario", "Mandar recordatorio" y "Agendar en Google Calendar". Puede corregir el número del cliente.
   - No es automático: el que manda la confirmación es el dueño, con un toque. Que salga sola necesita la API oficial de WhatsApp Business (paga por mensaje, con verificación de Meta) y un servidor; anotado como posible mejora.
-  - Los horarios no se bloquean entre clientes (no hay base de datos): si dos piden la misma hora, el dueño usa "Proponer otro horario". Una agenda que bloquee horarios necesitaría Supabase (ver la skill).
+  - **Con la agenda de Supabase conectada** (`AGENDA` con url y clave publicable; ver "Agenda de turnos" abajo), dos clientes no pueden pedir el mismo horario: el formulario muestra solo horarios libres y el cliente primero toca "Reservar horario" y después manda el WhatsApp. Sin agenda (o si no responde), todo sigue andando por WhatsApp, sin bloquear horarios.
 - Logo: el cartel completo en la portada; la versión sin bajada en la cabecera (solo en la compu: en el celular esa fila no se muestra, porque el logo grande ya abre la página y el WhatsApp está en la barra de abajo); la versión blanca en el pie. Las imágenes van directo en el HTML (`<img>`), sin JS.
 - Crédito al pie: "Sitio web diseñado por Mateo Berchot".
 
@@ -117,9 +118,38 @@ producto). La web muestra "Actualizado el dd/mm/aaaa · Precios sujetos a cambio
 
 - [ ] Dominio (NIC.ar) — cuando exista: poner URL absolutas en `og:image`, `canonical`, `url`/`image`/`logo` del JSON-LD (con `publicar-cabecera.html`, ver la skill).
 - [ ] GitHub Pages desde `main` / `docs` (`python3 publicar.py <dominio>`).
+- [ ] Agenda en Supabase — proyecto: <id>. En el HTML solo la clave publicable.
 - [ ] Con dominio: poner la dirección en `CONTACTO.sitio` (es la que va en el link de cada pedido de turno). En la vista previa (Artifact) se publica con la del Artifact.
 - [ ] Search Console y Perfil de Empresa de Google.
 - [ ] QR entregado.
+
+## Agenda de turnos (Supabase) — para que no se pisen los horarios
+
+Estado: **código listo y probado; falta crear el proyecto en Supabase** (lo hace Mateo) y cargar `AGENDA` en el `index.html`.
+
+Qué hace:
+- El formulario lee los horarios ocupados (sin datos de nadie) y no los ofrece. Al tocar "Reservar horario" la base guarda el pedido **solo si ese horario sigue libre** (si dos tocan a la vez, entra uno; el otro ve "ese horario se acaba de ocupar").
+- Un pedido de la web **reserva el horario 24 horas**. Si el local no lo confirma en ese tiempo, se libera solo (por si el cliente nunca mandó el WhatsApp).
+- **Panel del turno** (el link que llega en cada pedido): con la clave del local, "Confirmar el turno en la agenda" → recién ahí aparece "Confirmar el turno por WhatsApp". También "Pasar el turno a este horario" y "Liberar el horario".
+- **Agenda** (`<sitio>#agenda`, para guardar en la pantalla de inicio del celular del dueño): turnos de los próximos 30 días y **"Ocupar un horario"** para los que da por teléfono o en el local.
+- La duración de cada turno sale de `TURNOS` (veterinaria y peluquería no se pisan entre sí).
+
+Seguridad:
+- En el HTML va **solo la clave publicable** (`sb_publishable_…`). Nunca la secret / service_role.
+- La tabla tiene RLS sin políticas: la página solo puede llamar a 5 funciones. Cualquiera ve qué horarios están ocupados; nombres y teléfonos solo con la **clave del local** (se pide una vez por celular y queda guardada en ese navegador; "Salir de la agenda" la borra).
+- La clave del local se fija desde el SQL Editor con `select public.fijar_clave('…')`. **No va en el repo ni en el chat.**
+- Freno a abusos: 40 pedidos por hora en total y hasta 3 turnos vigentes por número de WhatsApp.
+
+Alta (Mateo, una sola vez):
+1. supabase.com → New project (región São Paulo). La contraseña de la base la guarda Mateo.
+2. SQL Editor → pegar entero `supabase/turnos.sql` → Run (se puede volver a correr sin perder turnos).
+3. Nueva consulta: `select public.fijar_clave('la-clave-que-elija-el-dueño');` (8 caracteres o más).
+4. Settings → API Keys → *Project URL* y clave **publishable** → van a `AGENDA = { url, clave }`.
+5. Probar en la web publicada (el visor de Artifacts no deja salir a Supabase): pedir un turno, abrir el link, ver `#agenda`.
+
+Ojo: Supabase gratis pausa los proyectos sin uso por ~1 semana. Si pasa, la web sigue tomando pedidos por WhatsApp (sin bloquear) y el panel avisa; se reactiva entrando a supabase.com.
+
+Cómo se probó (23/10/2026): el SQL en un PostgreSQL 16 con los roles de Supabase (anon, extensiones, permisos por defecto): reservas, choques, permisos, clave, vencimiento y dos reservas simultáneas. La página, con Playwright contra una imitación de la API de Supabase que usa esa misma base.
 
 ## Logo: cómo se rehace
 
@@ -142,6 +172,7 @@ dibujado encima y no sabemos de qué sucursal es. Sin la marca y sabiendo cuál 
 
 Una línea por pedido, la más nueva arriba.
 
+- 23/10/2026 — Mateo preguntó cómo evitar que pidan el mismo horario → agenda en Supabase (`supabase/turnos.sql` + `AGENDA` en el `index.html`): solo se ofrecen horarios libres, "Reservar horario" antes del WhatsApp, reserva de 24 h hasta que el local confirme, panel con clave del local (confirmar, pasar de horario, liberar) y `#agenda` con "Ocupar un horario". Falta crear el proyecto en Supabase; mientras tanto la web funciona como antes.
 - 23/10/2026 — Mateo pidió mejorar los turnos y que al cliente le llegue el turno confirmado por WhatsApp → el cliente elige día y hora reales y deja su WhatsApp; al local le llega el pedido con un link a un panel para confirmar en un toque (le llega al cliente), proponer otro horario, mandar recordatorio y agendar en Google Calendar. Sin servidor ni costo; no es envío automático (eso necesita la API paga de WhatsApp).
 - 22/10/2026 — Mateo mandó una foto del frente del local y pidió replicar el logo del cartel para usarlo en la web (antes la idea era esperar el vector) → réplica en `img/logo.svg`, `logo-chico.svg` y `logo-blanco.svg` (`herramientas/hacer-logo.py`), usada en la portada, la cabecera, el pie y la imagen para compartir. En el celular se ocultó la fila de la cabecera para no repetir el logo.
 - 22/10/2026 — Armado inicial desde cero con los datos que pasó Mateo (sucursales, horario, contacto, servicios, categorías del Instagram, promos que venían usando). Sin fotos ni logo todavía; promos, guardería/acuario y FAQ sin respuesta quedan como pendientes.
