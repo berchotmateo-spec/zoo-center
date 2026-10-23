@@ -51,7 +51,7 @@ en la web publicada; solo en la vista `#borrador`.
   - BBVA (martes, jueves, viernes y sábados): falta **qué es** la promo (descuento, cuotas, tarjetas) y hasta cuándo.
   - Cuenta DNI (Banco Provincia, con topes por tipo de cliente): la última venció el 30/09/2026; quedó cargada con esa fecha y se oculta sola. Si hay una nueva, cargarla con su `vence`.
   - Bravecto → medallita GeoID con QR, solo en Alberti: falta confirmar si sigue y hasta cuándo.
-- [ ] **Agenda de turnos en Supabase** (para que no se pisen los horarios): la crea Mateo (ver "Agenda de turnos") y el dueño elige la **clave del local**.
+- [ ] **Clave del local** para la agenda de turnos (el proyecto de Supabase ya está creado y conectado): la elige el dueño y se carga con `select public.fijar_clave('…')` en el SQL Editor (ver "Agenda de turnos"). Después, probar un turno de punta a punta en la web publicada.
 - [ ] **Turnos**: cada cuánto se dan, cuánto dura cada uno (veterinaria y peluquería) y si la veterinaria atiende todo el horario de Alberti → `TURNOS` (tiene `horarios:[...]` para acotarlo). Explicarle cómo confirmar: el link que llega al final de cada pedido → "Confirmar el turno por WhatsApp".
 - [ ] **¿Atienden urgencias?** La web NO dice que sí. Si el dueño lo confirma, recién ahí se agrega.
 - [ ] **Veterinario**: nombre y matrícula, solo si quiere mostrarlos.
@@ -118,14 +118,14 @@ producto). La web muestra "Actualizado el dd/mm/aaaa · Precios sujetos a cambio
 
 - [ ] Dominio (NIC.ar) — cuando exista: poner URL absolutas en `og:image`, `canonical`, `url`/`image`/`logo` del JSON-LD (con `publicar-cabecera.html`, ver la skill).
 - [ ] GitHub Pages desde `main` / `docs` (`python3 publicar.py <dominio>`).
-- [ ] Agenda en Supabase — proyecto: <id>. En el HTML solo la clave publicable.
+- [x] Agenda en Supabase — proyecto `ebkfuvvbhsztenbkyvyw` (cuenta de Mateo), conectada en `AGENDA` el 23/10/2026. En el HTML solo la clave publicable. ⚠️ Falta probarla de punta a punta en la web publicada (desde la sesión de Claude no se llega a supabase.co).
 - [ ] Con dominio: poner la dirección en `CONTACTO.sitio` (es la que va en el link de cada pedido de turno). En la vista previa (Artifact) se publica con la del Artifact.
 - [ ] Search Console y Perfil de Empresa de Google.
 - [ ] QR entregado.
 
 ## Agenda de turnos (Supabase) — para que no se pisen los horarios
 
-Estado: **código listo y probado; falta crear el proyecto en Supabase** (lo hace Mateo) y cargar `AGENDA` en el `index.html`.
+Estado: **proyecto creado y conectado** (`ebkfuvvbhsztenbkyvyw`, 23/10/2026). Falta probarla en la web publicada y que el dueño tenga su clave del local.
 
 Qué hace:
 - El formulario lee los horarios ocupados (sin datos de nadie) y no los ofrece. Al tocar "Reservar horario" la base guarda el pedido **solo si ese horario sigue libre** (si dos tocan a la vez, entra uno; el otro ve "ese horario se acaba de ocupar").
@@ -172,6 +172,7 @@ dibujado encima y no sabemos de qué sucursal es. Sin la marca y sabiendo cuál 
 
 Una línea por pedido, la más nueva arriba.
 
+- 23/10/2026 — Mateo creó el proyecto de Supabase (con la extensión de Chrome) y pasó la URL y la clave publicable → cargadas en `AGENDA`.
 - 23/10/2026 — Mateo preguntó cómo evitar que pidan el mismo horario → agenda en Supabase (`supabase/turnos.sql` + `AGENDA` en el `index.html`): solo se ofrecen horarios libres, "Reservar horario" antes del WhatsApp, reserva de 24 h hasta que el local confirme, panel con clave del local (confirmar, pasar de horario, liberar) y `#agenda` con "Ocupar un horario". Falta crear el proyecto en Supabase; mientras tanto la web funciona como antes.
 - 23/10/2026 — Mateo pidió mejorar los turnos y que al cliente le llegue el turno confirmado por WhatsApp → el cliente elige día y hora reales y deja su WhatsApp; al local le llega el pedido con un link a un panel para confirmar en un toque (le llega al cliente), proponer otro horario, mandar recordatorio y agendar en Google Calendar. Sin servidor ni costo; no es envío automático (eso necesita la API paga de WhatsApp).
 - 22/10/2026 — Mateo mandó una foto del frente del local y pidió replicar el logo del cartel para usarlo en la web (antes la idea era esperar el vector) → réplica en `img/logo.svg`, `logo-chico.svg` y `logo-blanco.svg` (`herramientas/hacer-logo.py`), usada en la portada, la cabecera, el pie y la imagen para compartir. En el celular se ocultó la fila de la cabecera para no repetir el logo.
