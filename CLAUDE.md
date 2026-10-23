@@ -51,7 +51,7 @@ en la web publicada; solo en la vista `#borrador`.
   - BBVA (martes, jueves, viernes y sábados): falta **qué es** la promo (descuento, cuotas, tarjetas) y hasta cuándo.
   - Cuenta DNI (Banco Provincia, con topes por tipo de cliente): la última venció el 30/09/2026; quedó cargada con esa fecha y se oculta sola. Si hay una nueva, cargarla con su `vence`.
   - Bravecto → medallita GeoID con QR, solo en Alberti: falta confirmar si sigue y hasta cuándo.
-- [ ] **Clave del local** para la agenda de turnos (el proyecto de Supabase ya está creado y conectado): la elige el dueño y se carga con `select public.fijar_clave('…')` en el SQL Editor (ver "Agenda de turnos"). Después, probar un turno de punta a punta en la web publicada.
+- [x] **Clave del local** para la agenda de turnos: Mateo la fijó el 23/10/2026 con `select public.fijar_clave('…')`. Si el dueño quiere otra, se vuelve a correr con la nueva.
 - [ ] **Turnos**: cada cuánto se dan, cuánto dura cada uno (veterinaria y peluquería) y si la veterinaria atiende todo el horario de Alberti → `TURNOS` (tiene `horarios:[...]` para acotarlo). Explicarle cómo confirmar: el link que llega al final de cada pedido → "Confirmar el turno por WhatsApp".
 - [ ] **¿Atienden urgencias?** La web NO dice que sí. Si el dueño lo confirma, recién ahí se agrega.
 - [ ] **Veterinario**: nombre y matrícula, solo si quiere mostrarlos.
@@ -118,20 +118,20 @@ producto). La web muestra "Actualizado el dd/mm/aaaa · Precios sujetos a cambio
 
 - [ ] Dominio (NIC.ar) — cuando exista: poner URL absolutas en `og:image`, `canonical`, `url`/`image`/`logo` del JSON-LD (con `publicar-cabecera.html`, ver la skill).
 - [ ] GitHub Pages desde `main` / `docs` (`python3 publicar.py <dominio>`).
-- [x] Agenda en Supabase — proyecto `ebkfuvvbhsztenbkyvyw` (cuenta de Mateo), conectada en `AGENDA` el 23/10/2026. En el HTML solo la clave publicable. ⚠️ Falta probarla de punta a punta en la web publicada (desde la sesión de Claude no se llega a supabase.co).
+- [x] Agenda en Supabase — proyecto `ebkfuvvbhsztenbkyvyw` (cuenta de Mateo), conectada en `AGENDA` el 23/10/2026. En el HTML solo la clave publicable. Probada en la web publicada el 23/10/2026 (reserva, horario bloqueado, doble reserva rechazada, agenda con clave).
 - [ ] Con dominio: poner la dirección en `CONTACTO.sitio` (es la que va en el link de cada pedido de turno). En la vista previa (Artifact) se publica con la del Artifact.
 - [ ] Search Console y Perfil de Empresa de Google.
 - [ ] QR entregado.
 
 ## Agenda de turnos (Supabase) — para que no se pisen los horarios
 
-Estado: **proyecto creado y conectado** (`ebkfuvvbhsztenbkyvyw`, 23/10/2026). Falta probarla en la web publicada y que el dueño tenga su clave del local.
+Estado: **funcionando** (`ebkfuvvbhsztenbkyvyw`, 23/10/2026): probada en la web publicada y con clave del local fijada. Falta pasarle al dueño el link de `#agenda` y la clave.
 
 Qué hace:
 - El formulario lee los horarios ocupados (sin datos de nadie) y no los ofrece. Al tocar "Reservar horario" la base guarda el pedido **solo si ese horario sigue libre** (si dos tocan a la vez, entra uno; el otro ve "ese horario se acaba de ocupar").
 - Un pedido de la web **reserva el horario 24 horas**. Si el local no lo confirma en ese tiempo, se libera solo (por si el cliente nunca mandó el WhatsApp).
 - **Panel del turno** (el link que llega en cada pedido): con la clave del local, "Confirmar el turno en la agenda" → recién ahí aparece "Confirmar el turno por WhatsApp". También "Pasar el turno a este horario" y "Liberar el horario".
-- **Agenda** (`<sitio>#agenda`, para guardar en la pantalla de inicio del celular del dueño): turnos de los próximos 30 días y **"Ocupar un horario"** para los que da por teléfono o en el local.
+- **Agenda** (`<sitio>#agenda`, para guardar en la pantalla de inicio del celular del dueño): turnos de los próximos 3 meses (lo mismo que se puede pedir desde la web) y **"Ocupar un horario"** para los que da por teléfono o en el local.
 - La duración de cada turno sale de `TURNOS` (veterinaria y peluquería no se pisan entre sí).
 
 Seguridad:
@@ -172,6 +172,7 @@ dibujado encima y no sabemos de qué sucursal es. Sin la marca y sabiendo cuál 
 
 Una línea por pedido, la más nueva arriba.
 
+- 23/10/2026 — La agenda mostraba solo 30 días y la web deja pedir hasta 92: un turno a más de 30 días no lo veía el dueño y se liberaba solo a las 24 h → la agenda muestra los próximos 3 meses (lo que acepta la base) y el selector de día del formulario no deja pasar de 92 días.
 - 23/10/2026 — Mateo creó el proyecto de Supabase (con la extensión de Chrome) y pasó la URL y la clave publicable → cargadas en `AGENDA`.
 - 23/10/2026 — Mateo preguntó cómo evitar que pidan el mismo horario → agenda en Supabase (`supabase/turnos.sql` + `AGENDA` en el `index.html`): solo se ofrecen horarios libres, "Reservar horario" antes del WhatsApp, reserva de 24 h hasta que el local confirme, panel con clave del local (confirmar, pasar de horario, liberar) y `#agenda` con "Ocupar un horario". Falta crear el proyecto en Supabase; mientras tanto la web funciona como antes.
 - 23/10/2026 — Mateo pidió mejorar los turnos y que al cliente le llegue el turno confirmado por WhatsApp → el cliente elige día y hora reales y deja su WhatsApp; al local le llega el pedido con un link a un panel para confirmar en un toque (le llega al cliente), proponer otro horario, mandar recordatorio y agendar en Google Calendar. Sin servidor ni costo; no es envío automático (eso necesita la API paga de WhatsApp).
