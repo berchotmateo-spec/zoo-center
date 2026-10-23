@@ -51,6 +51,7 @@ en la web publicada; solo en la vista `#borrador`.
   - BBVA (martes, jueves, viernes y sábados): falta **qué es** la promo (descuento, cuotas, tarjetas) y hasta cuándo.
   - Cuenta DNI (Banco Provincia, con topes por tipo de cliente): la última venció el 30/09/2026; quedó cargada con esa fecha y se oculta sola. Si hay una nueva, cargarla con su `vence`.
   - Bravecto → medallita GeoID con QR, solo en Alberti: falta confirmar si sigue y hasta cuándo.
+- [ ] **Turnos**: cada cuánto se dan, cuánto dura cada uno (veterinaria y peluquería) y si la veterinaria atiende todo el horario de Alberti → `TURNOS` (tiene `horarios:[...]` para acotarlo). Explicarle cómo confirmar: el link que llega al final de cada pedido → "Confirmar el turno por WhatsApp".
 - [ ] **¿Atienden urgencias?** La web NO dice que sí. Si el dueño lo confirma, recién ahí se agrega.
 - [ ] **Veterinario**: nombre y matrícula, solo si quiere mostrarlos.
 - [ ] **Texto sobre por qué vacunar**: solo si el veterinario lo revisa y aprueba (base: su posteo sobre vacunas) → `SERVICIOS[0].nota`. Nada de información médica sin su aprobación.
@@ -68,6 +69,7 @@ en la web publicada; solo en la vista `#borrador`.
 | Peluches, higiene (shampoo, perfumes, repelente) y salud (pipetas, antiparasitarios, antiestrés) **sin mascota a propósito** | Algunos productos de perro son tóxicos para gatos (p. ej. repelentes y pipetas con permetrina). Que lo defina el dueño o el veterinario; hasta entonces aparecen solo en "Todos" | 22/10/2026 |
 | Colores | Aproximados por Mateo; el naranja del cartel se ve más tostado en la foto | 22/10/2026 |
 | Logo (`img/logo*.svg`) | Es una réplica hecha a partir de una foto (no el archivo original): la letra es la misma (Sniglet), pero el gato, el perro y los colores son aproximados | 22/10/2026 |
+| Turnos (`TURNOS`) | Cada 30 min para veterinaria y peluquería; duración 30 min (veterinaria) y 60 min (peluquería, para la agenda); 1 hora de anticipación para turnos de hoy; dentro del horario de Alberti (9 a 20). Todo a confirmar con el dueño (¿el veterinario atiende todo ese horario?) | 23/10/2026 |
 | `img/og.jpg` (imagen al compartir) | Gráfica con la réplica del logo y los datos. Mejor con una foto real del local cuando haya | 22/10/2026 |
 
 ## Lo que NO va en la web
@@ -97,7 +99,12 @@ producto). La web muestra "Actualizado el dd/mm/aaaa · Precios sujetos a cambio
 - Huellitas que cruzan la portada una sola vez al cargar; respetan "reducir movimiento".
 - Barra fija arriba "Abierto ahora / Cerrado" calculada con la **hora de Argentina** (no la del visitante), con aviso editable en `DIAS_ESPECIALES`.
 - Barra fija abajo en el celular: "WhatsApp" y "Pedir turno".
-- "Pedir turno" abre un formulario que arma el mensaje y abre WhatsApp. Veterinaria: nombre, mascota, especie, motivo, día. Peluquería: nombre, perro (opcional), raza, tamaño, servicio, día. No deja elegir domingo ni días cerrados.
+- **Turnos** (sin servidor ni costo, todo por WhatsApp):
+  1. El cliente toca "Pedir turno", elige **día y hora** (solo horarios dentro del horario de Alberti, según `TURNOS`; nada de domingos, días cerrados ni horas que ya pasaron) y deja su WhatsApp. Veterinaria: nombre, WhatsApp, mascota, especie, motivo. Peluquería: nombre, WhatsApp, perro (opcional), raza, tamaño, servicio.
+  2. Se abre WhatsApp con el pedido para el local y, al final, un **link para el local** (`<sitio>#t-…`, el pedido va codificado en el link; no se guarda en ningún lado).
+  3. El dueño toca el link → **panel del turno**: "Confirmar el turno por WhatsApp" (abre el chat del cliente con la confirmación lista: un toque y le llega), "Proponer otro horario", "Mandar recordatorio" y "Agendar en Google Calendar". Puede corregir el número del cliente.
+  - No es automático: el que manda la confirmación es el dueño, con un toque. Que salga sola necesita la API oficial de WhatsApp Business (paga por mensaje, con verificación de Meta) y un servidor; anotado como posible mejora.
+  - Los horarios no se bloquean entre clientes (no hay base de datos): si dos piden la misma hora, el dueño usa "Proponer otro horario". Una agenda que bloquee horarios necesitaría Supabase (ver la skill).
 - Logo: el cartel completo en la portada; la versión sin bajada en la cabecera (solo en la compu: en el celular esa fila no se muestra, porque el logo grande ya abre la página y el WhatsApp está en la barra de abajo); la versión blanca en el pie. Las imágenes van directo en el HTML (`<img>`), sin JS.
 - Crédito al pie: "Sitio web diseñado por Mateo Berchot".
 
@@ -110,6 +117,7 @@ producto). La web muestra "Actualizado el dd/mm/aaaa · Precios sujetos a cambio
 
 - [ ] Dominio (NIC.ar) — cuando exista: poner URL absolutas en `og:image`, `canonical`, `url`/`image`/`logo` del JSON-LD (con `publicar-cabecera.html`, ver la skill).
 - [ ] GitHub Pages desde `main` / `docs` (`python3 publicar.py <dominio>`).
+- [ ] Con dominio: poner la dirección en `CONTACTO.sitio` (es la que va en el link de cada pedido de turno). En la vista previa (Artifact) se publica con la del Artifact.
 - [ ] Search Console y Perfil de Empresa de Google.
 - [ ] QR entregado.
 
@@ -134,5 +142,6 @@ dibujado encima y no sabemos de qué sucursal es. Sin la marca y sabiendo cuál 
 
 Una línea por pedido, la más nueva arriba.
 
+- 23/10/2026 — Mateo pidió mejorar los turnos y que al cliente le llegue el turno confirmado por WhatsApp → el cliente elige día y hora reales y deja su WhatsApp; al local le llega el pedido con un link a un panel para confirmar en un toque (le llega al cliente), proponer otro horario, mandar recordatorio y agendar en Google Calendar. Sin servidor ni costo; no es envío automático (eso necesita la API paga de WhatsApp).
 - 22/10/2026 — Mateo mandó una foto del frente del local y pidió replicar el logo del cartel para usarlo en la web (antes la idea era esperar el vector) → réplica en `img/logo.svg`, `logo-chico.svg` y `logo-blanco.svg` (`herramientas/hacer-logo.py`), usada en la portada, la cabecera, el pie y la imagen para compartir. En el celular se ocultó la fila de la cabecera para no repetir el logo.
 - 22/10/2026 — Armado inicial desde cero con los datos que pasó Mateo (sucursales, horario, contacto, servicios, categorías del Instagram, promos que venían usando). Sin fotos ni logo todavía; promos, guardería/acuario y FAQ sin respuesta quedan como pendientes.

@@ -373,7 +373,7 @@ section[id]{scroll-margin-top:calc(var(--alto-arriba) + 8px)}
 /* ---------- ventanas (turno y visor de fotos) ---------- */
 dialog{border:0;padding:0;color:var(--tinta);background:#fff;border-radius:26px;width:calc(100% - 24px);max-width:560px;max-height:calc(100dvh - 24px);overflow:auto;box-shadow:0 30px 70px -24px rgba(42,27,61,.6)}
 dialog::backdrop{background:rgba(42,27,61,.55)}
-@media (max-width:599px){#turno{width:100%;max-width:100%;margin:auto 0 0;border-radius:26px 26px 0 0;max-height:94dvh}}
+@media (max-width:599px){#turno,#panel{width:100%;max-width:100%;margin:auto 0 0;border-radius:26px 26px 0 0;max-height:94dvh}}
 .dlg-cab{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:18px 20px 12px;background:#fff}
 .dlg-cab h2{font-size:1.7rem}
 .cerrar{width:44px;height:44px;border-radius:50%;border:0;background:var(--lila);color:var(--violeta);display:grid;place-items:center;cursor:pointer;flex:none}
@@ -392,7 +392,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .campo > label,.campo legend{font-weight:800;font-size:.97rem;padding:0}
 .campo legend{margin-bottom:6px}
 .opc{font-weight:600;color:var(--tinta-suave)}
-.campo input[type=text],.campo input[type=date],.campo select{-webkit-appearance:none;appearance:none;display:block;width:100%;min-height:50px;border:2px solid var(--lila-borde);border-radius:14px;padding:.5em .85em;font:600 1rem var(--f-texto);color:var(--tinta);background:#fff}
+.campo input[type=text],.campo input[type=tel],.campo input[type=date],.campo select{-webkit-appearance:none;appearance:none;display:block;width:100%;min-height:50px;border:2px solid var(--lila-borde);border-radius:14px;padding:.5em .85em;font:600 1rem var(--f-texto);color:var(--tinta);background:#fff}
 .campo select{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235B2D8E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") right .85em center/16px no-repeat;padding-right:2.4em}
 .campo input[type=date]::-webkit-date-and-time-value{text-align:left}
 .campo input:focus,.campo select:focus{outline:none;border-color:var(--violeta);box-shadow:0 0 0 3px rgba(91,45,142,.16)}
@@ -406,6 +406,17 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .opcion input:focus-visible + span{outline:3px solid var(--naranja);outline-offset:2px}
 .turno-error{color:#9B1C3A;font-weight:700;font-size:.93rem}
 .turno-enviar{width:100%}
+.campo select:disabled{color:var(--tinta-suave);background-color:var(--lila-claro)}
+.turno-listo{background:var(--naranja-suave);border-radius:14px;padding:12px 14px;font-weight:700}
+/* panel del local */
+.ficha{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px;margin:0;background:var(--lila-claro);border-radius:16px;padding:16px}
+.ficha dt{font-weight:800;color:var(--tinta-suave);font-size:.9rem}
+.ficha dd{margin:0;overflow-wrap:anywhere}
+.burbuja-msj{margin:0;background:#E7FFDB;border-radius:14px 14px 14px 4px;padding:12px 14px;white-space:pre-line;font-size:.95rem;color:var(--tinta);overflow-wrap:anywhere}
+.panel-botones{display:grid;gap:10px}
+.panel-otro{display:grid;gap:12px;border-top:1px solid var(--lila-borde);padding-top:16px}
+.panel-otro h3{font-size:1.25rem}
+.btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed}
 
 #visor{max-width:min(980px,calc(100% - 24px));background:#17111F;color:#fff}
 #visor .dlg-cab{background:#17111F}
@@ -550,7 +561,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   <section class="seccion" id="servicios" aria-labelledby="servicios-tit">
     <div class="envoltura">
       <h2 id="servicios-tit">Nuestros servicios</h2>
-      <p class="intro">La veterinaria y la peluquería están en Alberti 1381. Pedí tu turno por WhatsApp y coordinamos el día 🐾</p>
+      <p class="intro">La veterinaria y la peluquería están en Alberti 1381. Elegí día y hora y te confirmamos el turno por WhatsApp 🐾</p>
       <div class="serv-grilla" id="serv-grilla"></div>
       <div class="asi" id="asi">
         <h3>Así quedaron 🐶</h3>
@@ -680,11 +691,17 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
         <label><input type="radio" name="tipo" id="tipo-vet" value="vet" checked><span><svg class="ico" aria-hidden="true"><use href="#i-esteto"></use></svg>Veterinaria</span></label>
         <label><input type="radio" name="tipo" id="tipo-pelu" value="pelu"><span><svg class="ico" aria-hidden="true"><use href="#i-tijera"></use></svg>Peluquería</span></label>
       </div>
-      <p class="turno-ayuda" id="turno-ayuda">Completá los datos y se abre WhatsApp con el mensaje listo para mandar. Desde ahí coordinamos el día y el horario.</p>
+      <p class="turno-ayuda" id="turno-ayuda">Elegí día y hora y se abre WhatsApp con el pedido listo para mandar. Te confirmamos el turno por WhatsApp.</p>
 
-      <div class="campo">
-        <label for="t-dueno">Tu nombre</label>
-        <input type="text" id="t-dueno" name="dueno" autocomplete="name" required>
+      <div class="dos">
+        <div class="campo">
+          <label for="t-dueno">Tu nombre</label>
+          <input type="text" id="t-dueno" name="dueno" autocomplete="name" required>
+        </div>
+        <div class="campo">
+          <label for="t-cel">Tu WhatsApp</label>
+          <input type="tel" id="t-cel" name="cel" autocomplete="tel-national" inputmode="tel" placeholder="Ej.: 223 512-3456" required>
+        </div>
       </div>
 
       <fieldset class="campos" id="campos-vet">
@@ -733,22 +750,28 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
       <div class="dos">
         <div class="campo">
-          <label for="t-dia">Día preferido <span class="opc">(opcional)</span></label>
-          <input type="date" id="t-dia" name="dia">
+          <label for="t-dia">Día</label>
+          <input type="date" id="t-dia" name="dia" required>
         </div>
         <div class="campo">
-          <label for="t-franja">Horario <span class="opc">(opcional)</span></label>
-          <select id="t-franja" name="franja">
-            <option value="">Me da igual</option>
-            <option value="a la mañana">A la mañana</option>
-            <option value="a la tarde">A la tarde</option>
-          </select>
+          <label for="t-hora">Hora</label>
+          <select id="t-hora" name="hora" required disabled><option value="">Elegí primero el día</option></select>
         </div>
       </div>
       <p class="turno-error" id="turno-error" role="alert" hidden></p>
-      <a class="btn btn-pri turno-enviar" id="turno-enviar" href="https://wa.me/5492236919808" target="_blank" rel="noopener"><span class="burbuja"><svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg></span>Enviar por WhatsApp</a>
+      <a class="btn btn-pri turno-enviar" id="turno-enviar" href="https://wa.me/5492236919808" target="_blank" rel="noopener"><span class="burbuja"><svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg></span>Enviar pedido por WhatsApp</a>
+      <p class="turno-listo" id="turno-listo" role="status" hidden>Ahora mandá el mensaje que se abrió en WhatsApp y te confirmamos el turno por ahí 💜 Si no se abrió, escribinos al 223 691-9808.</p>
     </div>
   </form>
+</dialog>
+
+<!-- Panel del local: se abre con el link que llega en cada pedido de turno (#t-…). Confirma en un toque. -->
+<dialog id="panel" aria-labelledby="panel-tit">
+  <div class="dlg-cab">
+    <h2 id="panel-tit">Turno pedido</h2>
+    <button type="button" class="cerrar" data-cerrar aria-label="Cerrar"><svg class="ico" aria-hidden="true"><use href="#i-x"></use></svg></button>
+  </div>
+  <div class="turno-cuerpo" id="panel-cuerpo"></div>
 </dialog>
 
 <!-- Visor de fotos (galerías y productos) -->
@@ -825,6 +848,15 @@ const SERVICIOS = [
     bajada:"Figura en Facebook. Falta que el dueño confirme si sigue." },
 ];
 
+// Turnos: cada cuántos minutos se ofrecen horarios y cuánto dura cada turno (para la agenda).
+// Se ofrecen dentro del horario de la sucursal (y de DIAS_ESPECIALES); "horarios:[...]" (igual que HORARIOS)
+// los acota, por ejemplo si el veterinario atiende menos horas. PROVISORIO: confirmar con el dueño.
+const TURNOS = {
+  vet:  { intervalo:30, duracion:30 },
+  pelu: { intervalo:30, duracion:60 },
+  anticipacion:60,   // para hoy: desde dentro de cuántos minutos se puede pedir
+};
+
 // Catálogo del petshop: para mirar y consultar, no para comprar online.
 //   n nombre · cat categoría · mascota: perro / gato / ambos / peces / otros ("" = sin definir)
 //   d descripción · p precio (número, opcional) · f foto en fotos/ (opcional, real)
@@ -876,7 +908,7 @@ const CLIENTES = [
 // Preguntas frecuentes: SOLO respuestas confirmadas. {horario} y {sucursales} se completan solos.
 const PREGUNTAS = [
   { q:"¿Hacen delivery?", a:"Sí, el delivery es sin cargo 🚚 Escribinos por WhatsApp y te contamos zona y días." },
-  { q:"¿Cómo pido un turno para la veterinaria o la peluquería?", a:"Tocá «Pedir turno», completá los datos y se abre WhatsApp con el mensaje listo para mandar. Desde ahí coordinamos el día y el horario. La veterinaria y la peluquería están en Alberti 1381." },
+  { q:"¿Cómo pido un turno para la veterinaria o la peluquería?", a:"Tocá «Pedir turno», elegí día y hora y se abre WhatsApp con el pedido listo para mandar. Te confirmamos el turno por WhatsApp. La veterinaria y la peluquería están en Alberti 1381." },
   { q:"¿Qué horario tienen?", a:"Las dos sucursales abren {horario}." },
   { q:"¿Qué hay en cada sucursal?", a:"{sucursales}" },
   { q:"¿Qué medios de pago aceptan?", a:"", pendiente:true },
@@ -890,6 +922,7 @@ const CONTACTO = {
   email:"zoocentermdq@gmail.com",
   instagram:"zoocentermdp",
   facebook:"https://www.facebook.com/p/Zoo-Center-Mar-del-Plata-100083610631017/",
+  sitio:"",   // dirección pública de la web (cuando tenga dominio): va en el link de cada pedido de turno. Vacía = la que se está usando
 };
 
 // true = muestra lo pendiente marcado "A confirmar" (para revisarlo con el dueño). En la web publicada: false.
@@ -1268,58 +1301,122 @@ function pintarTextos() {
 const dlgTurno = $("#turno");
 const formTurno = $("#turno-form");
 let abridor = null;
+const NOMBRE_TURNO = { vet:"veterinaria", pelu:"peluquería canina" };
+const hhmm = (m) => `${Math.floor(m / 60)}:${String(m % 60).padStart(2, "0")}`;
+const diaYHora = (f, h) => `${DIAS[diaDe(f)]} ${fechaCorta(f)} a las ${h}`;
+const waA = (numero, texto) => `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
 
 function llenarSelect(sel, items, texto) {
   sel.innerHTML = `<option value="">${texto}</option>` + items.map((i) => `<option>${esc(i)}</option>`).join("");
 }
 function tipoTurno() { return formTurno.tipo.value === "pelu" ? "pelu" : "vet"; }
+function servicioDe(turno) { return SERVICIOS.find((s) => s.turno === turno) || {}; }
+const sucursalTurno = (tipo) => sucursal(servicioDe(tipo).sucursal) || SUCURSALES[0];
+
+// Celular argentino → número para wa.me (549 + característica + número). "" si no tiene 10 cifras.
+// Acepta cómo lo escribe la gente: 0223 15 512-3456, +54 9 223 5123456, 2235123456…
+function normalizarCel(txt) {
+  let d = String(txt || "").replace(/\D/g, "");
+  if (d.startsWith("54")) d = d.slice(2);
+  if (d.length === 11 && d.startsWith("9")) d = d.slice(1);
+  if (d.startsWith("0")) d = d.slice(1);
+  if (d.length === 12) {                       // característica + 15 + número
+    for (const k of [2, 3, 4]) {
+      if (d.slice(k, k + 2) === "15") { d = d.slice(0, k) + d.slice(k + 2); break; }
+    }
+  }
+  return d.length === 10 ? "549" + d : "";
+}
+
+// Horarios que se ofrecen ese día (en minutos): dentro del horario de la sucursal, cada TURNOS[tipo].intervalo,
+// sin pasarse del cierre y, si es hoy, desde ahora + TURNOS.anticipacion.
+function horariosTurno(tipo, fecha) {
+  const cfg = TURNOS[tipo] || {};
+  let tr = tramos(sucursalTurno(tipo), fecha);
+  if (cfg.horarios) {
+    const dia = diaDe(fecha);
+    const propios = cfg.horarios.filter((h) => (h.dias || []).some((n) => diaIdx(n) === dia)).map((h) => [aMin(h.abre), aMin(h.cierra)]);
+    tr = tr.flatMap(([a, c]) => propios.map(([pa, pc]) => [Math.max(a, pa), Math.min(c, pc)])).filter(([a, c]) => c > a);
+  }
+  const paso = cfg.intervalo || 30, dura = cfg.duracion || paso;
+  const t = ahora();
+  const desde = fecha === t.fecha ? t.min + (TURNOS.anticipacion || 0) : -1;
+  const lista = [];
+  tr.forEach(([a, c]) => { for (let m = a; m + dura <= c; m += paso) if (m >= desde) lista.push(m); });
+  return lista;
+}
+
+// El pedido viaja en el link del local como texto en base64 (solo letras, números, - y _).
+const codificar = (o) => btoa(String.fromCharCode(...new TextEncoder().encode(JSON.stringify(o))))
+  .replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+const decodificar = (s) => JSON.parse(new TextDecoder().decode(
+  Uint8Array.from(atob(s.replace(/-/g, "+").replace(/_/g, "/")), (c) => c.charCodeAt(0))));
+const linkPanel = (d) => `${CONTACTO.sitio || location.href.split("#")[0]}#t-${codificar(d)}`;
+
+function datosTurno() {
+  const v = (n) => (formTurno[n] && formTurno[n].value || "").trim();
+  const d = { v:1, t:tipoTurno(), n:v("dueno"), tel:v("cel"), w:normalizarCel(v("cel")), d:v("dia"), h:v("hora") };
+  if (d.t === "vet") Object.assign(d, { m:v("mascota"), e:v("especie"), s:v("motivo") });
+  else Object.assign(d, { m:v("perro"), r:v("raza"), z:v("tamano"), s:v("servicio") });
+  return d;
+}
+// "Luna (gato)" · "Toby (caniche, chico)" · "Caniche, chico"
+function quien(d) {
+  if (d.t === "vet") return `${d.m || ""}${d.e ? ` (${d.e})` : ""}`;
+  const desc = [d.r, d.z].filter(Boolean).join(", ");
+  return d.m ? `${d.m}${desc ? ` (${desc})` : ""}` : mayus(desc);
+}
+
+function mensajeTurno() {
+  const d = datosTurno(), suc = sucursalTurno(d.t);
+  const l = [`Hola Zoo Center! 💜 Quiero pedir un turno para la *${NOMBRE_TURNO[d.t]}* (${suc.direccion}).`,
+    `• Mi nombre: ${d.n}`, `• Mi WhatsApp: ${d.tel}`];
+  if (d.t === "vet") l.push(`• Mascota: ${quien(d)}`, `• Motivo: ${d.s}`);
+  else { if (d.m) l.push(`• Mi perro: ${d.m}`); l.push(`• Raza: ${d.r}`, `• Tamaño: ${d.z}`, `• Servicio: ${d.s}`); }
+  if (d.d && d.h) l.push(`• Día y hora: ${diaYHora(d.d, d.h)}`);
+  if (d.n && d.w && d.d && d.h) l.push("", "👉 Para el local, confirmalo en un toque:", linkPanel(d));
+  return l.join("\n");
+}
+
+function llenarHoras() {
+  const sel = formTurno.hora, previo = sel.value, f = formTurno.dia.value;
+  const hs = f && f >= ahora().fecha ? horariosTurno(tipoTurno(), f).map(hhmm) : [];
+  sel.innerHTML = `<option value="">${!f ? "Elegí primero el día" : hs.length ? "Elegí la hora" : "Sin horarios ese día"}</option>`
+    + hs.map((h) => `<option${h === previo ? " selected" : ""}>${h}</option>`).join("");
+  sel.disabled = !hs.length;
+}
+function revisarDia() {
+  const inp = formTurno.dia;
+  inp.setCustomValidity("");
+  if (!inp.value) return;
+  const suc = sucursalTurno(tipoTurno());
+  if (inp.value < ahora().fecha) inp.setCustomValidity("Elegí un día de hoy en adelante.");
+  else if (!tramos(suc, inp.value).length) inp.setCustomValidity(`Ese día ${suc.direccion} está cerrado. Elegí otro día 🙂`);
+  else if (!horariosTurno(tipoTurno(), inp.value).length) inp.setCustomValidity("Para ese día ya no quedan horarios. Elegí otro día 🙂");
+}
+function revisarCel() {
+  const v = formTurno.cel.value.trim();
+  formTurno.cel.setCustomValidity(v && !normalizarCel(v) ? "Revisá tu WhatsApp: poné la característica y el número, por ejemplo 223 512-3456." : "");
+}
+function actualizarTurno() {
+  revisarCel(); revisarDia();
+  $("#turno-enviar").href = wa(mensajeTurno());
+}
 function cambiarTipo() {
   const pelu = tipoTurno() === "pelu";
   $("#campos-vet").disabled = pelu; $("#campos-vet").hidden = pelu;
   $("#campos-pelu").disabled = !pelu; $("#campos-pelu").hidden = !pelu;
   $("#turno-error").hidden = true;
+  llenarHoras();
   actualizarTurno();
 }
-function servicioDe(turno) { return SERVICIOS.find((s) => s.turno === turno) || {}; }
-
-function mensajeTurno() {
-  const f = formTurno;
-  const tipo = tipoTurno();
-  const serv = servicioDe(tipo);
-  const suc = sucursal(serv.sucursal);
-  const v = (n) => (f[n] && f[n].value || "").trim();
-  const lineas = [`Hola Zoo Center! 💜 Quiero pedir un turno para la *${tipo === "pelu" ? "peluquería canina" : "veterinaria"}*${suc ? ` (${suc.direccion})` : ""}.`];
-  lineas.push(`• Mi nombre: ${v("dueno")}`);
-  if (tipo === "vet") {
-    lineas.push(`• Mascota: ${v("mascota")}${v("especie") ? ` (${v("especie")})` : ""}`);
-    lineas.push(`• Motivo: ${v("motivo")}`);
-  } else {
-    if (v("perro")) lineas.push(`• Mi perro: ${v("perro")}`);
-    lineas.push(`• Raza: ${v("raza")}`);
-    lineas.push(`• Tamaño: ${v("tamano")}`);
-    lineas.push(`• Servicio: ${v("servicio")}`);
-  }
-  const dia = v("dia");
-  const franja = v("franja");
-  if (dia || franja) lineas.push(`• Día preferido: ${dia ? `${DIAS[diaDe(dia)]} ${fechaCorta(dia)}` : "el que tengan"}${franja ? `, ${franja}` : ""}`);
-  return lineas.join("\n");
-}
-
-function revisarDia() {
-  const inp = formTurno.dia;
-  inp.setCustomValidity("");
-  if (!inp.value) return;
-  const suc = sucursal(servicioDe(tipoTurno()).sucursal) || SUCURSALES[0];
-  if (inp.value < ahora().fecha) inp.setCustomValidity("Elegí un día de hoy en adelante.");
-  else if (!tramos(suc, inp.value).length) inp.setCustomValidity(`Ese día ${suc.direccion} está cerrado. Elegí otro día 🙂`);
-}
-function actualizarTurno() { revisarDia(); $("#turno-enviar").href = wa(mensajeTurno()); }
 
 function abrirTurno(tipo, desde) {
   if (typeof dlgTurno.showModal !== "function") return false;
   abridor = desde || null;
   if (tipo === "pelu" || tipo === "vet") formTurno.tipo.value = tipo;
   formTurno.dia.min = ahora().fecha;
+  $("#turno-listo").hidden = true;
   cambiarTipo();
   dlgTurno.showModal();
   setTimeout(() => $("#t-dueno").focus(), 30);
@@ -1330,22 +1427,137 @@ function initTurno() {
   llenarSelect($("#t-motivo"), servicioDe("vet").items || [], "Elegí un motivo");
   llenarSelect($("#t-servicio"), servicioDe("pelu").items || [], "Elegí un servicio");
   actualizarTurno();
-  formTurno.addEventListener("input", actualizarTurno);
-  formTurno.addEventListener("change", (e) => { if (e.target.name === "tipo") cambiarTipo(); else actualizarTurno(); });
+  formTurno.addEventListener("input", (e) => {
+    if (e.target.name === "dia") llenarHoras();
+    $("#turno-listo").hidden = true;
+    actualizarTurno();
+  });
+  formTurno.addEventListener("change", (e) => {
+    if (e.target.name === "tipo") cambiarTipo();
+    else { if (e.target.name === "dia") llenarHoras(); actualizarTurno(); }
+  });
   formTurno.addEventListener("submit", (e) => { e.preventDefault(); $("#turno-enviar").click(); });
   $("#turno-enviar").addEventListener("click", (e) => {
     actualizarTurno();
     const err = $("#turno-error");
-    if (formTurno.checkValidity()) { err.hidden = true; return; }
+    if (formTurno.checkValidity()) { err.hidden = true; $("#turno-listo").hidden = false; return; }
     e.preventDefault();   // falta algo: no abre WhatsApp todavía
-    const dia = formTurno.dia;
-    err.textContent = dia.validity.customError ? dia.validationMessage : "Completá los datos que faltan para armar el mensaje.";
+    const malo = [formTurno.dia, formTurno.cel].find((x) => x.validity.customError);
+    err.textContent = malo ? malo.validationMessage : "Completá los datos que faltan para armar el mensaje.";
     err.hidden = false;
     formTurno.reportValidity();
   });
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-turno]");
     if (b && abrirTurno(b.dataset.turno, b)) e.preventDefault();
+  });
+}
+
+/* ---------- panel del local: confirmar, proponer otro horario, recordar, agendar ---------- */
+const panel = $("#panel");
+let pedido = null;
+
+function textoConfirmar(d) {
+  const suc = sucursalTurno(d.t);
+  return [`¡Hola ${d.n}! 💜 Te confirmamos el turno en Zoo Center:`,
+    `🐾 ${quien(d)} · ${d.s}`,
+    `📅 ${mayus(diaYHora(d.d, d.h))}`,
+    `📍 ${suc.direccion}, ${suc.ciudad}`,
+    "Si no podés venir, avisanos por acá. ¡Te esperamos!"].join("\n");
+}
+const textoProponer = (d, f, h) =>
+  `¡Hola ${d.n}! 💜 Para el ${diaYHora(d.d, d.h)} no tenemos lugar 😕 ¿Te sirve el ${diaYHora(f, h)}? Respondenos por acá y te lo confirmamos.`;
+const textoRecordar = (d) =>
+  `¡Hola ${d.n}! 💜 Te recordamos el turno de ${d.m || "tu perro"} en la ${NOMBRE_TURNO[d.t]}: ${diaYHora(d.d, d.h)}, en ${sucursalTurno(d.t).direccion}. ¡Te esperamos!`;
+
+function linkAgenda(d) {
+  const [y, mo, da] = d.d.split("-");
+  const ini = aMin(d.h), fin = ini + ((TURNOS[d.t] || {}).duracion || 30);
+  const t = (m) => `${y}${mo}${da}T${String(Math.floor(m / 60)).padStart(2, "0")}${String(m % 60).padStart(2, "0")}00`;
+  const suc = sucursalTurno(d.t);
+  return "https://calendar.google.com/calendar/render?" + new URLSearchParams({
+    action:"TEMPLATE", text:`${mayus(NOMBRE_TURNO[d.t])}: ${quien(d)} · ${d.s}`, dates:`${t(ini)}/${t(fin)}`, ctz:ZONA,
+    details:`${d.n}${d.tel ? ` · WhatsApp ${d.tel}` : ""}\nPanel del turno: ${linkPanel(d)}`,
+    location:`Zoo Center, ${suc.direccion}, ${suc.ciudad}` });
+}
+
+// Arma los links de WhatsApp con el número que figura en el panel (el dueño lo puede corregir).
+function actualizarPanel() {
+  const d = pedido;
+  const w = normalizarCel($("#p-cel").value);
+  const poner = (id, url) => {
+    const a = $(id);
+    a.href = url || "#";
+    a.setAttribute("aria-disabled", String(!url));
+  };
+  poner("#panel-confirmar", w && waA(w, textoConfirmar(d)));
+  poner("#panel-recordar", w && waA(w, textoRecordar(d)));
+  const f = $("#p-dia").value, h = $("#p-hora").value;
+  poner("#panel-proponer", w && f && h && waA(w, textoProponer(d, f, h)));
+  $("#p-cel-error").hidden = !!w;
+}
+function llenarHorasPanel() {
+  const f = $("#p-dia").value, sel = $("#p-hora");
+  const hs = f && f >= ahora().fecha ? horariosTurno(pedido.t, f).map(hhmm) : [];
+  sel.innerHTML = `<option value="">${!f ? "Elegí el día" : hs.length ? "Elegí la hora" : "Sin horarios ese día"}</option>` + hs.map((h) => `<option>${h}</option>`).join("");
+  sel.disabled = !hs.length;
+}
+
+function abrirPanel() {
+  const m = location.hash.match(/^#t-([A-Za-z0-9_-]{10,})$/);
+  if (!m || typeof panel.showModal !== "function") return;
+  let d = null;
+  try { d = decodificar(m[1]); } catch (e) { d = null; }
+  const ok = d && d.v === 1 && NOMBRE_TURNO[d.t] && d.n && /^\d{4}-\d{2}-\d{2}$/.test(d.d || "") && /^\d{1,2}:\d{2}$/.test(d.h || "");
+  pedido = ok ? d : null;
+  const suc = ok && sucursalTurno(d.t);
+  $("#panel-cuerpo").innerHTML = !ok ? `<p>Este link de turno está incompleto o dañado. Pedile los datos al cliente por WhatsApp.</p>` : `
+    <p class="turno-ayuda">Pedido hecho desde la web. Cada botón abre WhatsApp con el mensaje listo: revisalo y tocá enviar.</p>
+    ${d.d < ahora().fecha ? `<p class="turno-error">Ojo: la fecha de este turno ya pasó.</p>` : ""}
+    <dl class="ficha">
+      <dt>Día y hora</dt><dd><b>${esc(mayus(diaYHora(d.d, d.h)))}</b></dd>
+      <dt>Servicio</dt><dd>${esc(mayus(NOMBRE_TURNO[d.t]))} · ${esc(suc.direccion)}</dd>
+      <dt>${d.t === "vet" ? "Mascota" : "Perro"}</dt><dd>${esc(quien(d))}</dd>
+      <dt>${d.t === "vet" ? "Motivo" : "Pidió"}</dt><dd>${esc(d.s)}</dd>
+      <dt>Cliente</dt><dd>${esc(d.n)}</dd>
+    </dl>
+    <div class="campo">
+      <label for="p-cel">WhatsApp del cliente</label>
+      <input type="tel" id="p-cel" inputmode="tel" value="${esc(d.tel || "")}" placeholder="Ej.: 223 512-3456">
+      <p class="turno-error" id="p-cel-error" hidden>Escribí el WhatsApp del cliente con la característica (ej.: 223 512-3456).</p>
+    </div>
+    <p class="turno-ayuda">Este mensaje le va a llegar al cliente:</p>
+    <p class="burbuja-msj">${esc(textoConfirmar(d))}</p>
+    <div class="panel-botones">
+      <a class="btn btn-pri" id="panel-confirmar" href="#" target="_blank" rel="noopener">${burbuja()}Confirmar el turno por WhatsApp</a>
+      <a class="btn btn-sec" id="panel-agenda" href="${esc(linkAgenda(d))}" target="_blank" rel="noopener">${ico("cal")}Agendar en Google Calendar</a>
+      <a class="btn btn-sec" id="panel-recordar" href="#" target="_blank" rel="noopener">${burbuja()}Mandar recordatorio</a>
+    </div>
+    <div class="panel-otro">
+      <h3>¿No hay lugar a esa hora?</h3>
+      <div class="dos">
+        <div class="campo"><label for="p-dia">Otro día</label><input type="date" id="p-dia" min="${ahora().fecha}"></div>
+        <div class="campo"><label for="p-hora">Hora</label><select id="p-hora" disabled><option value="">Elegí el día</option></select></div>
+      </div>
+      <a class="btn btn-sec" id="panel-proponer" href="#" target="_blank" rel="noopener">${burbuja()}Proponer este horario</a>
+    </div>`;
+  if (ok) actualizarPanel();
+  if (!panel.open) panel.showModal();
+}
+
+function initPanel() {
+  const c = $("#panel-cuerpo");
+  c.addEventListener("input", (e) => {
+    if (!pedido) return;
+    if (e.target.id === "p-dia") llenarHorasPanel();
+    actualizarPanel();
+  });
+  c.addEventListener("change", (e) => { if (pedido && e.target.id === "p-hora") actualizarPanel(); });
+  c.addEventListener("click", (e) => {   // botón apagado: lleva al dato que falta
+    const a = e.target.closest('a[aria-disabled="true"]');
+    if (!a) return;
+    e.preventDefault();
+    (a.id === "panel-proponer" && normalizarCel($("#p-cel").value) ? $("#p-dia") : $("#p-cel")).focus();
   });
 }
 
@@ -1386,9 +1598,13 @@ function initVisor() {
 
 /* ---------- ventanas: cerrar con la X, con Escape o tocando afuera ---------- */
 function initVentanas() {
-  [dlgTurno, visor].forEach((d) => {
+  [dlgTurno, visor, panel].forEach((d) => {
     d.addEventListener("click", (e) => { if (e.target === d || e.target.closest("[data-cerrar]")) d.close(); });
     d.addEventListener("close", () => { if (abridor && document.contains(abridor)) abridor.focus(); abridor = null; });
+  });
+  // al cerrar el panel del local, se saca el #t-… de la dirección para que no se vuelva a abrir al recargar
+  panel.addEventListener("close", () => {
+    if (/^#t-/.test(location.hash)) try { history.replaceState(null, "", location.pathname + location.search); } catch (e) { /* sin historial */ }
   });
 }
 
@@ -1467,6 +1683,9 @@ function arrancar() {
   addEventListener("resize", medirArriba);
   setInterval(pintarEstado, 60 * 1000);
   requestAnimationFrame(huellitas);
+  initPanel();
+  abrirPanel();
+  addEventListener("hashchange", abrirPanel);
 }
 arrancar();
 </script>
