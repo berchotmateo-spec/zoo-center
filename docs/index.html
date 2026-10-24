@@ -1559,6 +1559,7 @@ function abrirTurno(tipo, desde) {
   $("#turno-datos").disabled = false;
   if (tipo === "pelu" || tipo === "vet") formTurno.tipo.value = tipo;
   formTurno.dia.min = ahora().fecha;
+  formTurno.dia.max = sumarDias(ahora().fecha, 92);   // la base no acepta turnos a más de 92 días
   $("#turno-listo").hidden = true;
   cambiarTipo();
   pintarPasos();
@@ -1859,7 +1860,7 @@ async function pintarAgenda() {
   caja.innerHTML = `<p class="turno-ayuda">Cargando la agenda…</p>`;
   const hoy = ahora().fecha;
   try {
-    filasAgenda = await rpc("agenda", { p_clave:claveLocal(), p_desde:hoy, p_hasta:sumarDias(hoy, 30) }) || [];
+    filasAgenda = await rpc("agenda", { p_clave:claveLocal(), p_desde:hoy, p_hasta:sumarDias(hoy, 92) }) || [];
   } catch (e) {
     if (e.codigo === "clave") { guardarClave(""); return pintarAgenda(); }
     caja.innerHTML = `<p class="estado-agenda aviso">No se pudo conectar con la agenda. <button type="button" class="btn-link" data-accion="recargar">Probar de nuevo</button></p>`;
@@ -1867,13 +1868,13 @@ async function pintarAgenda() {
   }
   const dias = [...new Set(filasAgenda.map((f) => f.fecha))];
   caja.innerHTML = `
-    <p class="turno-ayuda">Turnos de los próximos 30 días. Tocá uno para confirmarlo, cambiarlo o liberarlo.</p>
+    <p class="turno-ayuda">Turnos de los próximos 3 meses. Tocá uno para confirmarlo, cambiarlo o liberarlo.</p>
     ${dias.length ? dias.map((dia) => `<section class="agenda-dia"><h3>${esc(mayus(`${DIAS[diaDe(dia)]} ${fechaCorta(dia)}`))}</h3>
       ${filasAgenda.filter((f) => f.fecha === dia).map((f) => {
         const d = pedidoDeFila(f);
         return `<button type="button" class="agenda-fila" data-t="${codificar(d)}"><b>${esc(d.h)}</b>
           <span>${esc([mayus(NOMBRE_TURNO[d.t]), quien(d), d.s].filter(Boolean).join(" · "))}<small>${esc(d.n)}</small></span>${chipEstado(f)}</button>`;
-      }).join("")}</section>`).join("") : `<p class="estado-agenda">No hay turnos en los próximos 30 días.</p>`}
+      }).join("")}</section>`).join("") : `<p class="estado-agenda">No hay turnos en los próximos 3 meses.</p>`}
     <div class="panel-otro">
       <h3>Ocupar un horario</h3>
       <p class="turno-ayuda">Para los turnos que das por teléfono o en el local: así la web no ofrece ese horario.</p>
