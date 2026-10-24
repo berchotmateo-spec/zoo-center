@@ -1,0 +1,2068 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zoo Center | Petshop y veterinaria en Mar del Plata</title>
+<meta name="description" content="Petshop y veterinaria en Mar del Plata, con dos sucursales: Alberti 1381 (veterinaria, peluquería canina y petshop) y Catamarca 1951 (petshop). Lunes a sábado de 9 a 20. Turnos y consultas por WhatsApp.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#5B2D8E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Zoo Center">
+<meta property="og:title" content="Zoo Center | Petshop y veterinaria en Mar del Plata">
+<meta property="og:description" content="Veterinaria con turnos, peluquería canina y petshop. Dos sucursales en Mar del Plata, de lunes a sábado de 9 a 20. Delivery sin cargo.">
+<meta property="og:image" content="img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Zoo Center, petshop y veterinaria en Mar del Plata">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/icono.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/icono.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap">
+<!-- Ficha para Google. Si cambia una dirección, el horario o el teléfono, cambiarlo también acá.
+     Faltan "geo" (coordenadas de Google Maps), "url" e "image" (cuando haya dominio). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "#zoocenter",
+      "name": "Zoo Center",
+      "slogan": "Los mejores productos para tus mascotas",
+      "telephone": "+54 9 223 691-9808",
+      "email": "zoocentermdq@gmail.com",
+      "sameAs": [
+        "https://www.instagram.com/zoocentermdp/",
+        "https://www.facebook.com/p/Zoo-Center-Mar-del-Plata-100083610631017/"
+      ]
+    },
+    {
+      "@type": ["PetStore", "VeterinaryCare"],
+      "@id": "#alberti",
+      "name": "Zoo Center — Alberti",
+      "description": "Veterinaria, peluquería canina y petshop en Mar del Plata.",
+      "parentOrganization": { "@id": "#zoocenter" },
+      "telephone": "+54 9 223 691-9808",
+      "email": "zoocentermdq@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Alberti 1381",
+        "addressLocality": "Mar del Plata",
+        "addressRegion": "Buenos Aires",
+        "postalCode": "7600",
+        "addressCountry": "AR"
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Alberti%201381%2C%20Mar%20del%20Plata",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "09:00",
+          "closes": "20:00"
+        }
+      ]
+    },
+    {
+      "@type": "PetStore",
+      "@id": "#catamarca",
+      "name": "Zoo Center — Catamarca",
+      "description": "Petshop en Mar del Plata.",
+      "parentOrganization": { "@id": "#zoocenter" },
+      "telephone": "+54 9 223 691-9808",
+      "email": "zoocentermdq@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Catamarca 1951",
+        "addressLocality": "Mar del Plata",
+        "addressRegion": "Buenos Aires",
+        "postalCode": "7600",
+        "addressCountry": "AR"
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Catamarca%201951%2C%20Mar%20del%20Plata",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "09:00",
+          "closes": "20:00"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+/* Una columna en el celular; en la compu, portada en dos columnas y grillas de 2 o 3.
+   Fondo claro (pedido de Mateo): sin tema oscuro. Colores aproximados del logo, a confirmar. */
+:root{
+  --violeta:#5B2D8E;        /* títulos y botones */
+  --violeta-osc:#43206B;
+  --violeta-med:#7C55B0;
+  --naranja:#F5A623;        /* acentos e íconos de WhatsApp/llamar. Nunca texto naranja sobre blanco */
+  --naranja-suave:#FFF0D4;
+  --lila:#EDE4F7;           /* fondos de banda */
+  --lila-claro:#F8F4FC;
+  --lila-borde:#DFD1F0;
+  --blanco:#FFFFFF;
+  --tinta:#2A1B3D;          /* texto */
+  --tinta-suave:#5E5274;
+  --verde:#1F8A4D;
+  --apagado:#A79DB6;
+
+  --f-titulos:"Baloo 2","Fredoka","Arial Rounded MT Bold",system-ui,sans-serif;
+  --f-texto:"Nunito","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+
+  --radio:24px;
+  --radio-chico:16px;
+  --sombra:0 14px 34px -18px rgba(67,32,107,.45);
+  --alto-arriba:44px;       /* lo ajusta el JS: barra de estado (+ menú en la compu) */
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;background:var(--blanco)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--blanco);color:var(--tinta);font:400 1rem/1.6 var(--f-texto)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--violeta-osc)}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--violeta);text-underline-offset:.18em}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--naranja);outline-offset:2px;border-radius:6px}
+.solo-lector{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.envoltura{max-width:1160px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-titulos);color:var(--violeta);line-height:1.05;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.95rem,1.45rem + 2.2vw,2.9rem);font-weight:800;text-transform:uppercase;letter-spacing:.01em}
+h3{font-size:1.35rem;font-weight:700}
+p{margin:0}
+section[id]{scroll-margin-top:calc(var(--alto-arriba) + 8px)}
+.seccion{padding-block:clamp(52px,7vw,92px)}
+.intro{color:var(--tinta-suave);max-width:62ch;margin-top:.7rem;font-size:1.07rem}
+.ico{width:1.2em;height:1.2em;flex:none;vertical-align:-.2em}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;min-height:50px;padding:.7em 1.4em;border-radius:999px;border:2px solid transparent;font:800 1rem/1.1 var(--f-texto);text-decoration:none;cursor:pointer;transition:background-color .15s,transform .15s,box-shadow .15s;-webkit-tap-highlight-color:transparent}
+.btn:active{transform:translateY(1px)}
+.btn-pri{background:var(--violeta);color:#fff;box-shadow:0 8px 18px -10px rgba(91,45,142,.8)}
+.btn-pri:hover{background:var(--violeta-osc)}
+.btn-sec{background:#fff;color:var(--violeta);border-color:var(--violeta)}
+.btn-sec:hover{background:var(--lila-claro)}
+.btn-chico{min-height:42px;padding:.45em 1.05em;font-size:.93rem}
+.burbuja{display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;background:var(--naranja);color:var(--violeta-osc);flex:none;margin-left:-.35em}
+.burbuja .ico{width:1em;height:1em;vertical-align:0}
+.btn-pri .ico:not(.burbuja .ico){color:var(--naranja)}
+
+/* ---------- barra de estado (fija arriba) ---------- */
+.estado{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--violeta-osc);color:#fff;font-size:.92rem}
+.estado-fila{display:flex;flex-wrap:wrap;align-items:center;gap:.15rem .7rem;min-height:42px;padding-block:6px}
+.estado-tit{font-weight:800;display:inline-flex;align-items:center;gap:.5em}
+.estado-det{color:#E6DCF3}
+.punto{width:.62em;height:.62em;border-radius:50%;background:var(--apagado);display:inline-block;flex:none}
+.punto.abierto{background:#3EDB86;box-shadow:0 0 0 3px rgba(62,219,134,.28)}
+.estado-aviso{background:var(--naranja);color:var(--tinta);font-weight:700}
+.estado-aviso .envoltura{display:flex;gap:.5em;align-items:center;padding-block:7px}
+
+/* ---------- cabecera ---------- */
+.cab{background:#fff;border-bottom:1px solid var(--lila-borde)}
+.cab-fila{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:66px}
+/* logo: réplica del cartel del local (img/logo*.svg, ver herramientas/hacer-logo.py) */
+.logo{display:inline-block;line-height:0;border-radius:10px}
+.logo img{height:52px;width:auto}
+.menu{display:none}
+@media (max-width:899px){.cab{display:none}}   /* en el celular el logo grande de la portada ya abre la página y el WhatsApp está en la barra de abajo */
+.cab-wa{min-height:44px;padding:.4em 1em;font-size:.92rem}
+@media (min-width:900px){
+  .cab{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--alto-estado,42px));z-index:40}
+  .menu{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0}
+  .menu a{font-weight:800;text-decoration:none;color:var(--tinta)}
+  .menu a:hover{color:var(--violeta)}
+}
+
+/* ---------- portada ---------- */
+.portada{position:relative;background:var(--lila);overflow:hidden;padding-block:clamp(34px,6vw,76px) clamp(86px,10vw,124px)}
+.portada-grilla{position:relative;z-index:1;display:grid;gap:30px}
+@media (min-width:900px){.portada-grilla{grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);align-items:center;gap:56px}}
+.portada-logo{line-height:0}
+.portada-logo img{width:100%;max-width:520px;height:auto;filter:drop-shadow(0 16px 24px rgba(67,32,107,.25))}
+.lema{font:700 clamp(1.3rem,1.12rem + .9vw,1.75rem)/1.25 var(--f-titulos);color:var(--tinta);margin-top:1.1rem}
+.portada-donde{color:var(--tinta-suave);margin-top:.35rem;font-size:1.05rem}
+.portada-botones{display:flex;flex-wrap:wrap;gap:12px;margin-top:1.4rem}
+.delivery{display:inline-flex;align-items:center;gap:.6em;margin-top:1.1rem;background:var(--naranja);color:var(--tinta);font-weight:800;border-radius:999px;padding:.5em 1.05em .5em .6em;text-decoration:none}
+.delivery span{display:grid;place-items:center;width:2em;height:2em;border-radius:50%;background:#fff;color:var(--violeta)}
+.ola{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(40px,6vw,74px);display:block}
+.deco{position:absolute;pointer-events:none;color:var(--violeta)}
+.deco-hueso{width:64px;opacity:.13}
+.deco-huella{width:44px;opacity:.13}
+.deco-punto{width:14px;height:14px;border-radius:50%;background:var(--naranja)}
+@media (max-width:640px){.deco-solo-compu{display:none}}
+
+/* huellitas que cruzan la portada una vez */
+.huellas{position:absolute;inset:0;z-index:0;pointer-events:none}
+.pisada{position:absolute;width:var(--t,22px);height:var(--t,22px);color:var(--violeta);opacity:0;transform:translate(-50%,-50%) rotate(var(--r)) scale(.5);animation:pisada 2.6s ease-out both}
+@keyframes pisada{
+  0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--r)) scale(.5)}
+  10%{opacity:.34;transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}
+  62%{opacity:.34}
+  100%{opacity:0;transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}
+}
+
+/* tarjeta "Hoy" de la portada */
+.hoy{background:#fff;border-radius:var(--radio);padding:22px;box-shadow:var(--sombra);display:grid;gap:16px;align-self:start}
+.hoy-tit{font:800 .8rem/1 var(--f-texto);letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave)}
+.hoy-lista{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.hoy-lista li{display:flex;gap:.75rem;align-items:flex-start}
+.hoy-lista li > .punto{margin-top:.5em}
+.hoy-lista .punto{background:#B9AFC8}
+.hoy-lista .punto.abierto{background:var(--verde);box-shadow:0 0 0 3px rgba(31,138,77,.18)}
+.hoy-lista b{font-weight:800}
+.hoy-lista small{display:block;color:var(--tinta-suave);font-size:.92rem}
+.hoy-aviso{background:var(--naranja-suave);border-radius:14px;padding:.7rem .9rem;font-weight:700}
+.hoy-promos{display:grid;gap:8px}
+.hoy-promos h3{font:800 .8rem/1 var(--f-texto);letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave)}
+.hoy-promo{display:flex;align-items:center;gap:.75rem;border:2px solid var(--naranja);border-radius:16px;padding:.65rem .85rem;text-decoration:none;color:var(--tinta)}
+.hoy-promo:hover{background:var(--naranja-suave)}
+.hoy-promo .burbuja{margin:0;width:2.1em;height:2.1em}
+.hoy-promo b{display:block;font-weight:800}
+.hoy-promo small{color:var(--tinta-suave)}
+
+/* ---------- ventajas ---------- */
+.ventajas{position:relative;z-index:2;margin-top:-58px}
+.ventajas ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+@media (min-width:760px){.ventajas ul{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
+.ventaja{background:#fff;border:1px solid var(--lila-borde);border-radius:var(--radio);padding:18px 20px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--sombra)}
+.ventaja-ico{width:50px;height:50px;border-radius:50%;background:var(--naranja-suave);color:var(--violeta);display:grid;place-items:center;flex:none}
+.ventaja-ico .ico{width:26px;height:26px}
+.ventaja h3{font-size:1.25rem}
+.ventaja p{color:var(--tinta-suave);font-size:.97rem;margin-top:.2rem}
+
+/* ---------- servicios ---------- */
+.serv-grilla{display:grid;gap:18px;margin-top:30px}
+@media (min-width:900px){.serv-grilla{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.serv{background:var(--lila-claro);border:1px solid var(--lila-borde);border-radius:var(--radio);padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.serv-cab{display:flex;gap:14px;align-items:center}
+.serv-ico{width:58px;height:58px;border-radius:18px;background:var(--violeta);color:#fff;display:grid;place-items:center;flex:none}
+.serv-ico .ico{width:30px;height:30px}
+.serv-cab h3{font-size:1.6rem;font-weight:800}
+.serv-donde{display:flex;flex-wrap:wrap;gap:.3rem .9rem;color:var(--tinta-suave);font-size:.95rem;margin-top:.15rem}
+.serv-donde span{display:inline-flex;align-items:center;gap:.3em}
+.serv-bajada{color:var(--tinta)}
+.serv-lista{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.serv-lista li{background:#fff;border:1px solid var(--lila-borde);border-radius:999px;padding:.42em .9em;font-weight:700;font-size:.95rem}
+.serv-nota{background:#fff;border-radius:16px;padding:14px 16px;color:var(--tinta)}
+.serv-acciones{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px}
+.serv-ancho{grid-column:1/-1;background:var(--naranja-suave);border-color:#F6DDAA}
+@media (min-width:900px){.serv-ancho{flex-direction:row;align-items:center;justify-content:space-between}.serv-ancho .serv-acciones{margin-top:0}}
+.serv-ancho .serv-ico{background:#fff;color:var(--violeta)}
+.asi{margin-top:34px}
+.asi h3{font-size:1.6rem;font-weight:800}
+
+/* galerías (peluquería y clientes): las fotos se ven enteras, nunca recortadas */
+.galeria{columns:2 150px;column-gap:12px;margin-top:16px}
+.galeria figure{break-inside:avoid;margin:0 0 12px}
+.foto-btn{display:block;width:100%;padding:0;border:0;background:#fff;border-radius:16px;overflow:hidden;cursor:zoom-in}
+.foto-btn img{width:100%;height:auto}
+.par{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#fff;border-radius:16px;overflow:hidden}
+.par span{position:relative;display:block}
+.par em{position:absolute;left:6px;top:6px;background:rgba(42,27,61,.78);color:#fff;font:800 .7rem/1 var(--f-texto);font-style:normal;letter-spacing:.08em;text-transform:uppercase;padding:.35em .55em;border-radius:6px}
+.galeria figcaption{font-size:.88rem;color:var(--tinta-suave);margin-top:.35rem}
+
+/* ---------- promos ---------- */
+.promos{background:var(--lila-claro)}
+.promos-grilla{display:grid;gap:16px;margin-top:28px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.promo{background:#fff;border:2px solid var(--lila-borde);border-radius:var(--radio);padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.promo.es-hoy{border-color:var(--naranja)}
+.promo-cab{display:flex;flex-wrap:wrap;gap:6px;align-items:center;min-height:1.6em}
+.promo h3{font-size:1.5rem;font-weight:800}
+.promo-datos{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:6px;color:var(--tinta-suave);font-size:.95rem}
+.promo-datos li{display:flex;gap:.5em;align-items:flex-start}
+.promo-datos .ico{color:var(--violeta);margin-top:.15em}
+.tag{display:inline-flex;align-items:center;gap:.35em;border-radius:999px;padding:.25em .7em;background:var(--lila);color:var(--violeta-osc);font:800 .8rem/1.3 var(--f-texto)}
+.tag .ico{width:1.05em;height:1.05em;vertical-align:0}
+.tag-hoy,.tag-nuevo{background:var(--naranja);color:var(--tinta)}
+
+/* ---------- catálogo ---------- */
+.cat-controles{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin-top:28px;background:var(--lila-claro);border:1px solid var(--lila-borde);border-radius:var(--radio);padding:16px}
+.buscador{position:relative}
+.buscador .ico{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--violeta);pointer-events:none}
+.buscador input{width:100%;min-height:52px;border:2px solid var(--lila-borde);border-radius:999px;padding:.6em 1em .6em 2.8em;font:600 1rem var(--f-texto);color:var(--tinta);background:#fff}
+.buscador input:focus{outline:none;border-color:var(--violeta);box-shadow:0 0 0 3px rgba(91,45,142,.16)}
+.filtro{display:grid;gap:6px;min-width:0}
+.filtro-tit{font:800 .76rem/1 var(--f-texto);letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-suave)}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 4px;margin:-2px;min-width:0}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;display:inline-flex;align-items:center;gap:.4em;min-height:42px;padding:.4em 1em;border:2px solid var(--lila-borde);border-radius:999px;background:#fff;color:var(--violeta);font:800 .95rem/1 var(--f-texto);cursor:pointer;white-space:nowrap}
+.chip:hover{border-color:var(--violeta-med)}
+.chip[aria-pressed="true"]{background:var(--violeta);border-color:var(--violeta);color:#fff}
+.cat-info{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.4rem 1rem;margin-top:18px;color:var(--tinta-suave);font-size:.95rem}
+.cat-grilla{display:grid;gap:12px;margin-top:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))}
+.prod{background:#fff;border:1px solid var(--lila-borde);border-radius:20px;padding:14px 14px 14px 16px;display:flex;gap:12px;align-items:center;min-width:0}
+.prod-foto{flex:none;width:96px;height:96px;padding:4px;border:1px solid var(--lila-borde);border-radius:14px;background:#fff;cursor:zoom-in}
+.prod-foto img{width:100%;height:100%;object-fit:contain}
+.prod-cuerpo{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.prod-consultar{flex:none;align-self:center}
+.prod-meta{display:flex;flex-wrap:wrap;gap:6px}
+.prod-n{font:800 1.1rem/1.25 var(--f-texto);color:var(--tinta)}
+.prod-d{color:var(--tinta-suave);font-size:.95rem}
+.prod-extra{font-size:.86rem;color:var(--violeta-osc);font-weight:700}
+.precio{display:block;font:800 1.3rem/1 var(--f-titulos);color:var(--violeta)}
+.prod-precio{margin-top:4px}
+.prod-precio small{display:block;font-size:.76rem;color:var(--tinta-suave);margin-top:.2rem}
+.cat-vacio{background:var(--lila-claro);border-radius:var(--radio);padding:22px;display:grid;gap:12px;justify-items:start;margin-top:12px}
+.cat-nota{margin-top:16px;font-size:.92rem;color:var(--tinta-suave)}
+
+/* ---------- sucursales ---------- */
+.suc-grilla{display:grid;gap:18px;margin-top:30px}
+@media (min-width:860px){.suc-grilla{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.suc{background:#fff;border:2px solid var(--lila-borde);border-radius:var(--radio);padding:24px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.suc-foto{border-radius:16px;overflow:hidden;background:var(--lila-claro)}
+.suc-cab{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:10px}
+.suc-nombre{font:800 .78rem/1 var(--f-texto);letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave)}
+.suc-dir{font-size:clamp(1.8rem,1.4rem + 1.4vw,2.3rem);font-weight:800;margin-top:.25rem}
+.suc-ciudad{color:var(--tinta-suave)}
+.suc-estado{display:inline-flex;align-items:center;gap:.5em;font-weight:800;font-size:.9rem;padding:.4em .8em;border-radius:999px;background:var(--lila-claro);white-space:nowrap}
+.suc-estado .punto{background:#B9AFC8}
+.suc-estado .punto.abierto{background:var(--verde);box-shadow:0 0 0 3px rgba(31,138,77,.18)}
+.suc-servs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.suc-servs li{display:inline-flex;align-items:center;gap:.45em;background:var(--lila);color:var(--violeta-osc);border-radius:14px;padding:.5em .8em;font-weight:800;font-size:.93rem}
+.suc-servs .ico{color:var(--violeta)}
+.suc-horario{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:0;font-variant-numeric:tabular-nums}
+.suc-horario dt{font-weight:800}
+.suc-horario dd{margin:0;color:var(--tinta-suave)}
+.suc-acciones{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.suc-tel{font-size:.92rem;color:var(--tinta-suave)}
+.suc-tel a{font-weight:800}
+
+/* ---------- clientes ---------- */
+.clientes{position:relative;background:var(--lila);overflow:hidden}
+.clientes-grilla{position:relative;z-index:1;display:grid;gap:26px}
+@media (min-width:900px){.clientes-grilla{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:start}}
+.invitacion{background:#fff;border-radius:var(--radio);padding:22px;margin-top:22px;display:grid;gap:14px;justify-items:start;box-shadow:var(--sombra)}
+.invitacion p{font:700 1.2rem/1.35 var(--f-titulos);color:var(--tinta)}
+
+/* ---------- preguntas ---------- */
+.faq{max-width:820px;margin-top:22px}
+.faq details{border-bottom:1px solid var(--lila-borde)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:18px 0;font:800 1.08rem/1.35 var(--f-texto)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:30px;height:30px;border-radius:50%;background:var(--lila) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235B2D8E' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center/16px no-repeat;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 18px;color:var(--tinta-suave);max-width:65ch}
+
+/* ---------- pie ---------- */
+.pie{background:var(--violeta);color:#fff;padding-block:52px calc(30px + 86px + env(safe-area-inset-bottom,0px))}
+@media (min-width:900px){.pie{padding-bottom:30px}}
+.pie a{color:#fff}
+.pie-grilla{display:grid;gap:30px}
+@media (min-width:860px){.pie-grilla{grid-template-columns:1.2fr 1fr 1fr 1fr}}
+.logo-pie img{height:96px}
+.pie h3{font:800 .8rem/1 var(--f-texto);letter-spacing:.16em;text-transform:uppercase;color:#E3D6F4;margin-bottom:.8rem}
+.pie ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+.pie li{display:flex;gap:.55em;align-items:flex-start}
+.pie li .ico{color:var(--naranja);margin-top:.2em}
+.pie-lema{margin-top:.9rem;color:#E3D6F4}
+.pie-credito{margin-top:36px;padding-top:18px;border-top:1px solid rgba(255,255,255,.18);font-size:.82rem;color:#D9CBEE;text-align:center}
+
+/* ---------- barra fija abajo (celular) ---------- */
+.barra-abajo{position:fixed;left:0;right:0;bottom:0;z-index:45;display:grid;grid-template-columns:1fr 1fr;gap:10px;background:rgba(255,255,255,.97);border-top:1px solid var(--lila-borde);box-shadow:0 -10px 24px -18px rgba(42,27,61,.5);padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+.barra-abajo .btn{min-height:52px;padding-inline:.8em}
+@media (min-width:900px){.barra-abajo{display:none}}
+
+/* ---------- ventanas (turno y visor de fotos) ---------- */
+dialog{border:0;padding:0;color:var(--tinta);background:#fff;border-radius:26px;width:calc(100% - 24px);max-width:560px;max-height:calc(100dvh - 24px);overflow:auto;box-shadow:0 30px 70px -24px rgba(42,27,61,.6)}
+dialog::backdrop{background:rgba(42,27,61,.55)}
+@media (max-width:599px){#turno,#panel,#agenda{width:100%;max-width:100%;margin:auto 0 0;border-radius:26px 26px 0 0;max-height:94dvh}}
+.dlg-cab{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:18px 20px 12px;background:#fff}
+.dlg-cab h2{font-size:1.7rem}
+.cerrar{width:44px;height:44px;border-radius:50%;border:0;background:var(--lila);color:var(--violeta);display:grid;place-items:center;cursor:pointer;flex:none}
+.cerrar .ico{width:22px;height:22px}
+.turno-cuerpo{display:grid;gap:16px;padding:4px 20px 22px}
+.turno-ayuda{color:var(--tinta-suave);font-size:.95rem}
+.segm{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--lila);border-radius:999px;padding:5px}
+.segm label{position:relative}
+.segm input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.segm span{display:flex;align-items:center;justify-content:center;gap:.4em;min-height:44px;border-radius:999px;font-weight:800;color:var(--violeta);text-align:center;line-height:1.1;padding:.3em .5em}
+.segm input:checked + span{background:var(--violeta);color:#fff}
+.segm input:focus-visible + span{outline:3px solid var(--naranja);outline-offset:1px}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+.campos{display:grid;gap:14px}
+.campo{display:grid;gap:6px;min-width:0}
+.campo > label,.campo legend{font-weight:800;font-size:.97rem;padding:0}
+.campo legend{margin-bottom:6px}
+.opc{font-weight:600;color:var(--tinta-suave)}
+.campo input[type=text],.campo input[type=tel],.campo input[type=password],.campo input[type=date],.campo select{-webkit-appearance:none;appearance:none;display:block;width:100%;min-height:50px;border:2px solid var(--lila-borde);border-radius:14px;padding:.5em .85em;font:600 1rem var(--f-texto);color:var(--tinta);background:#fff}
+.campo select{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235B2D8E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") right .85em center/16px no-repeat;padding-right:2.4em}
+.campo input[type=date]::-webkit-date-and-time-value{text-align:left}
+.campo input:focus,.campo select:focus{outline:none;border-color:var(--violeta);box-shadow:0 0 0 3px rgba(91,45,142,.16)}
+.dos{display:grid;gap:14px}
+@media (min-width:480px){.dos{grid-template-columns:1fr 1fr}}
+.opciones{display:flex;flex-wrap:wrap;gap:8px}
+.opcion{position:relative}
+.opcion input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opcion span{display:inline-flex;align-items:center;gap:.4em;min-height:44px;padding:.4em 1em;border:2px solid var(--lila-borde);border-radius:999px;font-weight:800;color:var(--violeta);background:#fff}
+.opcion input:checked + span{background:var(--violeta);border-color:var(--violeta);color:#fff}
+.opcion input:focus-visible + span{outline:3px solid var(--naranja);outline-offset:2px}
+.turno-error{color:#9B1C3A;font-weight:700;font-size:.93rem}
+.turno-enviar{width:100%}
+.campo select:disabled{color:var(--tinta-suave);background-color:var(--lila-claro)}
+.turno-listo{background:var(--naranja-suave);border-radius:14px;padding:12px 14px;font-weight:700}
+/* panel del local */
+.ficha{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px;margin:0;background:var(--lila-claro);border-radius:16px;padding:16px}
+.ficha dt{font-weight:800;color:var(--tinta-suave);font-size:.9rem}
+.ficha dd{margin:0;overflow-wrap:anywhere}
+.burbuja-msj{margin:0;background:#E7FFDB;border-radius:14px 14px 14px 4px;padding:12px 14px;white-space:pre-line;font-size:.95rem;color:var(--tinta);overflow-wrap:anywhere}
+.panel-botones{display:grid;gap:10px}
+.panel-otro{display:grid;gap:12px;border-top:1px solid var(--lila-borde);padding-top:16px}
+.panel-otro h3{font-size:1.25rem}
+.btn[aria-disabled="true"],.btn:disabled{opacity:.45;cursor:not-allowed}
+/* agenda compartida */
+.turno-reservado,.estado-agenda{border-radius:14px;padding:12px 14px;font-weight:700;background:var(--lila-claro)}
+.turno-reservado,.estado-agenda.ok{background:#E7FFDB}
+.estado-agenda.aviso{background:var(--naranja-suave)}
+.fila-clave{display:flex;gap:8px}
+.fila-clave input{flex:1;min-width:0}
+.btn-link{background:none;border:0;padding:0;color:var(--violeta);font:800 .95rem var(--f-texto);text-decoration:underline;text-underline-offset:.18em;cursor:pointer;justify-self:start}
+.agenda-dia{display:grid;gap:8px}
+.agenda-dia h3{font-size:1.15rem}
+.agenda-fila{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 12px;align-items:center;width:100%;padding:12px 14px;border:1px solid var(--lila-borde);border-radius:16px;background:#fff;text-align:left;cursor:pointer}
+.agenda-fila:hover{border-color:var(--violeta-med)}
+.agenda-fila b{font:800 1.15rem/1 var(--f-titulos);color:var(--violeta);font-variant-numeric:tabular-nums}
+.agenda-fila small{display:block;color:var(--tinta-suave);font-size:.88rem}
+.chip-estado{font:800 .7rem/1 var(--f-texto);letter-spacing:.06em;text-transform:uppercase;padding:.5em .65em;border-radius:999px;background:var(--naranja-suave);color:var(--tinta);white-space:nowrap}
+.chip-estado.ok{background:#E7FFDB}
+.chip-estado.vencido{background:#ECE8F1;color:var(--tinta-suave)}
+
+#visor{max-width:min(980px,calc(100% - 24px));background:#17111F;color:#fff}
+#visor .dlg-cab{background:#17111F}
+#visor .dlg-cab h2{color:#fff;font-size:1.2rem}
+#visor .cerrar{background:#2E2440;color:#fff}
+.visor-fig{margin:0;padding:0 16px 18px;display:grid;gap:12px;justify-items:center;touch-action:pan-y}
+.visor-fig img{width:auto;max-width:100%;max-height:70vh;border-radius:12px;user-select:none}
+.visor-pie{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%}
+.visor-pie p{color:#DCD2EA;font-size:.95rem}
+.visor-flechas{display:flex;gap:8px;align-items:center;font-variant-numeric:tabular-nums}
+.visor-flechas button{width:44px;height:44px;border-radius:50%;border:0;background:#2E2440;color:#fff;display:grid;place-items:center;cursor:pointer}
+
+/* ---------- vista borrador (solo para Mateo y el dueño) ---------- */
+.pendiente{outline:2px dashed var(--violeta-med);outline-offset:3px}
+.marca-pend{display:inline-flex;align-items:center;background:var(--naranja-suave);color:var(--tinta);border:1px dashed #B87400;font:800 .7rem/1 var(--f-texto);letter-spacing:.1em;text-transform:uppercase;padding:.45em .6em;border-radius:7px;vertical-align:middle}
+.falta{border:2px dashed var(--violeta-med);border-radius:18px;padding:14px 16px;color:var(--tinta-suave);background:#fff;font-size:.95rem}
+.falta b{color:var(--tinta)}
+.cinta-borrador{position:fixed;z-index:46;left:max(12px,env(safe-area-inset-left,0px));bottom:calc(84px + env(safe-area-inset-bottom,0px));max-width:calc(100% - 24px);background:var(--tinta);color:#fff;font-size:.8rem;line-height:1.35;padding:.55em .95em;border-radius:14px;box-shadow:var(--sombra)}
+@media (min-width:900px){.cinta-borrador{bottom:16px}}
+</style>
+</head>
+<body>
+
+<!-- Íconos dibujados acá (sin librerías). Se usan con <svg><use href="#i-nombre"></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.62-.93-2.22-.24-.58-.49-.5-.67-.51h-.58c-.2 0-.52.08-.8.38-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.8h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.72.97 1-3.62-.24-.37a9.78 9.78 0 0 1-1.5-5.22c0-5.41 4.4-9.82 9.83-9.82 2.62 0 5.09 1.03 6.94 2.88a9.75 9.75 0 0 1 2.87 6.95c0 5.41-4.4 9.81-9.81 9.81zm8.36-18.17A11.75 11.75 0 0 0 12.05.16C5.53.16.23 5.46.22 11.98c0 2.08.55 4.12 1.58 5.91L.12 24l6.26-1.64a11.8 11.8 0 0 0 5.66 1.44h.01c6.52 0 11.82-5.3 11.83-11.82 0-3.16-1.23-6.13-3.47-8.36z"/></symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.1-.45c.9.34 1.85.57 2.8.7A2 2 0 0 1 22 16.9z"/></g></symbol>
+    <symbol id="i-esteto" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 12 0V4a2 2 0 0 0-2-2h-1"/><path d="M8 15v1a6 6 0 0 0 12 0v-4"/><circle cx="20" cy="10" r="2"/></g></symbol>
+    <symbol id="i-tijera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></g></symbol>
+    <symbol id="i-tienda" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 4.6 4h14.8L21 9.5"/><path d="M3 9.5h18v.6a2.9 2.9 0 0 1-5.8 0 2.9 2.9 0 0 1-5.8 0 2.9 2.9 0 0 1-5.8 0z" transform="translate(.7 0)"/><path d="M5 13v8h14v-8M10 21v-5h4v5"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+    <symbol id="i-reloj" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></g></symbol>
+    <symbol id="i-camion" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4h14v12H1zM15 8h4l4 4v4h-8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></g></symbol>
+    <symbol id="i-ruta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 22 2l-9 19-2-8z"/></g></symbol>
+    <symbol id="i-etiqueta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"/><circle cx="7" cy="7" r="1.2" fill="currentColor"/></g></symbol>
+    <symbol id="i-remera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 3.5 16 2a4 4 0 0 1-8 0L3.6 3.5a2 2 0 0 0-1.3 2.2l.6 3.5a1 1 0 0 0 1 .8H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.1a1 1 0 0 0 1-.8l.6-3.5a2 2 0 0 0-1.3-2.2z"/></g></symbol>
+    <symbol id="i-pelota" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M5.3 5.3a9.5 9.5 0 0 1 0 13.4M18.7 5.3a9.5 9.5 0 0 0 0 13.4"/></g></symbol>
+    <symbol id="i-gota" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7 17.7 8.3a8 8 0 1 1-11.3 0z"/></g></symbol>
+    <symbol id="i-salud" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M9 12h6M12 9v6"/></g></symbol>
+    <symbol id="i-plato" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12h19l-1.6 5.4A3 3 0 0 1 17 19.5H7a3 3 0 0 1-2.9-2.1z"/><path d="M8 8.5c.8-.8.8-1.7 0-2.5M12 8.5c.8-.8.8-1.7 0-2.5M16 8.5c.8-.8.8-1.7 0-2.5"/></g></symbol>
+    <symbol id="i-gato" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5c.7 0 1.4.1 2 .3 1.8-2 5-2.8 6.4-2.3 1.4.6-.4 7-.4 7 .6 1.1 1 2.2 1 3.4C21 17.9 17 21 12 21s-9-3-9-7.6c0-1.2.5-2.4 1-3.4 0 0-1.9-6.4-.5-7 1.4-.6 4.7.2 6.5 2.2A9 9 0 0 1 12 5z"/><path d="M8 14v.5M16 14v.5M11.2 16.3h1.6L12 17z"/></g></symbol>
+    <symbol id="i-perro" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.2C10 3.8 8.4 2.7 6.5 3 3.7 3.5 2.4 9 2.5 10c.1.7 1.7 1.7 3.7 1 1.2-.5 1.9-1.5 2.3-2.5"/><path d="M14.3 5.2c0-1.4 1.6-2.5 3.5-2.2 2.8.5 4.1 6 4 7-.1.7-1.7 1.7-3.7 1-1.2-.5-1.8-1.5-2.2-2.5"/><path d="M8 14v.5M16 14v.5M11.2 16.3h1.6L12 17z"/><path d="M4.4 11.2A13 13 0 0 0 4 14.6C4 18.7 7.6 21 12 21s8-2.3 8-6.4c0-1.1-.2-2.2-.5-3.3M10.3 5.2A8.8 8.8 0 0 1 12 5c.8 0 1.5.1 2.2.3"/></g></symbol>
+    <symbol id="i-pez" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 12c.9-3.5 4.9-6 8.5-6s6.1 2.5 7 6c-.9 3.5-3.4 6-7 6s-7.6-2.5-8.5-6z"/><path d="M18 12v.5M16 17.9a9.8 9.8 0 0 1 0-11.8"/><path d="M7 10.7C7 8 5.6 6 2.7 5.5c-1 1.5-1 5 .2 6.5-1.2 1.5-1.2 5-.2 6.5C5.6 18 7 16 7 13.3"/></g></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.5 6.5h.01"/></g></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></g></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="m22 7-10 7L2 7"/></g></symbol>
+    <symbol id="i-lupa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7.5"/><path d="m21 21-4.6-4.6"/></g></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></g></symbol>
+    <symbol id="i-izq" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></g></symbol>
+    <symbol id="i-der" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></g></symbol>
+    <symbol id="i-promo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></g></symbol>
+    <!-- motivos de sus placas: huellita y huesito -->
+    <symbol id="i-huella" viewBox="0 0 40 40"><g fill="currentColor"><path d="M20 19.5c-5.2 0-10.5 5.6-10.5 10.4 0 3.4 2.6 4.6 5.4 4.6 2 0 3.3-.9 5.1-.9s3.1.9 5.1.9c2.8 0 5.4-1.2 5.4-4.6 0-4.8-5.3-10.4-10.5-10.4z"/><ellipse cx="8.6" cy="16.8" rx="3.7" ry="4.7" transform="rotate(-24 8.6 16.8)"/><ellipse cx="15.6" cy="9.6" rx="3.8" ry="5"/><ellipse cx="24.4" cy="9.6" rx="3.8" ry="5"/><ellipse cx="31.4" cy="16.8" rx="3.7" ry="4.7" transform="rotate(24 31.4 16.8)"/></g></symbol>
+    <symbol id="i-hueso" viewBox="0 0 48 24"><g fill="currentColor"><circle cx="8" cy="7.5" r="5.5"/><circle cx="8" cy="16.5" r="5.5"/><circle cx="40" cy="7.5" r="5.5"/><circle cx="40" cy="16.5" r="5.5"/><rect x="8" y="7" width="32" height="10" rx="3"/></g></symbol>
+  </defs>
+</svg>
+
+<div class="estado" id="estado">
+  <div class="envoltura estado-fila">
+    <span class="estado-tit"><span class="punto" id="estado-punto"></span><span id="estado-tit">Lunes a sábado de 9 a 20</span></span>
+    <span class="estado-det" id="estado-det"></span>
+  </div>
+  <div class="estado-aviso" id="estado-aviso" hidden>
+    <div class="envoltura"><span aria-hidden="true">📢</span><span id="estado-aviso-txt"></span></div>
+  </div>
+</div>
+
+<header class="cab" id="cab">
+  <div class="envoltura cab-fila">
+    <a class="logo" href="#inicio"><img src="img/logo-chico.svg" alt="Zoo Center, ir al inicio" width="763" height="396"></a>
+    <nav aria-label="Secciones">
+      <ul class="menu">
+        <li><a href="#servicios">Servicios</a></li>
+        <li data-sec="promos"><a href="#promos">Promos</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#sucursales">Sucursales</a></li>
+        <li><a href="#clientes">Clientes</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-sec cab-wa" data-wa="Hola Zoo Center! 💜 Quería hacer una consulta." href="https://wa.me/5492236919808" target="_blank" rel="noopener"><span class="burbuja"><svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg></span>Escribinos</a>
+  </div>
+</header>
+
+<main>
+  <section class="portada" id="inicio" aria-label="Inicio">
+    <svg class="deco deco-hueso deco-solo-compu" style="left:3%;top:14%;transform:rotate(-24deg)" viewBox="0 0 48 24" aria-hidden="true"><use href="#i-hueso"></use></svg>
+    <svg class="deco deco-huella deco-solo-compu" style="right:5%;top:8%;transform:rotate(18deg)" viewBox="0 0 40 40" aria-hidden="true"><use href="#i-huella"></use></svg>
+    <svg class="deco deco-huella deco-solo-compu" style="left:44%;bottom:22%;transform:rotate(-12deg)" viewBox="0 0 40 40" aria-hidden="true"><use href="#i-huella"></use></svg>
+    <svg class="deco deco-hueso" style="right:4%;bottom:20%;transform:rotate(14deg)" viewBox="0 0 48 24" aria-hidden="true"><use href="#i-hueso"></use></svg>
+    <span class="deco deco-punto deco-solo-compu" style="left:58%;top:12%" aria-hidden="true"></span>
+    <span class="deco deco-punto deco-solo-compu" style="left:8%;bottom:30%;width:10px;height:10px" aria-hidden="true"></span>
+    <span class="deco deco-punto deco-solo-compu" style="right:16%;top:44%;width:9px;height:9px" aria-hidden="true"></span>
+    <div class="huellas" id="huellas" aria-hidden="true"></div>
+
+    <div class="envoltura portada-grilla">
+      <div>
+        <h1 class="portada-logo"><img src="img/logo.svg" alt="" width="810" height="472"><span class="solo-lector">Zoo Center, petshop y veterinaria en Mar del Plata</span></h1>
+        <p class="lema">Los mejores productos para tus mascotas 💜</p>
+        <p class="portada-donde" id="portada-donde">En Mar del Plata, con dos sucursales: Alberti 1381 y Catamarca 1951.</p>
+        <div class="portada-botones">
+          <a class="btn btn-pri" data-turno="" href="https://wa.me/5492236919808?text=Hola%20Zoo%20Center!%20Quer%C3%ADa%20pedir%20un%20turno." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-cal"></use></svg>Pedir turno</a>
+          <a class="btn btn-sec" data-wa="Hola Zoo Center! 💜 Quería hacer una consulta." href="https://wa.me/5492236919808" target="_blank" rel="noopener"><span class="burbuja"><svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg></span>Escribinos</a>
+        </div>
+        <a class="delivery" href="#servicio-delivery"><span><svg class="ico" aria-hidden="true"><use href="#i-camion"></use></svg></span>Delivery sin cargo</a>
+      </div>
+
+      <aside class="hoy" aria-labelledby="hoy-tit">
+        <p class="hoy-tit" id="hoy-tit">Hoy en Zoo Center</p>
+        <ul class="hoy-lista" id="hoy-lista"></ul>
+        <p class="hoy-aviso" id="hoy-aviso" hidden></p>
+        <div class="hoy-promos" id="hoy-promos" hidden>
+          <h3 id="hoy-promos-tit">Promos de hoy</h3>
+          <div id="hoy-promos-lista"></div>
+        </div>
+      </aside>
+    </div>
+    <svg class="ola" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path fill="#FFFFFF" d="M0 46C160 14 320 8 480 30s320 50 480 34 320-50 480-40v90H0z"/></svg>
+  </section>
+
+  <div class="ventajas">
+    <div class="envoltura">
+      <ul>
+        <li class="ventaja">
+          <span class="ventaja-ico"><svg class="ico" aria-hidden="true"><use href="#i-esteto"></use></svg></span>
+          <div><h3>Veterinaria con turnos</h3><p>Clínica general, vacunas, microchip, ecografías y cirugías, en Alberti 1381.</p></div>
+        </li>
+        <li class="ventaja">
+          <span class="ventaja-ico"><svg class="ico" aria-hidden="true"><use href="#i-tijera"></use></svg></span>
+          <div><h3>Peluquería canina</h3><p>Cortes de raza, baño y corte, corte de uñas y corte higiénico, en Alberti 1381.</p></div>
+        </li>
+        <li class="ventaja">
+          <span class="ventaja-ico"><svg class="ico" aria-hidden="true"><use href="#i-pin"></use></svg></span>
+          <div><h3>2 sucursales</h3><p>Alberti 1381 y Catamarca 1951. <span data-horario>De lunes a sábado, de 9 a 20 h</span>.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="seccion" id="servicios" aria-labelledby="servicios-tit">
+    <div class="envoltura">
+      <h2 id="servicios-tit">Nuestros servicios</h2>
+      <p class="intro">La veterinaria y la peluquería están en Alberti 1381. Elegí día y hora y te confirmamos el turno por WhatsApp 🐾</p>
+      <div class="serv-grilla" id="serv-grilla"></div>
+      <div class="asi" id="asi">
+        <h3>Así quedaron 🐶</h3>
+        <p class="intro">Algunos de los amiguitos perrunos que pasaron por la peluquería.</p>
+        <div id="asi-galeria"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion promos" id="promos" aria-labelledby="promos-tit">
+    <div class="envoltura">
+      <h2 id="promos-tit">Promos</h2>
+      <p class="intro">Las promos vigentes en Zoo Center. Si tenés dudas sobre alguna, escribinos.</p>
+      <div class="promos-grilla" id="promos-grilla"></div>
+    </div>
+  </section>
+
+  <section class="seccion" id="catalogo" aria-labelledby="catalogo-tit">
+    <div class="envoltura">
+      <h2 id="catalogo-tit">Catálogo del petshop</h2>
+      <p class="intro">No es una tienda online: mirá lo que tenemos, elegí lo que te interesa y consultanos por WhatsApp 💜</p>
+      <div class="cat-controles">
+        <div class="buscador">
+          <label class="solo-lector" for="cat-buscar">Buscar en el catálogo</label>
+          <svg class="ico" aria-hidden="true"><use href="#i-lupa"></use></svg>
+          <input id="cat-buscar" type="search" placeholder="Buscar: medalla, abrigo, piedras…" autocomplete="off" enterkeyhint="search">
+        </div>
+        <div class="filtro" id="filtro-mascota">
+          <span class="filtro-tit" id="f-mascota-tit">Para</span>
+          <div class="chips" id="f-mascota" role="group" aria-labelledby="f-mascota-tit"></div>
+        </div>
+        <div class="filtro" id="filtro-cat">
+          <span class="filtro-tit" id="f-cat-tit">Categoría</span>
+          <div class="chips" id="f-cat" role="group" aria-labelledby="f-cat-tit"></div>
+        </div>
+      </div>
+      <div class="cat-info"><span id="cat-cuenta" aria-live="polite"></span><span id="cat-precios"></span></div>
+      <div class="cat-grilla" id="cat-grilla"></div>
+      <div class="cat-vacio" id="cat-vacio" hidden></div>
+      <p class="cat-nota">¿No encontrás lo que buscás? <a data-wa="Hola Zoo Center! Quería consultar si tienen…" href="https://wa.me/5492236919808" target="_blank" rel="noopener">Preguntanos por WhatsApp</a>.</p>
+      <div id="cat-faltas"></div>
+    </div>
+  </section>
+
+  <section class="seccion" id="sucursales" aria-labelledby="sucursales-tit" style="padding-top:0">
+    <div class="envoltura">
+      <h2 id="sucursales-tit">Nuestras sucursales</h2>
+      <p class="intro"><span data-horario>De lunes a sábado, de 9 a 20 h</span>. <span data-cerrado>Domingo cerrado</span>.</p>
+      <div class="suc-grilla" id="suc-grilla"></div>
+    </div>
+  </section>
+
+  <section class="seccion clientes" id="clientes" aria-labelledby="clientes-tit">
+    <svg class="deco deco-huella" style="right:4%;top:10%;transform:rotate(-16deg)" viewBox="0 0 40 40" aria-hidden="true"><use href="#i-huella"></use></svg>
+    <svg class="deco deco-hueso deco-solo-compu" style="left:46%;bottom:8%;transform:rotate(10deg)" viewBox="0 0 48 24" aria-hidden="true"><use href="#i-hueso"></use></svg>
+    <span class="deco deco-punto" style="left:6%;top:12%;width:11px;height:11px" aria-hidden="true"></span>
+    <div class="envoltura clientes-grilla">
+      <div>
+        <h2 id="clientes-tit">Nuestros clientes</h2>
+        <p class="intro">Los amiguitos que nos visitan en el local 💜</p>
+        <div class="invitacion">
+          <p>Subí una foto con tu mascota, etiquetanos y la subimos a historias 📸🐾</p>
+          <a class="btn btn-pri" id="ig-link" href="https://www.instagram.com/zoocentermdp/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-ig"></use></svg>@zoocentermdp</a>
+        </div>
+      </div>
+      <div id="clientes-galeria"></div>
+    </div>
+  </section>
+
+  <section class="seccion" id="preguntas" aria-labelledby="preguntas-tit">
+    <div class="envoltura">
+      <h2 id="preguntas-tit">Preguntas frecuentes</h2>
+      <div class="faq" id="faq"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="envoltura">
+    <div class="pie-grilla">
+      <div>
+        <a class="logo logo-pie" href="#inicio"><img src="img/logo-blanco.svg" alt="Zoo Center, volver al inicio" width="690" height="376"></a>
+        <p class="pie-lema">Los mejores productos para tus mascotas 💜</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg><a data-wa="Hola Zoo Center! 💜 Quería hacer una consulta." href="https://wa.me/5492236919808" target="_blank" rel="noopener">WhatsApp 223 691-9808</a></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-tel"></use></svg><a href="tel:+5492236919808">Llamar al 223 691-9808</a></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg><a href="mailto:zoocentermdq@gmail.com">zoocentermdq@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sucursales</h3>
+        <ul id="pie-sucursales">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-pin"></use></svg>Alberti 1381</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-pin"></use></svg>Catamarca 1951</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-reloj"></use></svg><span><span data-horario>De lunes a sábado, de 9 a 20 h</span></span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Redes</h3>
+        <ul>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-ig"></use></svg><a href="https://www.instagram.com/zoocentermdp/" target="_blank" rel="noopener">Instagram @zoocentermdp</a></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-fb"></use></svg><a href="https://www.facebook.com/p/Zoo-Center-Mar-del-Plata-100083610631017/" target="_blank" rel="noopener">Facebook Zoo Center Mar del Plata</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="pie-credito">Sitio web diseñado por Mateo Berchot</p>
+  </div>
+</footer>
+
+<nav class="barra-abajo" aria-label="Contacto rápido">
+  <a class="btn btn-sec" data-wa="Hola Zoo Center! 💜 Quería hacer una consulta." href="https://wa.me/5492236919808" target="_blank" rel="noopener"><span class="burbuja"><svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg></span>WhatsApp</a>
+  <a class="btn btn-pri" data-turno="" href="https://wa.me/5492236919808?text=Hola%20Zoo%20Center!%20Quer%C3%ADa%20pedir%20un%20turno." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-cal"></use></svg>Pedir turno</a>
+</nav>
+
+<!-- Pedir turno: arma el mensaje y abre WhatsApp -->
+<dialog id="turno" aria-labelledby="turno-tit">
+  <form id="turno-form" method="dialog" novalidate>
+    <div class="dlg-cab">
+      <h2 id="turno-tit">Pedir turno</h2>
+      <button type="button" class="cerrar" data-cerrar aria-label="Cerrar"><svg class="ico" aria-hidden="true"><use href="#i-x"></use></svg></button>
+    </div>
+    <div class="turno-cuerpo">
+     <fieldset class="campos" id="turno-datos">
+      <div class="segm" role="radiogroup" aria-label="¿Para qué es el turno?">
+        <label><input type="radio" name="tipo" id="tipo-vet" value="vet" checked><span><svg class="ico" aria-hidden="true"><use href="#i-esteto"></use></svg>Veterinaria</span></label>
+        <label><input type="radio" name="tipo" id="tipo-pelu" value="pelu"><span><svg class="ico" aria-hidden="true"><use href="#i-tijera"></use></svg>Peluquería</span></label>
+      </div>
+      <p class="turno-ayuda" id="turno-ayuda">Elegí día y hora y se abre WhatsApp con el pedido listo para mandar. Te confirmamos el turno por WhatsApp.</p>
+
+      <div class="dos">
+        <div class="campo">
+          <label for="t-dueno">Tu nombre</label>
+          <input type="text" id="t-dueno" name="dueno" autocomplete="name" maxlength="60" required>
+        </div>
+        <div class="campo">
+          <label for="t-cel">Tu WhatsApp</label>
+          <input type="tel" id="t-cel" name="cel" autocomplete="tel-national" inputmode="tel" maxlength="30" placeholder="Ej.: 223 512-3456" required>
+        </div>
+      </div>
+
+      <fieldset class="campos" id="campos-vet">
+        <div class="campo">
+          <label for="t-mascota">Nombre de tu mascota</label>
+          <input type="text" id="t-mascota" name="mascota" maxlength="40" required>
+        </div>
+        <fieldset class="campo">
+          <legend>Especie</legend>
+          <div class="opciones">
+            <label class="opcion"><input type="radio" name="especie" id="t-esp-perro" value="perro" required><span>🐶 Perro</span></label>
+            <label class="opcion"><input type="radio" name="especie" id="t-esp-gato" value="gato"><span>🐱 Gato</span></label>
+            <label class="opcion"><input type="radio" name="especie" id="t-esp-otro" value="otro"><span>Otro</span></label>
+          </div>
+        </fieldset>
+        <div class="campo">
+          <label for="t-motivo">Motivo</label>
+          <select id="t-motivo" name="motivo" required></select>
+        </div>
+      </fieldset>
+
+      <fieldset class="campos" id="campos-pelu" disabled hidden>
+        <div class="dos">
+          <div class="campo">
+            <label for="t-perro">Nombre de tu perro <span class="opc">(opcional)</span></label>
+            <input type="text" id="t-perro" name="perro" maxlength="40">
+          </div>
+          <div class="campo">
+            <label for="t-raza">Raza</label>
+            <input type="text" id="t-raza" name="raza" maxlength="40" placeholder="Ej.: caniche, mestizo…" required>
+          </div>
+        </div>
+        <fieldset class="campo">
+          <legend>Tamaño</legend>
+          <div class="opciones">
+            <label class="opcion"><input type="radio" name="tamano" id="t-tam-chico" value="chico" required><span>Chico</span></label>
+            <label class="opcion"><input type="radio" name="tamano" id="t-tam-mediano" value="mediano"><span>Mediano</span></label>
+            <label class="opcion"><input type="radio" name="tamano" id="t-tam-grande" value="grande"><span>Grande</span></label>
+          </div>
+        </fieldset>
+        <div class="campo">
+          <label for="t-servicio">Servicio</label>
+          <select id="t-servicio" name="servicio" required></select>
+        </div>
+      </fieldset>
+
+      <div class="dos">
+        <div class="campo">
+          <label for="t-dia">Día</label>
+          <input type="date" id="t-dia" name="dia" required>
+        </div>
+        <div class="campo">
+          <label for="t-hora">Hora</label>
+          <select id="t-hora" name="hora" required disabled><option value="">Elegí primero el día</option></select>
+        </div>
+      </div>
+     </fieldset>
+      <p class="turno-error" id="turno-error" role="alert" hidden></p>
+      <button type="button" class="btn btn-pri turno-enviar" id="turno-reservar" hidden><svg class="ico" aria-hidden="true"><use href="#i-cal"></use></svg>Reservar horario</button>
+      <p class="turno-reservado" id="turno-reservado" role="status" hidden></p>
+      <a class="btn btn-pri turno-enviar" id="turno-enviar" href="https://wa.me/5492236919808" target="_blank" rel="noopener"><span class="burbuja"><svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg></span>Enviar pedido por WhatsApp</a>
+      <p class="turno-listo" id="turno-listo" role="status" hidden>Ahora mandá el mensaje que se abrió en WhatsApp y te confirmamos el turno por ahí 💜 Si no se abrió, escribinos al 223 691-9808.</p>
+    </div>
+  </form>
+</dialog>
+
+<!-- Panel del local: se abre con el link que llega en cada pedido de turno (#t-…). Confirma en un toque. -->
+<dialog id="panel" aria-labelledby="panel-tit">
+  <div class="dlg-cab">
+    <h2 id="panel-tit">Turno pedido</h2>
+    <button type="button" class="cerrar" data-cerrar aria-label="Cerrar"><svg class="ico" aria-hidden="true"><use href="#i-x"></use></svg></button>
+  </div>
+  <div class="turno-cuerpo" id="panel-cuerpo"></div>
+</dialog>
+
+<!-- Agenda del local (#agenda): turnos de los próximos días y "ocupar un horario". Pide la clave del local. -->
+<dialog id="agenda" aria-labelledby="agenda-tit">
+  <div class="dlg-cab">
+    <h2 id="agenda-tit">Agenda de turnos</h2>
+    <button type="button" class="cerrar" data-cerrar aria-label="Cerrar"><svg class="ico" aria-hidden="true"><use href="#i-x"></use></svg></button>
+  </div>
+  <div class="turno-cuerpo" id="agenda-cuerpo"></div>
+</dialog>
+
+<!-- Visor de fotos (galerías y productos) -->
+<dialog id="visor" aria-labelledby="visor-tit">
+  <div class="dlg-cab">
+    <h2 id="visor-tit">Foto</h2>
+    <button type="button" class="cerrar" data-cerrar aria-label="Cerrar"><svg class="ico" aria-hidden="true"><use href="#i-x"></use></svg></button>
+  </div>
+  <figure class="visor-fig" id="visor-fig">
+    <img id="visor-img" alt="" draggable="false">
+    <figcaption class="visor-pie">
+      <p id="visor-pie"></p>
+      <span class="visor-flechas" id="visor-flechas">
+        <button type="button" id="visor-ant" aria-label="Foto anterior"><svg class="ico" aria-hidden="true"><use href="#i-izq"></use></svg></button>
+        <span id="visor-cuenta"></span>
+        <button type="button" id="visor-sig" aria-label="Foto siguiente"><svg class="ico" aria-hidden="true"><use href="#i-der"></use></svg></button>
+      </span>
+    </figcaption>
+  </figure>
+</dialog>
+
+<script>
+"use strict";
+/* ==================================================================
+   DATOS — todo lo que cambia seguido está acá arriba.
+   · Un campo vacío ("" o []) no dibuja nada en la página.
+   · pendiente:true = falta que el dueño lo confirme. NO se ve en la web
+     publicada; solo en la vista borrador (VISTA_BORRADOR, más abajo).
+   ================================================================== */
+
+// Sucursales. servicios: veterinaria · peluqueria · petshop · guarderia · acuario
+// lat / lng: copiarlas de Google Maps (también van a la ficha de Google, en el <head>).
+// foto: archivo en fotos/ (del frente, real). Vacía = no se muestra.
+const SUCURSALES = [
+  { id:"alberti", nombre:"Alberti", direccion:"Alberti 1381", ciudad:"Mar del Plata",
+    servicios:["veterinaria","peluqueria","petshop"],
+    aConfirmar:["guarderia","acuario"],   // figuran en Facebook; falta que el dueño confirme que siguen
+    lat:"", lng:"", foto:"", fotoAlt:"" },
+  { id:"catamarca", nombre:"Catamarca", direccion:"Catamarca 1951", ciudad:"Mar del Plata",
+    servicios:["petshop"],
+    lat:"", lng:"", foto:"", fotoAlt:"" },
+];
+
+// Horario de atención. Vale para todas las sucursales, salvo que una tenga su propio "horarios:[...]".
+// Un día que no figura = cerrado.
+const HORARIOS = [
+  { dias:["lunes","martes","miércoles","jueves","viernes","sábado"], abre:"09:00", cierra:"20:00" },
+];
+
+// Días especiales: feriados, cierres, horario cortado. Ejemplo:
+// { fecha:"2026-11-23", avisarDesde:"2026-11-20", aviso:"Feriado: abre solo Alberti, de 9 a 13 🐾", abiertas:{ alberti:"09:00-13:00" } },
+//   aviso: el texto de la barra de arriba (se ve desde "avisarDesde" hasta "fecha").
+//   abiertas: qué sucursales abren ese día y en qué horario; las que no figuran, cerradas.
+//   Sin "abiertas", solo se muestra el aviso y vale el horario de siempre.
+const DIAS_ESPECIALES = [
+];
+
+// Servicios (todos en Alberti 1381). turno: "vet" o "pelu" muestra el botón "Pedir turno".
+const SERVICIOS = [
+  { id:"veterinaria", nombre:"Veterinaria", sucursal:"alberti", modo:"Con turnos programados",
+    items:["Clínica general","Vacunación","Desparasitación","Certificado de buena salud","Colocación de microchip","Ecografías","Cirugías"],
+    turno:"vet",
+    nota:"" },   // texto corto sobre por qué vacunar: SOLO si el veterinario lo revisa y aprueba
+  { id:"peluqueria", nombre:"Peluquería canina", sucursal:"alberti",
+    bajada:"Para que tu mejor amigo quede hermoso 🐶",
+    items:["Cortes de raza","Corte de uñas","Baño y corte","Corte higiénico"],
+    turno:"pelu" },
+  { id:"delivery", nombre:"Delivery sin cargo", ancho:true,
+    bajada:"Escribinos por WhatsApp y te contamos zona y días.",   // zona, mínimo y días: a confirmar
+    consulta:"Hola Zoo Center! Quería consultar por el delivery." },
+  { id:"guarderia", nombre:"Guardería felina", sucursal:"alberti", pendiente:true,
+    bajada:"Figura en Facebook. Falta que el dueño confirme si sigue." },
+  { id:"acuario", nombre:"Acuario", sucursal:"alberti", pendiente:true,
+    bajada:"Figura en Facebook. Falta que el dueño confirme si sigue." },
+];
+
+// Turnos: cada cuántos minutos se ofrecen horarios y cuánto dura cada turno (para la agenda).
+// Se ofrecen dentro del horario de la sucursal (y de DIAS_ESPECIALES); "horarios:[...]" (igual que HORARIOS)
+// los acota, por ejemplo si el veterinario atiende menos horas. PROVISORIO: confirmar con el dueño.
+const TURNOS = {
+  vet:  { intervalo:30, duracion:30 },
+  pelu: { intervalo:30, duracion:60 },
+  anticipacion:60,   // para hoy: desde dentro de cuántos minutos se puede pedir
+};
+
+// Agenda compartida en Supabase: con esto, dos clientes no pueden pedir el mismo horario (ver supabase/turnos.sql).
+// Vacía = los turnos funcionan igual por WhatsApp, pero sin bloquear horarios.
+// clave: SOLO la publicable (sb_publishable_…). Nunca la secret / service_role.
+const AGENDA = { url:"https://ebkfuvvbhsztenbkyvyw.supabase.co", clave:"sb_publishable_TalmeckEDthzyY1IE9NRmw_g1rKZkIE" };
+
+// Catálogo del petshop: para mirar y consultar, no para comprar online.
+//   n nombre · cat categoría · mascota: perro / gato / ambos / peces / otros ("" = sin definir)
+//   d descripción · p precio (número, opcional) · f foto en fotos/ (opcional, real)
+//   sucursal: "alberti" / "catamarca" si hay stock solo ahí (opcional) · nuevo:true = "Nuevo ingreso"
+// Cargar solo productos confirmados. La mascota de cada uno es PROVISORIA (ver CLAUDE.md).
+const CATALOGO = [
+  { n:"Abrigos", cat:"Indumentaria", mascota:"perro", d:"En varios diseños, talles y colores." },
+  { n:"Chombas rayadas", cat:"Indumentaria", mascota:"perro", d:"En varios diseños, talles y colores." },
+  { n:"Crocs", cat:"Indumentaria", mascota:"perro", d:"En varios diseños, talles y colores." },
+  { n:"Pelotas", cat:"Accesorios y juguetes", mascota:"perro" },
+  { n:"Mordillos", cat:"Accesorios y juguetes", mascota:"perro" },
+  { n:"Peluches", cat:"Accesorios y juguetes", mascota:"" },
+  { n:"Medallas", cat:"Identificación", mascota:"ambos", d:"De fácil grabado." },
+  { n:"Medalla GeoID con QR", cat:"Identificación", mascota:"ambos", d:"Para identificar a tu mascota." },
+  { n:"Shampoo hipoalergénico premium", cat:"Higiene y estética", mascota:"" },
+  { n:"Perfumes", cat:"Higiene y estética", mascota:"" },
+  { n:"Repelente", cat:"Higiene y estética", mascota:"" },
+  { n:"Piedras sanitarias aglutinantes", cat:"Gatos", mascota:"gato" },
+  { n:"Sanitarios", cat:"Gatos", mascota:"gato" },
+  { n:"Pipetas y antiparasitarios", cat:"Salud", mascota:"", d:"Marcas como Bravecto y Protech." },
+  { n:"Productos para reducir el estrés", cat:"Salud", mascota:"" },
+  // Alimentos: confirmar con el dueño qué marcas trabajan. NO inventar la lista.
+];
+const PRECIOS_AL = "";   // "AAAA-MM-DD": fecha de actualización de los precios (obligatoria si se carga alguno)
+
+// Promos. dias: [] = todos los días · desde / vence: "AAAA-MM-DD" (vence incluido; vencidas se ocultan solas)
+//   banco y sucursal son opcionales. pendiente:true = no se publica hasta que el dueño la confirme.
+const PROMOS = [
+  { titulo:"Promo BBVA", banco:"BBVA", detalle:"",   // falta el detalle: descuento, cuotas, tarjetas
+    dias:["martes","jueves","viernes","sábado"], vence:"", pendiente:true },
+  { titulo:"Cuenta DNI", banco:"Banco Provincia", detalle:"Con topes según el tipo de cliente.",
+    dias:[], vence:"2026-09-30", pendiente:true },   // vencida: no se ve en ningún modo
+  { titulo:"Promo Bravecto",
+    detalle:"Comprando productos Bravecto te llevás una medallita GeoID con QR para identificar a tu mascota.",
+    dias:[], sucursal:"alberti", vence:"", pendiente:true },
+];
+
+// "Así quedaron": fotos reales de la peluquería, del Instagram y con permiso del dueño.
+//   { f:"pelu-toby.webp", alt:"Caniche blanco recién bañado y cortado", pie:"Toby, baño y corte" }
+//   o un antes y después: { antes:"toby-antes.webp", despues:"toby-despues.webp", alt:"…", pie:"…" }
+const ASI_QUEDARON = [
+];
+
+// "Nuestros clientes": fotos de mascotas que visitaron el local (del Instagram, con permiso).
+//   { f:"cliente-luna.webp", alt:"Gata atigrada en el mostrador de Alberti", pie:"Luna" }
+const CLIENTES = [
+];
+
+// Preguntas frecuentes: SOLO respuestas confirmadas. {horario} y {sucursales} se completan solos.
+const PREGUNTAS = [
+  { q:"¿Hacen delivery?", a:"Sí, el delivery es sin cargo 🚚 Escribinos por WhatsApp y te contamos zona y días." },
+  { q:"¿Cómo pido un turno para la veterinaria o la peluquería?", a:"Tocá «Pedir turno», elegí día y hora y se abre WhatsApp con el pedido listo para mandar. Te confirmamos el turno por WhatsApp. La veterinaria y la peluquería están en Alberti 1381." },
+  { q:"¿Qué horario tienen?", a:"Las dos sucursales abren {horario}." },
+  { q:"¿Qué hay en cada sucursal?", a:"{sucursales}" },
+  { q:"¿Qué medios de pago aceptan?", a:"", pendiente:true },
+  { q:"¿Hace falta turno o puedo ir sin turno?", a:"", pendiente:true },
+  { q:"¿Hasta dónde llega el delivery? ¿Hay compra mínima?", a:"", pendiente:true },
+];
+
+const CONTACTO = {
+  whatsapp:"5492236919808",          // wa.me
+  telefono:"223 691-9808",
+  email:"zoocentermdq@gmail.com",
+  instagram:"zoocentermdp",
+  facebook:"https://www.facebook.com/p/Zoo-Center-Mar-del-Plata-100083610631017/",
+  sitio:"https://berchotmateo-spec.github.io/zoo-center/",   // dirección pública de la web (cuando tenga dominio): va en el link de cada pedido de turno. Vacía = la que se está usando
+};
+
+// true = muestra lo pendiente marcado "A confirmar" (para revisarlo con el dueño). En la web publicada: false.
+// También se activa agregando #borrador al final de la dirección.
+const VISTA_BORRADOR = false;
+
+const MEDIDAS = {  // la escribe hacer-fotos.py, no se toca a mano
+  /* MEDIDAS-EMPIEZA */
+  /* MEDIDAS-TERMINA */
+};
+
+/* ==================================================================
+   De acá para abajo, el funcionamiento. Para cambiar contenido,
+   tocar los datos de arriba.
+   ================================================================== */
+const BORRADOR = VISTA_BORRADOR || /(^|[?#&])borrador\b/.test(location.search + location.hash);
+const ver = (x) => !!x && (!x.pendiente || BORRADOR);
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+const norm = (s) => String(s ?? "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
+const ico = (n, c = "") => `<svg class="ico ${c}" aria-hidden="true" focusable="false"><use href="#i-${n}"></use></svg>`;
+const burbuja = (n = "wa") => `<span class="burbuja">${ico(n)}</span>`;
+const wa = (texto) => `https://wa.me/${CONTACTO.whatsapp}?text=${encodeURIComponent(texto)}`;
+const marcaPend = (x) => (x && x.pendiente ? `<span class="marca-pend">A confirmar</span>` : "");
+const falta = (html) => (BORRADOR ? `<div class="falta"><span class="marca-pend">Falta</span> ${html}</div>` : "");
+const unirY = (a) => (a.length < 2 ? a[0] || "" : a.slice(0, -1).join(", ") + " y " + a[a.length - 1]);
+const mayus = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
+const sucursal = (id) => SUCURSALES.find((s) => s.id === id);
+const dims = (f) => (MEDIDAS[f] ? `width="${MEDIDAS[f][0]}" height="${MEDIDAS[f][1]}"` : "");
+const pesos = (n) => new Intl.NumberFormat("es-AR", { style:"currency", currency:"ARS", maximumFractionDigits:0 }).format(n);
+
+const DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+const diaIdx = (n) => DIAS.findIndex((d) => norm(d) === norm(n));
+const RUBROS = {
+  veterinaria:{ n:"Veterinaria", i:"esteto" },
+  peluqueria:{ n:"Peluquería canina", i:"tijera" },
+  petshop:{ n:"Petshop", i:"tienda" },
+  guarderia:{ n:"Guardería felina", i:"gato" },
+  acuario:{ n:"Acuario", i:"pez" },
+  delivery:{ n:"Delivery", i:"camion" },
+};
+const ICONO_CAT = { "Indumentaria":"remera", "Accesorios y juguetes":"pelota", "Identificación":"etiqueta",
+  "Higiene y estética":"gota", "Gatos":"gato", "Salud":"salud", "Alimentos":"plato" };
+const MASCOTAS = [
+  { id:"perro", n:"Perros", i:"perro", largo:"Para perros" },
+  { id:"gato", n:"Gatos", i:"gato", largo:"Para gatos" },
+  { id:"peces", n:"Peces", i:"pez", largo:"Para peces" },
+  { id:"otros", n:"Otros", i:"huella", largo:"Otras mascotas" },
+];
+const mascotaLargo = (m) => (m === "ambos" ? "Para perros y gatos" : (MASCOTAS.find((x) => x.id === m) || {}).largo || "");
+
+/* ---------- fechas y horario (siempre en hora de Argentina) ---------- */
+const ZONA = "America/Argentina/Buenos_Aires";
+const aUTC = (f) => { const [y, m, d] = f.split("-").map(Number); return new Date(Date.UTC(y, m - 1, d)); };
+const diaDe = (f) => aUTC(f).getUTCDay();
+const sumarDias = (f, n) => { const d = aUTC(f); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
+const aMin = (h) => { const [a, b = "0"] = String(h).split(":"); return +a * 60 + +b; };
+const hora = (m) => { const h = Math.floor(m / 60) % 24, mm = m % 60; return mm ? `${h}:${String(mm).padStart(2, "0")}` : `${h}`; };
+const fechaCorta = (f) => { const [, m, d] = f.split("-"); return `${d}/${m}`; };
+const fechaLarga = (f) => { const [y, m, d] = f.split("-"); return `${d}/${m}/${y}`; };
+
+function ahora() {
+  const d = new Date();
+  try {
+    const p = {};
+    new Intl.DateTimeFormat("en-US", { timeZone:ZONA, year:"numeric", month:"2-digit", day:"2-digit",
+      hour:"2-digit", minute:"2-digit", hourCycle:"h23" }).formatToParts(d).forEach((x) => (p[x.type] = x.value));
+    const fecha = `${p.year}-${p.month}-${p.day}`;
+    return { fecha, dia:diaDe(fecha), min:(+p.hour % 24) * 60 + +p.minute };
+  } catch (e) {
+    const fecha = [d.getFullYear(), String(d.getMonth() + 1).padStart(2, "0"), String(d.getDate()).padStart(2, "0")].join("-");
+    return { fecha, dia:d.getDay(), min:d.getHours() * 60 + d.getMinutes() };
+  }
+}
+
+const especial = (fecha) => DIAS_ESPECIALES.find((e) => e.fecha === fecha);
+
+// Tramos abiertos de una sucursal en una fecha, en minutos: [[540, 1200]]
+function tramos(suc, fecha) {
+  const e = especial(fecha);
+  if (e && e.abiertas) {
+    const r = e.abiertas[suc.id];
+    const m = r && String(r).match(/(\d{1,2}(?::\d{2})?)\s*(?:-|a)\s*(\d{1,2}(?::\d{2})?)/);
+    return m ? [[aMin(m[1]), aMin(m[2])]] : [];
+  }
+  const dia = diaDe(fecha);
+  return (suc.horarios || HORARIOS)
+    .filter((h) => (h.dias || []).some((n) => diaIdx(n) === dia))
+    .map((h) => [aMin(h.abre), aMin(h.cierra)]);
+}
+
+function estadoSucursal(suc, t) {
+  const abierto = tramos(suc, t.fecha).find(([a, c]) => t.min >= a && t.min < c);
+  if (abierto) return { abierta:true, cierra:abierto[1] };
+  for (let i = 0; i <= 14; i++) {
+    const f = sumarDias(t.fecha, i);
+    const tr = tramos(suc, f).filter(([a]) => i > 0 || a > t.min).sort((x, y) => x[0] - y[0]);
+    if (tr.length) return { abierta:false, abre:tr[0][0], dias:i, fecha:f };
+  }
+  return { abierta:false };
+}
+
+function cuando(e) {
+  if (e.dias == null) return "";
+  const d = e.dias === 0 ? "hoy" : e.dias === 1 ? "mañana" : `el ${DIAS[diaDe(e.fecha)]}`;
+  return `${d} a las ${hora(e.abre)}`;
+}
+
+const avisoDe = (f) => {
+  const e = DIAS_ESPECIALES.find((x) => x.aviso && f >= (x.avisarDesde || x.fecha) && f <= x.fecha);
+  return e ? e.aviso : "";
+};
+
+// "lunes a sábado", "martes y jueves", "lunes, miércoles y viernes"
+function rangoDias(nombres) {
+  const orden = [...new Set(nombres.map(diaIdx).filter((i) => i >= 0).map((i) => (i + 6) % 7))].sort((a, b) => a - b);
+  const grupos = [];
+  orden.forEach((i) => {
+    const g = grupos[grupos.length - 1];
+    if (g && i === g[g.length - 1] + 1) g.push(i); else grupos.push([i]);
+  });
+  const nombre = (i) => DIAS[(i + 1) % 7];
+  return unirY(grupos.map((g) => (g.length >= 3 ? `${nombre(g[0])} a ${nombre(g[g.length - 1])}` : unirY(g.map(nombre)))));
+}
+const horarioFrase = (lista = HORARIOS) => lista.map((h) => `de ${rangoDias(h.dias)}, de ${hora(aMin(h.abre))} a ${hora(aMin(h.cierra))}\u00a0h`).join("; ");
+function diasCerrados(lista = HORARIOS) {
+  const abiertos = new Set(lista.flatMap((h) => h.dias.map(diaIdx)));
+  return [1, 2, 3, 4, 5, 6, 0].filter((i) => !abiertos.has(i)).map((i) => DIAS[i]);
+}
+
+/* ---------- barra de estado, tarjeta "Hoy" y estado de cada sucursal ---------- */
+const poner = (sel, txt) => { const el = $(sel); if (el.textContent !== txt) el.textContent = txt; };
+function pintarEstado() {
+  const t = ahora();
+  const est = SUCURSALES.map((s) => ({ s, e:estadoSucursal(s, t) }));
+  const abiertas = est.filter((x) => x.e.abierta);
+  const cerradas = est.filter((x) => !x.e.abierta);
+  let det = "";
+  if (abiertas.length) {
+    const cierres = [...new Set(abiertas.map((x) => x.e.cierra))];
+    if (!cerradas.length && cierres.length === 1) {
+      det = est.length === 2 ? `Las dos sucursales, hasta las ${hora(cierres[0])}\u00a0h` : `Hasta las ${hora(cierres[0])}\u00a0h`;
+    } else {
+      det = abiertas.map((x) => `${x.s.nombre} hasta las ${hora(x.e.cierra)}\u00a0h`).join(" · ");
+      if (cerradas.length) det += ` · ${unirY(cerradas.map((x) => x.s.nombre))}: ${cerradas.length > 1 ? "cerradas" : "cerrada"}`;
+    }
+  } else {
+    const prox = est.filter((x) => x.e.dias != null).sort((a, b) => a.e.dias - b.e.dias || a.e.abre - b.e.abre);
+    if (prox.length) {
+      const p = prox[0];
+      const juntas = prox.filter((x) => x.e.dias === p.e.dias && x.e.abre === p.e.abre).length === est.length;
+      det = `Abrimos ${cuando(p.e)}${juntas ? "" : ` en ${p.s.nombre}`}`;
+    }
+  }
+  $("#estado-punto").classList.toggle("abierto", abiertas.length > 0);
+  poner("#estado-tit", abiertas.length ? "Abierto ahora" : "Cerrado");
+  poner("#estado-det", det);
+
+  const aviso = avisoDe(t.fecha);
+  $("#estado-aviso").hidden = !aviso;
+  $("#estado-aviso-txt").textContent = aviso;
+  $("#hoy-aviso").hidden = !aviso;
+  $("#hoy-aviso").textContent = aviso ? `📢 ${aviso}` : "";
+
+  $("#hoy-tit").textContent = `Hoy ${DIAS[t.dia]} en Zoo Center`;
+  $("#hoy-lista").innerHTML = est.map(({ s, e }) => `
+    <li><span class="punto ${e.abierta ? "abierto" : ""}"></span>
+      <span><b>${esc(s.direccion)}</b>
+      <small>${e.abierta ? `Abierta ahora, hasta las ${hora(e.cierra)}\u00a0h` : `Cerrada${cuando(e) ? ` · abre ${cuando(e)}` : ""}`}</small></span></li>`).join("");
+
+  est.forEach(({ s, e }) => {
+    const el = document.querySelector(`[data-estado-suc="${s.id}"]`);
+    if (el) el.innerHTML = `<span class="punto ${e.abierta ? "abierto" : ""}"></span>${e.abierta ? `Abierta · hasta las ${hora(e.cierra)}\u00a0h` : `Cerrada${cuando(e) ? ` · abre ${cuando(e)}` : ""}`}`;
+  });
+
+  pintarPromosHoy(t);
+}
+
+/* ---------- promos ---------- */
+const vigente = (p, f) => ver(p) && !!p.titulo && (!p.desde || f >= p.desde) && (!p.vence || f <= p.vence);
+const conDias = (p) => !!(p.dias && p.dias.length);
+const esDeHoy = (p, dia) => !conDias(p) || p.dias.some((n) => diaIdx(n) === dia);
+const textoDias = (dias) => mayus(unirY(dias.map((n) => { const d = DIAS[diaIdx(n)] || n; return /o$/.test(d) ? d + "s" : d; })));
+
+function pintarPromos() {
+  const t = ahora();
+  const lista = PROMOS.filter((p) => vigente(p, t.fecha));
+  $("#promos").hidden = !lista.length;
+  $("#promos-grilla").innerHTML = lista.map((p) => {
+    const hoy = conDias(p) && esDeHoy(p, t.dia);
+    const s = sucursal(p.sucursal);
+    return `<article class="promo ${hoy ? "es-hoy" : ""} ${p.pendiente ? "pendiente" : ""}">
+      <div class="promo-cab">${hoy ? `<span class="tag tag-hoy">¡Hoy!</span>` : ""}${p.banco ? `<span class="tag">${esc(p.banco)}</span>` : ""}${marcaPend(p)}</div>
+      <h3>${esc(p.titulo)}</h3>
+      ${p.detalle ? `<p>${esc(p.detalle)}</p>` : (p.pendiente ? falta("el detalle de la promo") : "")}
+      <ul class="promo-datos">
+        ${conDias(p) ? `<li>${ico("cal")}<span>${esc(textoDias(p.dias))}</span></li>` : ""}
+        ${s ? `<li>${ico("pin")}<span>Solo en ${esc(s.direccion)}</span></li>` : ""}
+        ${p.vence ? `<li>${ico("reloj")}<span>Hasta el ${fechaLarga(p.vence)}</span></li>` : ""}
+      </ul></article>`;
+  }).join("");
+  $$('[data-sec="promos"]').forEach((el) => (el.hidden = !lista.length));
+}
+
+function pintarPromosHoy(t) {
+  const hoy = PROMOS.filter((p) => vigente(p, t.fecha) && esDeHoy(p, t.dia));
+  $("#hoy-promos").hidden = !hoy.length;
+  $("#hoy-promos-tit").textContent = `Promos de hoy ${DIAS[t.dia]}`;
+  $("#hoy-promos-lista").innerHTML = hoy.map((p) => `
+    <a class="hoy-promo ${p.pendiente ? "pendiente" : ""}" href="#promos">${burbuja("promo")}
+      <span><b>${esc(p.titulo)}</b>${p.detalle ? `<small>${esc(p.detalle)}</small>` : ""}${marcaPend(p)}</span></a>`).join("");
+}
+
+/* ---------- servicios ---------- */
+function pintarServicios() {
+  $("#serv-grilla").innerHTML = SERVICIOS.filter((s) => ver(s) && s.nombre).map((s) => {
+    const suc = sucursal(s.sucursal);
+    const r = RUBROS[s.id] || { i:"huella" };
+    const items = (s.items || []).filter(Boolean);
+    const turno = s.turno ? `<a class="btn btn-pri" data-turno="${esc(s.turno)}" href="${wa(`Hola Zoo Center! Quería pedir un turno para ${s.nombre.toLowerCase()}.`)}" target="_blank" rel="noopener">${ico("cal")}Pedir turno</a>` : "";
+    const consulta = s.consulta ? `<a class="btn btn-sec" href="${wa(s.consulta)}" target="_blank" rel="noopener">${burbuja()}Consultar por WhatsApp</a>` : "";
+    const notaFalta = s.id === "veterinaria" && !s.nota ? falta("Texto corto sobre por qué vacunar: solo si el veterinario lo revisa y aprueba (base: su posteo sobre vacunas).") : "";
+    return `<article class="serv ${s.ancho ? "serv-ancho" : ""} ${s.pendiente ? "pendiente" : ""}" id="servicio-${esc(s.id)}">
+      <div class="serv-cab">
+        <span class="serv-ico">${ico(r.i)}</span>
+        <div><h3>${esc(s.nombre)} ${marcaPend(s)}</h3>
+          ${(suc || s.modo) ? `<p class="serv-donde">${suc ? `<span>${ico("pin")}${esc(suc.direccion)}</span>` : ""}${s.modo ? `<span>${ico("cal")}${esc(s.modo)}</span>` : ""}</p>` : ""}
+        </div>
+      </div>
+      ${s.bajada ? `<p class="serv-bajada">${esc(s.bajada)}</p>` : ""}
+      ${items.length ? `<ul class="serv-lista">${items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` : ""}
+      ${s.nota ? `<p class="serv-nota">${esc(s.nota)}</p>` : notaFalta}
+      ${(turno || consulta) ? `<div class="serv-acciones">${turno}${consulta}</div>` : ""}
+    </article>`;
+  }).join("");
+}
+
+/* ---------- galerías ---------- */
+let albumes = {};
+function pintarGaleria(id, lista, faltaTxt) {
+  const fotos = lista.filter((x) => x && (x.f || (x.antes && x.despues)));
+  const caja = $(`#${id}`);
+  const album = [];
+  caja.innerHTML = fotos.length ? `<div class="galeria">${fotos.map((x) => {
+    if (x.f) {
+      const i = album.push({ src:`fotos/${x.f}`, alt:x.alt || "", pie:x.pie || "" }) - 1;
+      return `<figure><button type="button" class="foto-btn" data-album="${id}" data-i="${i}" aria-label="Ver foto grande${x.pie ? `: ${esc(x.pie)}` : ""}">
+        <img src="fotos/${esc(x.f)}" alt="${esc(x.alt)}" loading="lazy" decoding="async" ${dims(x.f)}></button>
+        ${x.pie ? `<figcaption>${esc(x.pie)}</figcaption>` : ""}</figure>`;
+    }
+    const i = album.push({ src:`fotos/${x.antes}`, alt:`Antes: ${x.alt || ""}`, pie:`Antes${x.pie ? ` · ${x.pie}` : ""}` }) - 1;
+    album.push({ src:`fotos/${x.despues}`, alt:`Después: ${x.alt || ""}`, pie:`Después${x.pie ? ` · ${x.pie}` : ""}` });
+    return `<figure><button type="button" class="foto-btn par" data-album="${id}" data-i="${i}" aria-label="Ver antes y después${x.pie ? `: ${esc(x.pie)}` : ""}">
+      <span><img src="fotos/${esc(x.antes)}" alt="Antes: ${esc(x.alt)}" loading="lazy" decoding="async" ${dims(x.antes)}><em>Antes</em></span>
+      <span><img src="fotos/${esc(x.despues)}" alt="Después: ${esc(x.alt)}" loading="lazy" decoding="async" ${dims(x.despues)}><em>Después</em></span></button>
+      ${x.pie ? `<figcaption>${esc(x.pie)}</figcaption>` : ""}</figure>`;
+  }).join("")}</div>` : falta(faltaTxt);
+  albumes[id] = album;
+  return fotos.length > 0;
+}
+
+/* ---------- catálogo ---------- */
+const filtro = { mascota:"todos", cat:"todas", q:"" };
+const productos = () => CATALOGO.filter((p) => ver(p) && p.n);
+const paraMascota = (p, m) => p.mascota === m || (p.mascota === "ambos" && (m === "perro" || m === "gato"));
+
+function armarFiltros() {
+  const prods = productos();
+  const mascotas = MASCOTAS.filter((m) => prods.some((p) => paraMascota(p, m.id)));
+  $("#f-mascota").innerHTML = [`<button type="button" class="chip" data-m="todos" aria-pressed="true">Todos</button>`]
+    .concat(mascotas.map((m) => `<button type="button" class="chip" data-m="${m.id}" aria-pressed="false">${ico(m.i)}${m.n}</button>`)).join("");
+  $("#filtro-mascota").hidden = !mascotas.length;
+  const cats = [...new Set(prods.map((p) => p.cat).filter(Boolean))];
+  $("#f-cat").innerHTML = [`<button type="button" class="chip" data-c="todas" aria-pressed="true">Todas</button>`]
+    .concat(cats.map((c) => `<button type="button" class="chip" data-c="${esc(c)}" aria-pressed="false">${ico(ICONO_CAT[c] || "huella")}${esc(c)}</button>`)).join("");
+  $("#filtro-cat").hidden = cats.length < 2;
+}
+
+function tarjetaProducto(p) {
+  const s = sucursal(p.sucursal);
+  const extra = [mascotaLargo(p.mascota), s ? `Hay en ${s.direccion}` : ""].filter(Boolean).join(" · ");
+  const foto = p.f ? `<button type="button" class="prod-foto" data-foto="${esc(p.f)}" data-nombre="${esc(p.n)}" aria-label="Ver foto de ${esc(p.n)}">
+      <img src="fotos/${esc(p.f)}" alt="${esc(p.n)}" loading="lazy" decoding="async" ${dims(p.f)}></button>` : "";
+  const fechaPrecio = p.act || PRECIOS_AL;
+  const precio = p.p ? `<span class="prod-precio"><span class="precio">${pesos(p.p)}</span>
+      <small>${fechaPrecio ? `Actualizado el ${fechaLarga(fechaPrecio)} · ` : ""}Precios sujetos a cambio</small></span>` : "";
+  return `<article class="prod ${p.pendiente ? "pendiente" : ""}">${foto}
+    <div class="prod-cuerpo">
+      <div class="prod-meta">${p.nuevo ? `<span class="tag tag-nuevo">Nuevo ingreso</span>` : ""}${p.cat ? `<span class="tag">${ico(ICONO_CAT[p.cat] || "huella")}${esc(p.cat)}</span>` : ""}${marcaPend(p)}</div>
+      <h3 class="prod-n">${esc(p.n)}</h3>
+      ${p.d ? `<p class="prod-d">${esc(p.d)}</p>` : ""}
+      ${extra ? `<p class="prod-extra">${esc(extra)}</p>` : ""}
+      ${precio}
+    </div>
+    <a class="btn btn-sec btn-chico prod-consultar" href="${wa(`Hola! Quería consultar por: ${p.n}`)}" target="_blank" rel="noopener" aria-label="Consultar por ${esc(p.n)} por WhatsApp">${burbuja()}Consultar</a>
+  </article>`;
+}
+
+function pintarCatalogo() {
+  const palabras = norm(filtro.q).split(/\s+/).filter(Boolean);
+  const lista = productos().filter((p) =>
+    (filtro.mascota === "todos" || paraMascota(p, filtro.mascota)) &&
+    (filtro.cat === "todas" || p.cat === filtro.cat) &&
+    palabras.every((w) => norm([p.n, p.cat, p.d, mascotaLargo(p.mascota)].join(" ")).includes(w)));
+  $("#cat-grilla").innerHTML = lista.map(tarjetaProducto).join("");
+  $("#cat-cuenta").textContent = `${lista.length} ${lista.length === 1 ? "producto" : "productos"}`;
+  const vacio = $("#cat-vacio");
+  vacio.hidden = lista.length > 0;
+  if (!lista.length) {
+    const q = filtro.q.trim();
+    const m = MASCOTAS.find((x) => x.id === filtro.mascota);
+    const pedido = q || [filtro.cat !== "todas" ? filtro.cat.toLowerCase() : "productos", m ? `para ${m.n.toLowerCase()}` : ""].filter(Boolean).join(" ");
+    vacio.innerHTML = `<p><b>No encontramos ${q ? `«${esc(q)}»` : "productos con ese filtro"} en el catálogo.</b> Preguntanos por WhatsApp 💜</p>
+      <a class="btn btn-sec btn-chico" href="${wa(`Hola! Quería consultar por: ${pedido}`)}" target="_blank" rel="noopener">${burbuja()}Consultar por WhatsApp</a>`;
+  }
+  const conPrecio = productos().some((p) => p.p);
+  $("#cat-precios").textContent = conPrecio ? `${PRECIOS_AL ? `Precios al ${fechaLarga(PRECIOS_AL)}. ` : ""}Precios sujetos a cambio.` : "";
+}
+
+/* ---------- sucursales ---------- */
+const mapa = (s) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.lat && s.lng ? `${s.lat},${s.lng}` : `${s.direccion}, ${s.ciudad}, Buenos Aires`)}`;
+function pintarSucursales() {
+  $("#suc-grilla").innerHTML = SUCURSALES.map((s) => {
+    const lista = s.horarios || HORARIOS;
+    const cerrados = diasCerrados(lista);
+    const servs = (s.servicios || []).map((id) => `<li>${ico((RUBROS[id] || {}).i || "huella")}${esc((RUBROS[id] || { n:id }).n)}</li>`)
+      .concat(BORRADOR ? (s.aConfirmar || []).map((id) => `<li class="pendiente">${ico((RUBROS[id] || {}).i || "huella")}${esc((RUBROS[id] || { n:id }).n)} <span class="marca-pend">A confirmar</span></li>`) : []);
+    return `<article class="suc" id="suc-${esc(s.id)}">
+      ${s.foto ? `<div class="suc-foto"><img src="fotos/${esc(s.foto)}" alt="${esc(s.fotoAlt || `Frente de Zoo Center en ${s.direccion}`)}" loading="lazy" decoding="async" ${dims(s.foto)}></div>` : falta(`Foto del frente de ${esc(s.direccion)}.`)}
+      <div class="suc-cab">
+        <div><p class="suc-nombre">Sucursal ${esc(s.nombre)}</p><h3 class="suc-dir">${esc(s.direccion)}</h3><p class="suc-ciudad">${esc(s.ciudad)}</p></div>
+        <p class="suc-estado" data-estado-suc="${esc(s.id)}"></p>
+      </div>
+      <ul class="suc-servs" aria-label="Servicios en esta sucursal">${servs.join("")}</ul>
+      <dl class="suc-horario">
+        ${lista.map((h) => `<dt>${esc(mayus(rangoDias(h.dias)))}</dt><dd>${hora(aMin(h.abre))} a ${hora(aMin(h.cierra))}\u00a0h</dd>`).join("")}
+        ${cerrados.length ? `<dt>${esc(mayus(unirY(cerrados)))}</dt><dd>Cerrado</dd>` : ""}
+      </dl>
+      <div class="suc-acciones">
+        <a class="btn btn-pri btn-chico" href="${mapa(s)}" target="_blank" rel="noopener">${ico("ruta")}Cómo llegar</a>
+        <a class="btn btn-sec btn-chico" href="${wa(`Hola Zoo Center! Les escribo por la sucursal de ${s.direccion}.`)}" target="_blank" rel="noopener">${burbuja()}Escribinos</a>
+      </div>
+      <p class="suc-tel">O llamanos al <a href="tel:+${CONTACTO.whatsapp}">${esc(CONTACTO.telefono)}</a></p>
+    </article>`;
+  }).join("");
+  $("#pie-sucursales").innerHTML = SUCURSALES.map((s) => `<li>${ico("pin")}<span>${esc(s.direccion)}</span></li>`).join("")
+    + `<li>${ico("reloj")}<span>${esc(mayus(horarioFrase()))}</span></li>`;
+}
+
+/* ---------- preguntas ---------- */
+function pintarPreguntas() {
+  const sucTxt = SUCURSALES.map((s) => `${s.direccion}: ${unirY((s.servicios || []).map((id) => (RUBROS[id] || { n:id }).n.toLowerCase()))}.`).join(" ");
+  const cerr = diasCerrados();
+  const horTxt = horarioFrase() + (cerr.length ? `. ${mayus(unirY(cerr))}, cerrado` : "");
+  $("#faq").innerHTML = PREGUNTAS.filter((x) => ver(x) && x.q && (x.a || BORRADOR)).map((x) => {
+    const a = (x.a || "").replace("{horario}", horTxt).replace("{sucursales}", sucTxt);
+    return `<details class="${x.pendiente ? "pendiente" : ""}"><summary>${esc(x.q)}</summary>
+      ${a ? `<p>${esc(a)}</p>` : `<p>${marcaPend(x)} Falta la respuesta del dueño.</p>`}</details>`;
+  }).join("");
+}
+
+/* ---------- textos que salen de los datos ---------- */
+function pintarTextos() {
+  const fr = mayus(horarioFrase());
+  $$("[data-horario]").forEach((el) => (el.textContent = fr));
+  const cerr = diasCerrados();
+  $$("[data-cerrado]").forEach((el) => { el.textContent = cerr.length ? `${mayus(unirY(cerr))} cerrado` : "Abrimos todos los días"; });
+  const dirs = SUCURSALES.map((s) => s.direccion);
+  $("#portada-donde").textContent = `En ${SUCURSALES[0].ciudad}, con ${dirs.length === 2 ? "dos sucursales" : `${dirs.length} sucursales`}: ${unirY(dirs)}.`;
+  $$("[data-wa]").forEach((a) => (a.href = wa(a.dataset.wa)));
+  $("#ig-link").href = `https://www.instagram.com/${CONTACTO.instagram}/`;
+}
+
+/* ---------- agenda compartida (Supabase) ---------- */
+const conAgenda = () => !!(AGENDA.url && AGENDA.clave);
+let ocupados = null;       // horarios tomados [{tipo, fecha, hora:"10:30:00", duracion}]; null = sin agenda
+let agendaCaida = false;   // no se pudo conectar: los turnos siguen andando, sin bloquear horarios
+const CLAVE_LS = "zoocenter-clave-local";
+let claveMem = "";
+function claveLocal() { try { return localStorage.getItem(CLAVE_LS) || claveMem; } catch (e) { return claveMem; } }
+function guardarClave(c) {
+  claveMem = c || "";
+  try { if (c) localStorage.setItem(CLAVE_LS, c); else localStorage.removeItem(CLAVE_LS); } catch (e) { /* sin almacenamiento: queda en memoria */ }
+}
+
+// Llama a una función de supabase/turnos.sql. Los errores de la base llegan en e.codigo ("ocupado", "clave"…).
+async function rpc(fn, args) {
+  const cab = { "Content-Type":"application/json", apikey:AGENDA.clave };
+  if (AGENDA.clave.startsWith("eyJ")) cab.Authorization = `Bearer ${AGENDA.clave}`;   // claves viejas (anon)
+  const corte = new AbortController();
+  const reloj = setTimeout(() => corte.abort(), 12000);
+  try {
+    const r = await fetch(`${AGENDA.url.replace(/\/+$/, "")}/rest/v1/rpc/${fn}`,
+      { method:"POST", headers:cab, body:JSON.stringify(args), signal:corte.signal });
+    const txt = await r.text();
+    let datos = null;
+    try { datos = txt ? JSON.parse(txt) : null; } catch (e) { datos = null; }
+    if (!r.ok) {
+      const e = new Error((datos && datos.message) || `HTTP ${r.status}`);
+      e.codigo = (datos && datos.message) || "red";
+      throw e;
+    }
+    return datos;
+  } catch (e) {
+    if (!e.codigo) e.codigo = "red";
+    throw e;
+  } finally { clearTimeout(reloj); }
+}
+const horaDe = (h) => hhmm(aMin(String(h).slice(0, 5)));   // "10:30:00" → "10:30"
+
+/* ---------- pedir turno ---------- */
+const dlgTurno = $("#turno");
+const formTurno = $("#turno-form");
+let abridor = null;
+let reserva = null;        // el pedido ya reservado en la agenda (con su id)
+const NOMBRE_TURNO = { vet:"veterinaria", pelu:"peluquería canina" };
+const hhmm = (m) => `${Math.floor(m / 60)}:${String(m % 60).padStart(2, "0")}`;
+const diaYHora = (f, h) => `${DIAS[diaDe(f)]} ${fechaCorta(f)} a las ${h}`;
+const waA = (numero, texto) => `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+const duracionDe = (tipo) => (TURNOS[tipo] || {}).duracion || (TURNOS[tipo] || {}).intervalo || 30;
+
+function llenarSelect(sel, items, texto) {
+  sel.innerHTML = `<option value="">${texto}</option>` + items.map((i) => `<option>${esc(i)}</option>`).join("");
+}
+function tipoTurno() { return formTurno.tipo.value === "pelu" ? "pelu" : "vet"; }
+function servicioDe(turno) { return SERVICIOS.find((s) => s.turno === turno) || {}; }
+const sucursalTurno = (tipo) => sucursal(servicioDe(tipo).sucursal) || SUCURSALES[0];
+
+// Celular argentino → número para wa.me (549 + característica + número). "" si no tiene 10 cifras.
+// Acepta cómo lo escribe la gente: 0223 15 512-3456, +54 9 223 5123456, 2235123456…
+function normalizarCel(txt) {
+  let d = String(txt || "").replace(/\D/g, "");
+  if (d.startsWith("54")) d = d.slice(2);
+  if (d.length === 11 && d.startsWith("9")) d = d.slice(1);
+  if (d.startsWith("0")) d = d.slice(1);
+  if (d.length === 12) {                       // característica + 15 + número
+    for (const k of [2, 3, 4]) {
+      if (d.slice(k, k + 2) === "15") { d = d.slice(0, k) + d.slice(k + 2); break; }
+    }
+  }
+  return d.length === 10 ? "549" + d : "";
+}
+
+// Horarios libres ese día (en minutos): dentro del horario de la sucursal, cada TURNOS[tipo].intervalo,
+// sin pasarse del cierre, si es hoy desde ahora + TURNOS.anticipacion, y sin pisar turnos tomados
+// (tomados: lista de la agenda; excluir: el id de un turno que no cuenta, al moverlo).
+function horariosTurno(tipo, fecha, tomados = ocupados, excluir = null) {
+  const cfg = TURNOS[tipo] || {};
+  let tr = tramos(sucursalTurno(tipo), fecha);
+  if (cfg.horarios) {
+    const dia = diaDe(fecha);
+    const propios = cfg.horarios.filter((h) => (h.dias || []).some((n) => diaIdx(n) === dia)).map((h) => [aMin(h.abre), aMin(h.cierra)]);
+    tr = tr.flatMap(([a, c]) => propios.map(([pa, pc]) => [Math.max(a, pa), Math.min(c, pc)])).filter(([a, c]) => c > a);
+  }
+  const paso = cfg.intervalo || 30, dura = duracionDe(tipo);
+  const t = ahora();
+  const desde = fecha === t.fecha ? t.min + (TURNOS.anticipacion || 0) : -1;
+  const pisados = (tomados || [])
+    .filter((o) => o.tipo === tipo && o.fecha === fecha && o.vigente !== false && (!excluir || o.id !== excluir))
+    .map((o) => [aMin(String(o.hora).slice(0, 5)), +o.duracion || paso]);
+  const lista = [];
+  tr.forEach(([a, c]) => {
+    for (let m = a; m + dura <= c; m += paso) {
+      if (m >= desde && !pisados.some(([oh, od]) => m < oh + od && oh < m + dura)) lista.push(m);
+    }
+  });
+  return lista;
+}
+
+// El pedido viaja en el link del local como texto en base64 (solo letras, números, - y _).
+const codificar = (o) => btoa(String.fromCharCode(...new TextEncoder().encode(JSON.stringify(o))))
+  .replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+const decodificar = (s) => JSON.parse(new TextDecoder().decode(
+  Uint8Array.from(atob(s.replace(/-/g, "+").replace(/_/g, "/")), (c) => c.charCodeAt(0))));
+const linkPanel = (d) => `${CONTACTO.sitio || location.href.split("#")[0]}#t-${codificar(d)}`;
+
+function datosTurno() {
+  if (reserva) return reserva;
+  const v = (n) => (formTurno[n] && formTurno[n].value || "").trim();
+  const d = { v:1, t:tipoTurno(), n:v("dueno"), tel:v("cel"), w:normalizarCel(v("cel")), d:v("dia"), h:v("hora") };
+  if (d.t === "vet") Object.assign(d, { m:v("mascota"), e:v("especie"), s:v("motivo") });
+  else Object.assign(d, { m:v("perro"), r:v("raza"), z:v("tamano"), s:v("servicio") });
+  return d;
+}
+// "Luna (gato)" · "Toby (caniche, chico)" · "Caniche, chico"
+function quien(d) {
+  if (d.t === "vet") return `${d.m || ""}${d.e ? ` (${d.e})` : ""}`;
+  const desc = [d.r, d.z].filter(Boolean).join(", ");
+  return d.m ? `${d.m}${desc ? ` (${desc})` : ""}` : mayus(desc);
+}
+
+function mensajeTurno() {
+  const d = datosTurno(), suc = sucursalTurno(d.t);
+  const l = [`Hola Zoo Center! 💜 Quiero pedir un turno para la *${NOMBRE_TURNO[d.t]}* (${suc.direccion}).`,
+    `• Mi nombre: ${d.n}`, `• Mi WhatsApp: ${d.tel}`];
+  if (d.t === "vet") l.push(`• Mascota: ${quien(d)}`, `• Motivo: ${d.s}`);
+  else { if (d.m) l.push(`• Mi perro: ${d.m}`); l.push(`• Raza: ${d.r}`, `• Tamaño: ${d.z}`, `• Servicio: ${d.s}`); }
+  if (d.d && d.h) l.push(`• Día y hora: ${diaYHora(d.d, d.h)}${d.i ? " (ya lo reservé en la web)" : ""}`);
+  if (d.n && d.w && d.d && d.h) l.push("", "👉 Para el local, confirmalo en un toque:", linkPanel(d));
+  return l.join("\n");
+}
+
+function llenarHoras() {
+  const sel = formTurno.hora, previo = sel.value, f = formTurno.dia.value;
+  const hs = f && f >= ahora().fecha ? horariosTurno(tipoTurno(), f).map(hhmm) : [];
+  sel.innerHTML = `<option value="">${!f ? "Elegí primero el día" : hs.length ? "Elegí la hora" : "Sin horarios libres ese día"}</option>`
+    + hs.map((h) => `<option${h === previo ? " selected" : ""}>${h}</option>`).join("");
+  sel.disabled = !hs.length;
+}
+function revisarDia() {
+  const inp = formTurno.dia;
+  inp.setCustomValidity("");
+  if (!inp.value || reserva) return;
+  const suc = sucursalTurno(tipoTurno());
+  if (inp.value < ahora().fecha) inp.setCustomValidity("Elegí un día de hoy en adelante.");
+  else if (!tramos(suc, inp.value).length) inp.setCustomValidity(`Ese día ${suc.direccion} está cerrado. Elegí otro día 🙂`);
+  else if (!horariosTurno(tipoTurno(), inp.value).length) inp.setCustomValidity("Para ese día ya no quedan horarios libres. Elegí otro día 🙂");
+}
+function revisarCel() {
+  const v = formTurno.cel.value.trim();
+  formTurno.cel.setCustomValidity(v && !normalizarCel(v) ? "Revisá tu WhatsApp: poné la característica y el número, por ejemplo 223 512-3456." : "");
+}
+function actualizarTurno() {
+  revisarCel(); revisarDia();
+  $("#turno-enviar").href = wa(mensajeTurno());
+}
+// Con agenda: primero "Reservar horario" y recién después "Enviar pedido por WhatsApp".
+function pintarPasos() {
+  const reservar = conAgenda() && !agendaCaida && !reserva;
+  $("#turno-reservar").hidden = !reservar;
+  $("#turno-enviar").hidden = reservar;
+  $("#turno-reservado").hidden = !reserva;
+  if (reserva) $("#turno-reservado").textContent = `✅ ¡Listo! Te reservamos el ${diaYHora(reserva.d, reserva.h)}. Para terminar, mandanos el pedido por WhatsApp y te confirmamos el turno.`;
+}
+function cambiarTipo() {
+  const pelu = tipoTurno() === "pelu";
+  $("#campos-vet").disabled = pelu; $("#campos-vet").hidden = pelu;
+  $("#campos-pelu").disabled = !pelu; $("#campos-pelu").hidden = !pelu;
+  $("#turno-error").hidden = true;
+  llenarHoras();
+  actualizarTurno();
+}
+async function cargarOcupados() {
+  if (!conAgenda()) return;
+  const hoy = ahora().fecha;
+  try {
+    ocupados = await rpc("horarios_ocupados", { p_desde:hoy, p_hasta:sumarDias(hoy, 92) });
+    agendaCaida = false;
+  } catch (e) {
+    ocupados = null; agendaCaida = true;
+  }
+  llenarHoras(); actualizarTurno(); pintarPasos();
+}
+
+function mostrarErrorTurno() {
+  const err = $("#turno-error");
+  const malo = [formTurno.dia, formTurno.cel].find((x) => x.validity.customError);
+  err.textContent = malo ? malo.validationMessage : "Completá los datos que faltan para armar el mensaje.";
+  err.hidden = false;
+  formTurno.reportValidity();
+}
+async function reservar() {
+  actualizarTurno();
+  if (!formTurno.checkValidity()) return mostrarErrorTurno();
+  const d = datosTurno(), btn = $("#turno-reservar"), err = $("#turno-error");
+  err.hidden = true;
+  btn.disabled = true;
+  const texto = btn.innerHTML;
+  btn.textContent = "Reservando…";
+  try {
+    const id = await rpc("reservar_turno", { p_tipo:d.t, p_fecha:d.d, p_hora:d.h, p_duracion:duracionDe(d.t),
+      p_nombre:d.n, p_whatsapp:d.w, p_detalle:JSON.stringify({ m:d.m, e:d.e, r:d.r, z:d.z, s:d.s, tel:d.tel }) });
+    reserva = { ...d, i:id };
+    $("#turno-datos").disabled = true;
+  } catch (e) {
+    if (e.codigo === "ocupado") {
+      err.textContent = "Uy, ese horario se acaba de ocupar 😕 Elegí otro.";
+      formTurno.hora.value = "";
+      await cargarOcupados();
+    } else if (e.codigo === "demasiados") {
+      err.textContent = "Ya tenés varios turnos pedidos. Escribinos por WhatsApp y lo vemos 💜";
+    } else {
+      agendaCaida = true;   // la agenda no responde: se manda el pedido igual, sin reserva
+      err.textContent = "No pudimos reservar el horario en la agenda, pero podés mandarnos el pedido igual por WhatsApp.";
+    }
+    err.hidden = false;
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = texto;
+  }
+  actualizarTurno(); pintarPasos();
+}
+
+function abrirTurno(tipo, desde) {
+  if (typeof dlgTurno.showModal !== "function") return false;
+  abridor = desde || null;
+  reserva = null;
+  $("#turno-datos").disabled = false;
+  if (tipo === "pelu" || tipo === "vet") formTurno.tipo.value = tipo;
+  formTurno.dia.min = ahora().fecha;
+  $("#turno-listo").hidden = true;
+  cambiarTipo();
+  pintarPasos();
+  dlgTurno.showModal();
+  setTimeout(() => $("#t-dueno").focus(), 30);
+  cargarOcupados();
+  return true;
+}
+
+function initTurno() {
+  llenarSelect($("#t-motivo"), servicioDe("vet").items || [], "Elegí un motivo");
+  llenarSelect($("#t-servicio"), servicioDe("pelu").items || [], "Elegí un servicio");
+  actualizarTurno();
+  formTurno.addEventListener("input", (e) => {
+    if (e.target.name === "dia") llenarHoras();
+    $("#turno-listo").hidden = true;
+    actualizarTurno();
+  });
+  formTurno.addEventListener("change", (e) => {
+    if (e.target.name === "tipo") cambiarTipo();
+    else { if (e.target.name === "dia") llenarHoras(); actualizarTurno(); }
+  });
+  formTurno.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!$("#turno-reservar").hidden) reservar(); else $("#turno-enviar").click();
+  });
+  $("#turno-reservar").addEventListener("click", reservar);
+  $("#turno-enviar").addEventListener("click", (e) => {
+    actualizarTurno();
+    const err = $("#turno-error");
+    if (formTurno.checkValidity()) { err.hidden = true; $("#turno-listo").hidden = false; return; }
+    e.preventDefault();   // falta algo: no abre WhatsApp todavía
+    mostrarErrorTurno();
+  });
+  dlgTurno.addEventListener("close", () => { reserva = null; $("#turno-datos").disabled = false; });
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-turno]");
+    if (b && abrirTurno(b.dataset.turno, b)) e.preventDefault();
+  });
+}
+
+/* ---------- clave del local (una vez por celular) ---------- */
+function formClave(destino, alEntrar, texto) {
+  destino.innerHTML = `<div class="campo">
+      <label for="clave-local">Clave del local</label>
+      <p class="turno-ayuda">${esc(texto)}</p>
+      <div class="fila-clave"><input type="password" id="clave-local" autocomplete="current-password">
+        <button type="button" class="btn btn-pri btn-chico" id="clave-entrar">Entrar</button></div>
+      <p class="turno-error" id="clave-error" role="alert" hidden></p></div>`;
+  const entrar = async () => {
+    const c = $("#clave-local").value.trim(), err = $("#clave-error");
+    if (!c) return $("#clave-local").focus();
+    $("#clave-entrar").disabled = true; err.hidden = true;
+    try {
+      await rpc("agenda", { p_clave:c, p_desde:ahora().fecha, p_hasta:ahora().fecha });
+      guardarClave(c);
+      alEntrar();
+    } catch (e) {
+      err.textContent = e.codigo === "clave" ? "Clave incorrecta." : "No se pudo conectar con la agenda. Probá de nuevo en un rato.";
+      err.hidden = false;
+      $("#clave-entrar").disabled = false;
+    }
+  };
+  $("#clave-entrar").addEventListener("click", entrar);
+  $("#clave-local").addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); entrar(); } });
+}
+
+/* ---------- panel del local: confirmar, proponer otro horario, recordar, agendar, liberar ---------- */
+const panel = $("#panel");
+let pedido = null;         // el turno del link (con la agenda, se actualiza con lo que dice la base)
+let filaPanel = null;      // la fila de la agenda: { estado, vigente, creado… } · null = no está / no cargó
+let estadoPanel = "";      // "", "sin-clave", "cargando", "red", "no-esta", "listo"
+
+function textoConfirmar(d) {
+  const suc = sucursalTurno(d.t);
+  return [`¡Hola ${d.n}! 💜 Te confirmamos el turno en Zoo Center:`,
+    `🐾 ${quien(d) || mayus(NOMBRE_TURNO[d.t])} · ${d.s}`,
+    `📅 ${mayus(diaYHora(d.d, d.h))}`,
+    `📍 ${suc.direccion}, ${suc.ciudad}`,
+    "Si no podés venir, avisanos por acá. ¡Te esperamos!"].join("\n");
+}
+const textoProponer = (d, f, h) =>
+  `¡Hola ${d.n}! 💜 Para el ${diaYHora(d.d, d.h)} no tenemos lugar 😕 ¿Te sirve el ${diaYHora(f, h)}? Respondenos por acá y te lo confirmamos.`;
+const textoRecordar = (d) =>
+  `¡Hola ${d.n}! 💜 Te recordamos el turno de ${d.m || "tu mascota"} en la ${NOMBRE_TURNO[d.t]}: ${diaYHora(d.d, d.h)}, en ${sucursalTurno(d.t).direccion}. ¡Te esperamos!`;
+
+function linkAgenda(d) {
+  const [y, mo, da] = d.d.split("-");
+  const ini = aMin(d.h), fin = ini + duracionDe(d.t);
+  const t = (m) => `${y}${mo}${da}T${String(Math.floor(m / 60)).padStart(2, "0")}${String(m % 60).padStart(2, "0")}00`;
+  const suc = sucursalTurno(d.t);
+  return "https://calendar.google.com/calendar/render?" + new URLSearchParams({
+    action:"TEMPLATE", text:`${mayus(NOMBRE_TURNO[d.t])}: ${quien(d) || d.n} · ${d.s}`, dates:`${t(ini)}/${t(fin)}`, ctz:ZONA,
+    details:`${d.n}${d.tel ? ` · WhatsApp ${d.tel}` : ""}\nPanel del turno: ${linkPanel(d)}`,
+    location:`Zoo Center, ${suc.direccion}, ${suc.ciudad}` });
+}
+const conAgendaPanel = () => conAgenda() && !!(pedido && pedido.i);
+
+function pintarFicha() {
+  const d = pedido, suc = sucursalTurno(d.t);
+  $("#panel-ficha").innerHTML = `
+    <dt>Día y hora</dt><dd><b>${esc(mayus(diaYHora(d.d, d.h)))}</b></dd>
+    <dt>Servicio</dt><dd>${esc(mayus(NOMBRE_TURNO[d.t]))} · ${esc(suc.direccion)}</dd>
+    <dt>${d.t === "vet" ? "Mascota" : "Perro"}</dt><dd>${esc(quien(d) || "—")}</dd>
+    <dt>${d.t === "vet" ? "Motivo" : "Pidió"}</dt><dd>${esc(d.s || "—")}</dd>
+    <dt>Cliente</dt><dd>${esc(d.n)}</dd>`;
+  $("#panel-pasado").hidden = !(d.d < ahora().fecha);
+}
+
+function pintarEstadoPanel() {
+  const caja = $("#panel-estado");
+  caja.hidden = !conAgendaPanel();
+  if (caja.hidden) return;
+  caja.className = "estado-agenda";
+  const f = filaPanel;
+  if (estadoPanel === "sin-clave") {
+    caja.className = "";
+    formClave(caja, cargarFilaPanel, "Para confirmar o liberar el turno en la agenda. Se pide una sola vez en este celular.");
+  } else if (estadoPanel === "cargando") caja.textContent = "Buscando el turno en la agenda…";
+  else if (estadoPanel === "red") {
+    caja.className = "estado-agenda aviso";
+    caja.innerHTML = `No se pudo conectar con la agenda. Podés confirmar igual por WhatsApp, pero después marcalo en la agenda: si no, el horario se libera a las 24 horas. <button type="button" class="btn-link" data-accion="reintentar">Probar de nuevo</button>`;
+  } else if (estadoPanel === "no-esta") {
+    caja.className = "estado-agenda aviso";
+    caja.textContent = "Este turno ya no está en la agenda: se liberó.";
+  } else if (f && f.estado === "confirmado") {
+    caja.className = "estado-agenda ok";
+    caja.textContent = "✅ Confirmado en la agenda. Ahora mandale la confirmación al cliente.";
+  } else if (f && f.vigente) {
+    const vence = new Date(new Date(f.creado).getTime() + 24 * 3600 * 1000);
+    const v = new Intl.DateTimeFormat("es-AR", { timeZone:ZONA, day:"2-digit", month:"2-digit", hour:"numeric", minute:"2-digit" }).format(vence);
+    caja.className = "estado-agenda aviso";
+    caja.textContent = `🕒 Reservado desde la web, sin confirmar. Si no lo confirmás, el horario se libera solo (${v}).`;
+  } else if (f) {
+    caja.className = "estado-agenda aviso";
+    caja.textContent = "⌛ Pasaron 24 horas sin confirmarlo y el horario se liberó. Si lo confirmás ahora, se vuelve a reservar (si sigue libre).";
+  }
+  const listo = estadoPanel === "listo" && f;
+  const confirmado = listo && f.estado === "confirmado";
+  $("#panel-confirmar-db").hidden = !(listo && !confirmado);
+  $("#panel-confirmar").hidden = !(confirmado || estadoPanel === "red");
+  $("#panel-liberar").hidden = !listo;
+  $("#panel-mover").hidden = !listo;
+}
+
+// Arma los links de WhatsApp con el número que figura en el panel (el dueño lo puede corregir).
+function actualizarPanel() {
+  const d = pedido;
+  const w = normalizarCel($("#p-cel").value);
+  const poner = (id, url) => {
+    const a = $(id);
+    a.href = url || "#";
+    a.setAttribute("aria-disabled", String(!url));
+  };
+  $("#panel-msj").textContent = textoConfirmar(d);
+  poner("#panel-confirmar", w && waA(w, textoConfirmar(d)));
+  poner("#panel-recordar", w && waA(w, textoRecordar(d)));
+  $("#panel-agenda").href = linkAgenda(d);
+  const f = $("#p-dia").value, h = $("#p-hora").value;
+  poner("#panel-proponer", w && f && h && waA(w, textoProponer(d, f, h)));
+  $("#panel-mover").disabled = !(f && h);
+  $("#p-cel-error").hidden = !!w;
+}
+async function llenarHorasPanel() {
+  const f = $("#p-dia").value, sel = $("#p-hora");
+  let tomados = ocupados;
+  if (f && conAgendaPanel() && claveLocal()) {
+    try { tomados = await rpc("agenda", { p_clave:claveLocal(), p_desde:f, p_hasta:f }); } catch (e) { tomados = ocupados; }
+  }
+  const hs = f && f >= ahora().fecha ? horariosTurno(pedido.t, f, tomados, pedido.i).map(hhmm) : [];
+  sel.innerHTML = `<option value="">${!f ? "Elegí el día" : hs.length ? "Elegí la hora" : "Sin horarios libres ese día"}</option>` + hs.map((h) => `<option>${h}</option>`).join("");
+  sel.disabled = !hs.length;
+  actualizarPanel();
+}
+
+async function cargarFilaPanel() {
+  if (!conAgendaPanel()) return pintarEstadoPanel();
+  if (!claveLocal()) { estadoPanel = "sin-clave"; return pintarEstadoPanel(); }
+  estadoPanel = "cargando"; pintarEstadoPanel();
+  try {
+    const desde = sumarDias(pedido.d < ahora().fecha ? pedido.d : ahora().fecha, -2);   // la base devuelve hasta 92 días
+    const filas = await rpc("agenda", { p_clave:claveLocal(), p_desde:desde, p_hasta:sumarDias(desde, 92) });
+    filaPanel = (filas || []).find((x) => x.id === pedido.i) || null;
+    estadoPanel = filaPanel ? "listo" : "no-esta";
+    if (filaPanel) { pedido.d = filaPanel.fecha; pedido.h = horaDe(filaPanel.hora); pintarFicha(); actualizarPanel(); }
+  } catch (e) {
+    if (e.codigo === "clave") { guardarClave(""); estadoPanel = "sin-clave"; } else estadoPanel = "red";
+  }
+  pintarEstadoPanel();
+}
+
+async function accionPanel(boton, args, okTexto) {
+  const err = $("#panel-error");
+  err.hidden = true;
+  boton.disabled = true;
+  try {
+    await rpc("cambiar_turno", { p_clave:claveLocal(), p_id:pedido.i, ...args });
+    if (okTexto) { $("#panel-ok").textContent = okTexto; $("#panel-ok").hidden = false; }
+    await cargarFilaPanel();
+  } catch (e) {
+    err.textContent = e.codigo === "ocupado" ? "Ese horario ya lo tiene otro turno. Elegí otro y proponéselo al cliente."
+      : e.codigo === "clave" ? "La clave del local cambió: escribila de nuevo." : "No se pudo conectar con la agenda. Probá de nuevo.";
+    err.hidden = false;
+    if (e.codigo === "clave") { guardarClave(""); estadoPanel = "sin-clave"; pintarEstadoPanel(); }
+  } finally { boton.disabled = false; }
+}
+
+function abrirPanel() {
+  const m = location.hash.match(/^#t-([A-Za-z0-9_-]{10,})$/);
+  if (!m || typeof panel.showModal !== "function") return;
+  let d = null;
+  try { d = decodificar(m[1]); } catch (e) { d = null; }
+  const ok = d && d.v === 1 && NOMBRE_TURNO[d.t] && d.n && /^\d{4}-\d{2}-\d{2}$/.test(d.d || "") && /^\d{1,2}:\d{2}$/.test(d.h || "");
+  if (ok && d.i && !/^[0-9a-f-]{36}$/i.test(d.i)) delete d.i;
+  pedido = ok ? d : null;
+  filaPanel = null; estadoPanel = "";
+  $("#panel-cuerpo").innerHTML = !ok ? `<p>Este link de turno está incompleto o dañado. Pedile los datos al cliente por WhatsApp.</p>` : `
+    <p class="turno-ayuda">Pedido hecho desde la web. Cada botón abre WhatsApp con el mensaje listo: revisalo y tocá enviar.</p>
+    <p class="turno-error" id="panel-pasado" hidden>Ojo: la fecha de este turno ya pasó.</p>
+    <dl class="ficha" id="panel-ficha"></dl>
+    <div id="panel-estado" hidden></div>
+    <div class="campo">
+      <label for="p-cel">WhatsApp del cliente</label>
+      <input type="tel" id="p-cel" inputmode="tel" value="${esc(d.tel || "")}" placeholder="Ej.: 223 512-3456">
+      <p class="turno-error" id="p-cel-error" hidden>Escribí el WhatsApp del cliente con la característica (ej.: 223 512-3456).</p>
+    </div>
+    <p class="turno-ayuda">Este mensaje le va a llegar al cliente:</p>
+    <p class="burbuja-msj" id="panel-msj"></p>
+    <p class="turno-error" id="panel-error" role="alert" hidden></p>
+    <p class="turno-reservado" id="panel-ok" role="status" hidden></p>
+    <div class="panel-botones">
+      <button type="button" class="btn btn-pri" id="panel-confirmar-db" hidden>${ico("cal")}Confirmar el turno en la agenda</button>
+      <a class="btn btn-pri" id="panel-confirmar" href="#" target="_blank" rel="noopener">${burbuja()}Confirmar el turno por WhatsApp</a>
+      <a class="btn btn-sec" id="panel-agenda" href="#" target="_blank" rel="noopener">${ico("cal")}Agendar en Google Calendar</a>
+      <a class="btn btn-sec" id="panel-recordar" href="#" target="_blank" rel="noopener">${burbuja()}Mandar recordatorio</a>
+      <button type="button" class="btn btn-sec" id="panel-liberar" hidden>Liberar el horario</button>
+    </div>
+    <div class="panel-otro">
+      <h3>¿No hay lugar a esa hora?</h3>
+      <div class="dos">
+        <div class="campo"><label for="p-dia">Otro día</label><input type="date" id="p-dia" min="${ahora().fecha}"></div>
+        <div class="campo"><label for="p-hora">Hora</label><select id="p-hora" disabled><option value="">Elegí el día</option></select></div>
+      </div>
+      <a class="btn btn-sec" id="panel-proponer" href="#" target="_blank" rel="noopener">${burbuja()}Proponer este horario</a>
+      <button type="button" class="btn btn-sec" id="panel-mover" hidden>Pasar el turno a este horario</button>
+    </div>
+    ${conAgenda() ? `<a class="btn-link" href="#agenda">Ver la agenda de turnos</a>` : ""}`;
+  if (ok) { pintarFicha(); actualizarPanel(); pintarEstadoPanel(); cargarFilaPanel(); }
+  if (!panel.open) panel.showModal();
+}
+
+function initPanel() {
+  const c = $("#panel-cuerpo");
+  c.addEventListener("input", (e) => {
+    if (!pedido) return;
+    if (e.target.id === "p-dia") llenarHorasPanel(); else if (e.target.id === "p-cel") actualizarPanel();
+  });
+  c.addEventListener("change", (e) => { if (pedido && e.target.id === "p-hora") actualizarPanel(); });
+  c.addEventListener("click", (e) => {
+    const a = e.target.closest('a[aria-disabled="true"]');
+    if (a) {   // botón apagado: lleva al dato que falta
+      e.preventDefault();
+      (a.id === "panel-proponer" && normalizarCel($("#p-cel").value) ? $("#p-dia") : $("#p-cel")).focus();
+      return;
+    }
+    const b = e.target.closest("button");
+    if (!b || !pedido) return;
+    if (b.dataset.accion === "reintentar") cargarFilaPanel();
+    else if (b.id === "panel-confirmar-db") accionPanel(b, { p_estado:"confirmado" }, "Listo, quedó confirmado en la agenda.");
+    else if (b.id === "panel-liberar") {
+      if (b.dataset.seguro !== "1") { b.dataset.seguro = "1"; b.textContent = "¿Seguro? Tocá de nuevo para liberarlo"; return; }
+      accionPanel(b, { p_estado:"liberado" }, "Listo, el horario quedó libre.");
+    } else if (b.id === "panel-mover") {
+      const f = $("#p-dia").value, h = $("#p-hora").value;
+      if (f && h) accionPanel(b, { p_estado:"confirmado", p_fecha:f, p_hora:h }, `Listo, el turno pasó al ${diaYHora(f, h)} y quedó confirmado. Ahora mandale la confirmación.`);
+    }
+  });
+}
+
+/* ---------- agenda del local (#agenda) ---------- */
+const dlgAgenda = $("#agenda");
+let filasAgenda = [];
+
+function pedidoDeFila(f) {
+  let x = {};
+  try { x = JSON.parse(f.detalle || "{}") || {}; } catch (e) { x = {}; }
+  return { v:1, t:f.tipo, n:f.nombre || "Sin nombre", tel:x.tel || (f.whatsapp ? f.whatsapp.slice(3) : ""), w:f.whatsapp || "",
+    d:f.fecha, h:horaDe(f.hora), i:f.id, m:x.m || "", e:x.e || "", r:x.r || "", z:x.z || "",
+    s:x.s || (f.origen === "local" ? "Turno dado en el local" : "") };
+}
+const chipEstado = (f) => f.estado === "confirmado" ? `<span class="chip-estado ok">Confirmado</span>`
+  : f.vigente ? `<span class="chip-estado">Sin confirmar</span>` : `<span class="chip-estado vencido">Vencido</span>`;
+
+async function pintarAgenda() {
+  const caja = $("#agenda-cuerpo");
+  if (!conAgenda()) { caja.innerHTML = `<p>La agenda todavía no está conectada (falta configurar Supabase).</p>`; return; }
+  if (!claveLocal()) return formClave(caja, pintarAgenda, "Se pide una sola vez en este celular.");
+  caja.innerHTML = `<p class="turno-ayuda">Cargando la agenda…</p>`;
+  const hoy = ahora().fecha;
+  try {
+    filasAgenda = await rpc("agenda", { p_clave:claveLocal(), p_desde:hoy, p_hasta:sumarDias(hoy, 30) }) || [];
+  } catch (e) {
+    if (e.codigo === "clave") { guardarClave(""); return pintarAgenda(); }
+    caja.innerHTML = `<p class="estado-agenda aviso">No se pudo conectar con la agenda. <button type="button" class="btn-link" data-accion="recargar">Probar de nuevo</button></p>`;
+    return;
+  }
+  const dias = [...new Set(filasAgenda.map((f) => f.fecha))];
+  caja.innerHTML = `
+    <p class="turno-ayuda">Turnos de los próximos 30 días. Tocá uno para confirmarlo, cambiarlo o liberarlo.</p>
+    ${dias.length ? dias.map((dia) => `<section class="agenda-dia"><h3>${esc(mayus(`${DIAS[diaDe(dia)]} ${fechaCorta(dia)}`))}</h3>
+      ${filasAgenda.filter((f) => f.fecha === dia).map((f) => {
+        const d = pedidoDeFila(f);
+        return `<button type="button" class="agenda-fila" data-t="${codificar(d)}"><b>${esc(d.h)}</b>
+          <span>${esc([mayus(NOMBRE_TURNO[d.t]), quien(d), d.s].filter(Boolean).join(" · "))}<small>${esc(d.n)}</small></span>${chipEstado(f)}</button>`;
+      }).join("")}</section>`).join("") : `<p class="estado-agenda">No hay turnos en los próximos 30 días.</p>`}
+    <div class="panel-otro">
+      <h3>Ocupar un horario</h3>
+      <p class="turno-ayuda">Para los turnos que das por teléfono o en el local: así la web no ofrece ese horario.</p>
+      <div class="dos">
+        <div class="campo"><label for="a-tipo">Servicio</label><select id="a-tipo"><option value="vet">Veterinaria</option><option value="pelu">Peluquería canina</option></select></div>
+        <div class="campo"><label for="a-nota">Nota <span class="opc">(opcional)</span></label><input type="text" id="a-nota" maxlength="60" placeholder="Ej.: Carla, por teléfono"></div>
+        <div class="campo"><label for="a-dia">Día</label><input type="date" id="a-dia" min="${hoy}"></div>
+        <div class="campo"><label for="a-hora">Hora</label><select id="a-hora" disabled><option value="">Elegí el día</option></select></div>
+      </div>
+      <p class="turno-error" id="a-error" role="alert" hidden></p>
+      <button type="button" class="btn btn-sec" id="a-ocupar" disabled>Ocupar este horario</button>
+    </div>
+    <button type="button" class="btn-link" data-accion="salir">Salir de la agenda en este celular</button>`;
+}
+async function llenarHorasAgenda() {
+  const f = $("#a-dia").value, tipo = $("#a-tipo").value, sel = $("#a-hora");
+  let tomados = filasAgenda;
+  if (f) { try { tomados = await rpc("agenda", { p_clave:claveLocal(), p_desde:f, p_hasta:f }); } catch (e) { tomados = filasAgenda; } }
+  const hs = f ? horariosTurno(tipo, f, tomados).map(hhmm) : [];
+  sel.innerHTML = `<option value="">${!f ? "Elegí el día" : hs.length ? "Elegí la hora" : "Sin horarios libres ese día"}</option>` + hs.map((h) => `<option>${h}</option>`).join("");
+  sel.disabled = !hs.length;
+  $("#a-ocupar").disabled = true;
+}
+function abrirAgenda() {
+  if (location.hash !== "#agenda" || typeof dlgAgenda.showModal !== "function") return;
+  if (!dlgAgenda.open) dlgAgenda.showModal();
+  pintarAgenda();
+}
+function initAgenda() {
+  const c = $("#agenda-cuerpo");
+  c.addEventListener("click", async (e) => {
+    const fila = e.target.closest("[data-t]");
+    if (fila) { location.hash = `#t-${fila.dataset.t}`; return; }
+    const b = e.target.closest("button");
+    if (!b) return;
+    if (b.dataset.accion === "recargar") pintarAgenda();
+    else if (b.dataset.accion === "salir") { guardarClave(""); dlgAgenda.close(); }
+    else if (b.id === "a-ocupar") {
+      const err = $("#a-error"), tipo = $("#a-tipo").value, f = $("#a-dia").value, h = $("#a-hora").value;
+      b.disabled = true; err.hidden = true;
+      try {
+        await rpc("ocupar_horario", { p_clave:claveLocal(), p_tipo:tipo, p_fecha:f, p_hora:h, p_duracion:duracionDe(tipo), p_nota:$("#a-nota").value.trim() });
+        pintarAgenda();
+      } catch (er) {
+        err.textContent = er.codigo === "ocupado" ? "Ese horario ya está ocupado." : "No se pudo conectar con la agenda. Probá de nuevo.";
+        err.hidden = false; b.disabled = false;
+      }
+    }
+  });
+  c.addEventListener("input", (e) => { if (e.target.id === "a-dia") llenarHorasAgenda(); });
+  c.addEventListener("change", (e) => {
+    if (e.target.id === "a-tipo") llenarHorasAgenda();
+    if (e.target.id === "a-hora") $("#a-ocupar").disabled = !e.target.value;
+  });
+  dlgAgenda.addEventListener("close", () => {
+    if (location.hash === "#agenda") try { history.replaceState(null, "", location.pathname + location.search); } catch (e) { /* sin historial */ }
+  });
+  panel.addEventListener("close", () => { if (dlgAgenda.open) pintarAgenda(); });
+}
+
+/* ---------- visor de fotos ---------- */
+const visor = $("#visor");
+let album = [], idx = 0;
+function mostrarFoto() {
+  const x = album[idx];
+  const img = $("#visor-img");
+  img.src = x.src; img.alt = x.alt || "";
+  $("#visor-tit").textContent = x.titulo || "Foto";
+  $("#visor-pie").textContent = x.pie || "";
+  $("#visor-flechas").hidden = album.length < 2;
+  $("#visor-cuenta").textContent = `${idx + 1} / ${album.length}`;
+}
+function abrirAlbum(lista, i, desde) {
+  if (!lista.length || typeof visor.showModal !== "function") return;
+  album = lista; idx = i; abridor = desde || null;
+  mostrarFoto();
+  visor.showModal();
+}
+const moverFoto = (d) => { if (album.length > 1) { idx = (idx + d + album.length) % album.length; mostrarFoto(); } };
+function initVisor() {
+  document.addEventListener("click", (e) => {
+    const g = e.target.closest("[data-album]");
+    if (g) return abrirAlbum(albumes[g.dataset.album] || [], +g.dataset.i || 0, g);
+    const p = e.target.closest("[data-foto]");
+    if (p) abrirAlbum([{ src:`fotos/${p.dataset.foto}`, alt:p.dataset.nombre, titulo:p.dataset.nombre }], 0, p);
+  });
+  $("#visor-ant").addEventListener("click", () => moverFoto(-1));
+  $("#visor-sig").addEventListener("click", () => moverFoto(1));
+  visor.addEventListener("keydown", (e) => { if (e.key === "ArrowLeft") moverFoto(-1); if (e.key === "ArrowRight") moverFoto(1); });
+  let x0 = null;
+  const fig = $("#visor-fig");
+  fig.addEventListener("pointerdown", (e) => { x0 = e.clientX; });
+  fig.addEventListener("pointerup", (e) => { if (x0 != null && Math.abs(e.clientX - x0) > 50) moverFoto(e.clientX < x0 ? 1 : -1); x0 = null; });
+}
+
+/* ---------- ventanas: cerrar con la X, con Escape o tocando afuera ---------- */
+function initVentanas() {
+  [dlgTurno, visor, panel, dlgAgenda].forEach((d) => {
+    d.addEventListener("click", (e) => { if (e.target === d || e.target.closest("[data-cerrar]")) d.close(); });
+    d.addEventListener("close", () => { if (abridor && document.contains(abridor)) abridor.focus(); abridor = null; });
+  });
+  // al cerrar el panel del local, se saca el #t-… de la dirección para que no se vuelva a abrir al recargar
+  panel.addEventListener("close", () => {
+    if (/^#t-/.test(location.hash)) try { history.replaceState(null, "", location.pathname + location.search); } catch (e) { /* sin historial */ }
+  });
+}
+
+/* ---------- huellitas que cruzan la portada (una sola vez) ---------- */
+function huellitas() {
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const capa = $("#huellas");
+  const W = capa.clientWidth, H = capa.clientHeight;
+  if (!W || !H) return;
+  const n = Math.max(8, Math.min(18, Math.round(W / 78)));
+  const t = W < 600 ? 18 : 24;
+  let html = "";
+  for (let i = 0; i < n; i++) {
+    const k = i / (n - 1);
+    const x = -10 + k * (W + 20);
+    const y = H * (0.86 - 0.58 * k) + Math.sin(k * Math.PI * 2) * H * 0.05;
+    const dy = -0.58 * H + Math.cos(k * Math.PI * 2) * H * 0.05 * Math.PI * 2;
+    const ang = Math.atan2(dy, W + 20);
+    const lado = i % 2 ? 1 : -1;
+    const px = x - Math.sin(ang) * lado * t * 0.55, py = y + Math.cos(ang) * lado * t * 0.55;
+    html += `<svg class="pisada" viewBox="0 0 40 40" style="left:${px.toFixed(1)}px;top:${py.toFixed(1)}px;--t:${t}px;--r:${(ang * 180 / Math.PI + 90).toFixed(1)}deg;animation-delay:${(i * 0.17).toFixed(2)}s"><use href="#i-huella"></use></svg>`;
+  }
+  capa.innerHTML = html;
+  setTimeout(() => (capa.innerHTML = ""), (n * 0.17 + 2.8) * 1000);
+}
+
+/* ---------- alto de lo fijo de arriba (para que los saltos no queden tapados) ---------- */
+function medirArriba() {
+  const e = $("#estado").offsetHeight;
+  const compu = matchMedia("(min-width: 900px)").matches;
+  document.documentElement.style.setProperty("--alto-estado", e + "px");
+  document.documentElement.style.setProperty("--alto-arriba", (e + (compu ? $("#cab").offsetHeight : 0)) + "px");
+}
+
+/* ---------- arranque ---------- */
+function arrancar() {
+  pintarTextos();
+  pintarServicios();
+  const hayPelu = pintarGaleria("asi-galeria", ASI_QUEDARON, "Fotos de antes y después de la peluquería (del Instagram, con permiso del dueño).");
+  $("#asi").hidden = !hayPelu && !BORRADOR;
+  pintarGaleria("clientes-galeria", CLIENTES, "Fotos de mascotas de clientes que visitaron el local (del Instagram, con permiso del dueño).");
+  pintarPromos();
+  armarFiltros();
+  pintarCatalogo();
+  $("#cat-faltas").innerHTML = falta("<b>Alimentos:</b> confirmar con el dueño qué marcas trabajan. <b>Fotos</b> de los productos (reales, del local o del Instagram).");
+  pintarSucursales();
+  pintarPreguntas();
+  pintarEstado();
+  initTurno();
+  initVisor();
+  initVentanas();
+
+  $("#cat-buscar").addEventListener("input", (e) => { filtro.q = e.target.value; pintarCatalogo(); });
+  $("#f-mascota").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-m]"); if (!b) return;
+    filtro.mascota = b.dataset.m;
+    $$("#f-mascota .chip").forEach((c) => c.setAttribute("aria-pressed", String(c === b)));
+    pintarCatalogo();
+  });
+  $("#f-cat").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-c]"); if (!b) return;
+    filtro.cat = b.dataset.c;
+    $$("#f-cat .chip").forEach((c) => c.setAttribute("aria-pressed", String(c === b)));
+    pintarCatalogo();
+  });
+
+  if (BORRADOR) {
+    const c = document.createElement("p");
+    c.className = "cinta-borrador";
+    c.textContent = "Vista borrador: lo marcado «A confirmar» o «Falta» no se ve en la web publicada.";
+    document.body.appendChild(c);
+  }
+
+  medirArriba();
+  if ("ResizeObserver" in window) new ResizeObserver(medirArriba).observe($("#estado"));
+  addEventListener("resize", medirArriba);
+  setInterval(pintarEstado, 60 * 1000);
+  requestAnimationFrame(huellitas);
+  initPanel();
+  initAgenda();
+  abrirPanel();
+  abrirAgenda();
+  addEventListener("hashchange", () => { abrirPanel(); abrirAgenda(); });
+}
+arrancar();
+</script>
+</body>
+</html>

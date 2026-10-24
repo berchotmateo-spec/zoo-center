@@ -12,7 +12,7 @@ con dos sucursales. Hasta ahora no tenía web: todo pasaba por Instagram
 sucursales, y todo termina en un WhatsApp o en un pedido de turno.
 Armada por Mateo Berchot en octubre de 2026 (todavía en etapa de demo para el dueño).
 
-- Sitio: **sin dominio todavía** (ver "Estado técnico").
+- Sitio: **sin dominio todavía**. Demo publicada en https://berchotmateo-spec.github.io/zoo-center/ (GitHub Pages, `main` / `docs`, con `noindex` para que Google no la muestre hasta que el dueño apruebe).
 - Repo: `berchotmateo-spec/zoo-center`, rama de trabajo `claude/loving-dirac-spw1xn`.
 - Vista previa (Artifact): https://claude.ai/artifact/NEuwdatvgBmHiN14FcLoWU
   - Agregando `#borrador` al final del link se ve lo pendiente marcado
@@ -117,9 +117,9 @@ producto). La web muestra "Actualizado el dd/mm/aaaa · Precios sujetos a cambio
 ## Estado técnico
 
 - [ ] Dominio (NIC.ar) — cuando exista: poner URL absolutas en `og:image`, `canonical`, `url`/`image`/`logo` del JSON-LD (con `publicar-cabecera.html`, ver la skill).
-- [ ] GitHub Pages desde `main` / `docs` (`python3 publicar.py <dominio>`).
+- [ ] GitHub Pages desde `main` / `docs`: la rama `main` y `docs/` están armadas (24/10/2026); falta que Mateo active Pages en Settings → Pages. Hoy se arma con `python3 publicar.py --sin-indexar`; cuando el dueño apruebe y haya dominio: `python3 publicar.py <dominio>` (sin `--sin-indexar`).
 - [x] Agenda en Supabase — proyecto `ebkfuvvbhsztenbkyvyw` (cuenta de Mateo), conectada en `AGENDA` el 23/10/2026. En el HTML solo la clave publicable. ⚠️ Falta probarla de punta a punta en la web publicada (desde la sesión de Claude no se llega a supabase.co).
-- [ ] Con dominio: poner la dirección en `CONTACTO.sitio` (es la que va en el link de cada pedido de turno). En la vista previa (Artifact) se publica con la del Artifact.
+- [ ] Con dominio: cambiar `CONTACTO.sitio` (hoy apunta a la demo de github.io) (es la que va en el link de cada pedido de turno). En la vista previa (Artifact) se publica con la del Artifact.
 - [ ] Search Console y Perfil de Empresa de Google.
 - [ ] QR entregado.
 
@@ -165,13 +165,14 @@ dibujado encima y no sabemos de qué sucursal es. Sin la marca y sabiendo cuál 
    - Promo nueva: objeto en `PROMOS` con `vence`; sin `pendiente:true` recién cuando el dueño la confirmó.
    - Producto nuevo: objeto en `CATALOGO`; `nuevo:true` para la etiqueta "Nuevo ingreso".
 2. Si cambia dirección, horario o teléfono: cambiarlo **también** en el JSON-LD del `<head>`.
-3. Probar: `node verificar.mjs index.html` (de la skill) a 1366 y 390 px, sin errores ni desborde.
+3. `python3 publicar.py --sin-indexar` (regenera `docs/`; no editarla a mano) y probar: `node verificar.mjs docs/index.html` (de la skill) a 1366 y 390 px, sin errores ni desborde.
 4. Commit + push → actualizar la vista previa.
 
 ## Registro de cambios
 
 Una línea por pedido, la más nueva arriba.
 
+- 24/10/2026 — Mateo pidió publicar para probar los turnos → `CONTACTO.sitio` apunta a github.io, `publicar.py --sin-indexar` arma `docs/` con noindex, y se creó la rama `main`. Falta activar Pages.
 - 23/10/2026 — Mateo creó el proyecto de Supabase (con la extensión de Chrome) y pasó la URL y la clave publicable → cargadas en `AGENDA`.
 - 23/10/2026 — Mateo preguntó cómo evitar que pidan el mismo horario → agenda en Supabase (`supabase/turnos.sql` + `AGENDA` en el `index.html`): solo se ofrecen horarios libres, "Reservar horario" antes del WhatsApp, reserva de 24 h hasta que el local confirme, panel con clave del local (confirmar, pasar de horario, liberar) y `#agenda` con "Ocupar un horario". Falta crear el proyecto en Supabase; mientras tanto la web funciona como antes.
 - 23/10/2026 — Mateo pidió mejorar los turnos y que al cliente le llegue el turno confirmado por WhatsApp → el cliente elige día y hora reales y deja su WhatsApp; al local le llega el pedido con un link a un panel para confirmar en un toque (le llega al cliente), proponer otro horario, mandar recordatorio y agendar en Google Calendar. Sin servidor ni costo; no es envío automático (eso necesita la API paga de WhatsApp).

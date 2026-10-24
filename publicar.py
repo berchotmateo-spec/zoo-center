@@ -18,6 +18,7 @@
   Uso (copiarlo a la raíz del proyecto del cliente):
       python3 publicar.py pizzerialanieve.com.ar
       python3 publicar.py                      (sin dominio propio todavía)
+      python3 publicar.py --sin-indexar        (demo: le pide a Google que no la indexe)
 
   docs/ NO se edita a mano: se regenera con esto. Editarla a mano
   es la forma más común de perder el CNAME y tirar el dominio.
@@ -39,8 +40,10 @@ CARPETAS = ["fotos", "img"]
 SUELTOS = ["og.jpg", "icono.png", "favicon.ico", "logo.png"]
 
 
-def armar_html():
+def armar_html(sin_indexar=False):
     html = PAGINA.read_text(encoding="utf-8")
+    if sin_indexar:   # demo que el dueño todavía no aprobó: que no aparezca en Google
+        html = html.replace("<head>", '<head>\n<meta name="robots" content="noindex, nofollow">', 1)
     if CABECERA.exists():
         corte = html.find("<style")
         if corte < 0:
@@ -54,6 +57,7 @@ def armar_html():
 def revisar(html):
     """Avisa de imágenes referenciadas que no existen y de data URI pesados."""
     problemas = 0
+    html = re.sub(r"(?m)^\s*//.*$", "", html)   # los ejemplos de los comentarios no son imágenes de verdad
     rutas = set(re.findall(r'''(?:src|href)=["']([^"'#?]+\.(?:webp|jpe?g|png|svg|gif|ico))["']''', html, re.I))
     rutas |= set(re.findall(r'''["']([\w./-]+\.(?:webp|jpe?g|png|svg))["']''', html, re.I))
     for r in sorted(rutas):
@@ -68,7 +72,9 @@ def revisar(html):
 
 
 def main():
-    dominio = sys.argv[1].strip().removeprefix("https://").strip("/") if len(sys.argv) > 1 else ""
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    sin_indexar = "--sin-indexar" in sys.argv
+    dominio = args[0].strip().removeprefix("https://").strip("/") if args else ""
     DESTINO.mkdir(exist_ok=True)
 
     for nombre in CARPETAS:
@@ -79,7 +85,7 @@ def main():
         if (RAIZ / nombre).is_file():
             shutil.copy2(RAIZ / nombre, DESTINO / nombre)
 
-    html = armar_html()
+    html = armar_html(sin_indexar)
     (DESTINO / "index.html").write_text(html, encoding="utf-8")
     (DESTINO / ".nojekyll").write_text("", encoding="utf-8")
 
