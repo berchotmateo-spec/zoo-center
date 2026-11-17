@@ -172,6 +172,7 @@ dibujado encima y no sabemos de qué sucursal es. Sin la marca y sabiendo cuál 
 
 Una línea por pedido, la más nueva arriba.
 
+- 17/11/2026 — Crédito del pie pasado a "Diseñado por connectHUB" con botón al Instagram de la consultora (https://www.instagram.com/connect.hub.consultora/). Pedido de Mateo: vale para todas las webs.
 - 24/10/2026 — Mateo pidió publicar para probar los turnos → `CONTACTO.sitio` apunta a github.io, `publicar.py --sin-indexar` arma `docs/` con noindex, y se creó la rama `main`. Falta activar Pages.
 - 23/10/2026 — La agenda mostraba solo 30 días y la web deja pedir hasta 92: un turno a más de 30 días no lo veía el dueño y se liberaba solo a las 24 h → la agenda muestra los próximos 3 meses (lo que acepta la base) y el selector de día del formulario no deja pasar de 92 días.
 - 23/10/2026 — Mateo creó el proyecto de Supabase (con la extensión de Chrome) y pasó la URL y la clave publicable → cargadas en `AGENDA`.
